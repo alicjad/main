@@ -4,11 +4,16 @@ public class Exercise1 {
     static long startTime;
 
     public static void main(String[]args){
-        int size = 10000000;
-        int[] array = new int[size];
-        fillOutArray(array);
-        int biggestNumber = getBiggestElement(array);
-        System.out.print(biggestNumber);
+        int[] optionsArray = {1000, 5500, 10000, 55000, 100000, 550000, 1000000, 5500000, 10000000};
+        for (int i=0; i<optionsArray.length; i++){
+            System.out.println(optionsArray[i]);
+            int size = optionsArray[i];
+            int[] array = new int[size];
+            fillOutArray(array);
+            int biggestNumber = getBiggestElement(array);
+            System.out.println(biggestNumber);
+            System.out.println();
+        }
     }
 
     public static void fillOutArray(int[] arrayToFillOut){
