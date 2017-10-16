@@ -7,8 +7,8 @@ public class Exercise1forList {
     static long startTime;
 
     public static void main(String[]args){
-        for (int j=0; j<100; j++) {
-            int[] optionsArray = {1000, 5500, 10000, 55000, 100000, 550000, 1000000, 5500000, 10000000};
+        for (int j=0; j<1; j++) {
+            int[] optionsArray = {5};
             for (int i = 0; i < optionsArray.length; i++) {
                 System.out.print(optionsArray[i]);
                 int size = optionsArray[i];
@@ -16,6 +16,9 @@ public class Exercise1forList {
                 fillOutList(list, size);
                 int biggestNumber = getBiggestElement(list);
                 System.out.print(biggestNumber);
+                printList(list);
+                printList(selectionSort(list));
+                System.out.print(" " + stopTimer() + " ");
                 System.out.println();
             }
         }
@@ -44,13 +47,24 @@ public class Exercise1forList {
     public static int getBiggestElement(List<Integer> chosenList){
         startTimer();
         int biggestElement = chosenList.get(chosenList.size()-1);
+        int index = chosenList.size()-1;
         for (int i=chosenList.size()-1; i>=0 ;i--){
             if (chosenList.get(i)>biggestElement){
                 biggestElement=chosenList.get(i);
+                index = i;
             }
         }
-        System.out.print(" " + stopTimer() + " ");
+        chosenList.remove(index);
         return biggestElement;
+    }
+
+    public static List<Integer> selectionSort(List<Integer> listToSort){
+        List <Integer> sortedList = new ArrayList<>();
+        while (listToSort.size()!=0){
+            int biggestElement = getBiggestElement(listToSort);
+            sortedList.add(biggestElement);
+        }
+        return sortedList;
     }
 
     public static long startTimer(){
