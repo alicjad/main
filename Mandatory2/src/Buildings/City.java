@@ -15,6 +15,10 @@ public class City extends GameObject {
 
         list.add(new Restaurant("McDonalds", this));
         list.add(new Restaurant("burgerKing", this));
+        list.add(new University("Pomeranian Medical University", this));
+        list.add(new University("University of Economics", this));
+        list.add(new University("Business University of Wasteland", this));
+        list.add(new University("Mechatronics University", this));
 
         return list;
     }
