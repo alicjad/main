@@ -5,18 +5,22 @@ import Buildings.City;
 import java.util.List;
 
 public class GameController {
-    //State state;
+    State state = new State();
     GameObject currentGameObject;
     UserInputHandle userInput = new UserInputHandle();
     GameBoardCreator gameBoardCreator = new GameBoardCreator();
 
     public void askUserForNextStep()
     {
+        state.setSteps(25);
         currentGameObject = gameBoardCreator.getInitialGameObject();
 
         while (true) {
             List<GameObject> currentOptions = currentGameObject.getAccessibleObjects();
+            currentGameObject.execute(state);
             System.out.println(currentGameObject.getWelcomeMessage());
+            System.out.println("Remaining steps: "+state.getSteps());
+            System.out.println("Remaining money: "+state.getMoney());
 
             for (int i = 0; i < currentOptions.size(); ++i) {
                 System.out.print(i + 1);

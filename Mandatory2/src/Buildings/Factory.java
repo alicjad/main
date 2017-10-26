@@ -1,14 +1,6 @@
 package Buildings;
 
-import Game.GameObject;
-import Game.State;
-
-public class Factory extends GameObject {
-
-    public void execute(State state)
-    {
-        state.setSteps(5);
-    }
+public class Factory extends Building {
 
     public String getWelcomeMessage()
     {

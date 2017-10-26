@@ -1,14 +1,6 @@
 package Buildings;
 
-import Game.GameObject;
-import Game.State;
-
-public class Bank extends GameObject{
-
-    public void execute(State state)
-    {
-        state.setSteps(5);
-    }
+public class Bank extends Building{
 
     public String getWelcomeMessage()
     {

@@ -1,16 +1,22 @@
 package Buildings;
 
 import Game.GameObject;
-import Game.State;
 
-public class Restaurant extends GameObject{
+import java.util.ArrayList;
+import java.util.List;
 
-        public void execute(State state)
-        {
-            state.setSteps(5);
-        }
+public class Restaurant extends Building{
+    @Override
+    public List<GameObject> getAccessibleObjects() {
 
-        public String getWelcomeMessage()
+        List<GameObject> accessibleObjectList2 = new ArrayList<GameObject>();
+        accessibleObjectList2.add(new Home());
+        accessibleObjectList2.addAll(super.getAccessibleObjects());
+
+        return accessibleObjectList2;
+    }
+
+    public String getWelcomeMessage()
         {
             return "Welcome to the Burger Palace restaurant!";
         }

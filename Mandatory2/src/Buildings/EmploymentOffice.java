@@ -1,14 +1,24 @@
 package Buildings;
 
-import Game.GameObject;
 import Game.State;
 
-public class EmploymentOffice extends GameObject {
+public class EmploymentOffice extends Building {
 
-    public void execute(State state)
-    {
-        state.setSteps(5);
+    @Override
+    protected int getNumberOfSteps() {
+        return 4;
     }
+
+    @Override
+    public void execute(State state) {
+        super.execute(state);
+        state.setMoney(getAmountOfMoney());
+
+    }
+
+    public int getAmountOfMoney(){
+        return 10;
+   }
 
     public String getWelcomeMessage()
     {
