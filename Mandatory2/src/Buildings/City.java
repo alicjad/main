@@ -13,12 +13,14 @@ public class City extends GameObject {
     public List<GameObject> getAccessibleObjects() {
         List<GameObject> list = new ArrayList<GameObject>();
 
-        list.add(new Restaurant("McDonalds", this));
-        list.add(new Restaurant("burgerKing", this));
-        list.add(new University("Pomeranian Medical University", this));
-        list.add(new University("University of Economics", this));
-        list.add(new University("Business University of Wasteland", this));
-        list.add(new University("Mechatronics University", this));
+        list.add(new University("University", this));
+        list.add(new Factory("FACTORY", this));
+        list.add(new EmploymentOffice("Job centre", this));
+        list.add(new Bank("Goliat Bank",this));
+        list.add(new RentOffice("Hygge houses",this));
+        list.add(new PawnShop("City Pawn Shop", this));
+        list.add(new Restaurant("Burger Palace", this));
+        list.add(new Home("Home", this));
 
         return list;
     }
