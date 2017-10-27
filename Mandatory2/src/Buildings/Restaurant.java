@@ -10,7 +10,7 @@ public class Restaurant extends Building{
     public List<GameObject> getAccessibleObjects() {
 
         List<GameObject> accessibleObjectList2 = new ArrayList<GameObject>();
-        accessibleObjectList2.add(new Home());
+        accessibleObjectList2.add(new RestaurantMenu());
         accessibleObjectList2.addAll(super.getAccessibleObjects());
 
         return accessibleObjectList2;
@@ -20,7 +20,7 @@ public class Restaurant extends Building{
         {
             return "Welcome to the Burger Palace restaurant!";
         }
-        public String getOptionMessage(){
+    public String getOptionMessage(){
             return "Go to Burger Palace";
         }
 
