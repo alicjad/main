@@ -1,7 +1,5 @@
 package Game;
 
-import Buildings.City;
-
 import java.util.List;
 
 public class GameController {
@@ -12,7 +10,7 @@ public class GameController {
 
     public void askUserForNextStep()
     {
-        state.setSteps(25);
+
         currentGameObject = gameBoardCreator.getInitialGameObject();
 
         while (true) {

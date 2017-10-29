@@ -12,7 +12,7 @@ public class EmploymentOffice extends Building {
     @Override
     public void execute(State state) {
         super.execute(state);
-        state.setMoney(getAmountOfMoney());
+        state.setMoney(state.getMoney()+ getAmountOfMoney());
 
     }
 

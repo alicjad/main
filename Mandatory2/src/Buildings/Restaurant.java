@@ -10,7 +10,7 @@ public class Restaurant extends Building{
     public List<GameObject> getAccessibleObjects() {
 
         List<GameObject> accessibleObjectList2 = new ArrayList<GameObject>();
-        accessibleObjectList2.add(new RestaurantMenu());
+        accessibleObjectList2.add(new RestaurantMenu(this));
         accessibleObjectList2.addAll(super.getAccessibleObjects());
 
         return accessibleObjectList2;
