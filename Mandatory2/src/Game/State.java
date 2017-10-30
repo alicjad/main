@@ -1,11 +1,14 @@
 package Game;
 
+import Buildings.JobVacancy;
+
 public class State {
     private int steps;
     private int hungerPoints;
     private int happinessPoints;
     private int educationPoints;
     private int money;
+    public JobVacancy currentOccupation;
 
     State(){
         setSteps(50);
@@ -13,6 +16,12 @@ public class State {
         setHappinessPoints(50);
         setEducationPoints(0);
         setMoney(200);
+    }
+    public JobVacancy getCurrentOccupation(){
+        return currentOccupation;
+    }
+    public void setCurrentOccupation(JobVacancy currentOccupation){
+        this.currentOccupation = currentOccupation;
     }
 
     private HungerStateStatus getHungerLevel (){
@@ -53,7 +62,7 @@ public class State {
         }
     }
 
-    private EducationStateStatus getEducationLevel(){
+    public EducationStateStatus getEducationLevel(){
         if (educationPoints <= 20){
             return EducationStateStatus.notEducated;
         }
