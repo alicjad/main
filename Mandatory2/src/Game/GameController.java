@@ -10,7 +10,6 @@ public class GameController {
 
     public void askUserForNextStep()
     {
-
         currentGameObject = gameBoardCreator.getInitialGameObject();
 
         while (true) {

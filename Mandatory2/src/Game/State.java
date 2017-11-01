@@ -7,6 +7,7 @@ public class State {
     private int hungerPoints;
     private int happinessPoints;
     private int educationPoints;
+    private int experiencePoints;
     private int money;
     public JobVacancy currentOccupation;
 
@@ -17,6 +18,7 @@ public class State {
         setEducationPoints(0);
         setMoney(200);
     }
+
     public JobVacancy getCurrentOccupation(){
         return currentOccupation;
     }
@@ -132,4 +134,7 @@ public class State {
     public void setEducationPoints(int educationPoints) {
         this.educationPoints = educationPoints;
     }
+
+    public int getExperiencePoints(){return  experiencePoints;}
+    public void setExperiencePoints(int experiencePoints){this.experiencePoints = experiencePoints;}
 }

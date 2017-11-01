@@ -21,7 +21,7 @@ public class EducationCourse extends GameObject {
     }
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
-        study(this, state);
+        study(state);
     }
     protected int getNumberOfSteps()
     {
@@ -29,8 +29,8 @@ public class EducationCourse extends GameObject {
     }
     protected int getPrice() {return price;}
 
-    private void study(EducationCourse chosenEducationCourse, State state){
-        if (this.status == EducationCourseStatus.NotEnrolled){
+    private void study(State state){
+        if (this.status == EducationCourseStatus.NotEnrolled && state.getMoney() >= this.getPrice()){
             state.setMoney(state.getMoney() - this.getPrice());
             this.status = EducationCourseStatus.Enrolled;
         }
