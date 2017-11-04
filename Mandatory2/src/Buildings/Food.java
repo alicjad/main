@@ -10,11 +10,15 @@ public class Food extends GameObject {
 
     protected String name;
     protected int price;
+    protected int hungerPoints;
+    protected int happinessPoints;
     protected RestaurantMenu parent;
 
-    public Food(String name, int price, RestaurantMenu parent) {
+    public Food(String name, int price, int hungerPoints, int happinessPoints, RestaurantMenu parent) {
         this.name = name;
         this.price = price;
+        this.hungerPoints = hungerPoints;
+        this.happinessPoints = happinessPoints;
         this.parent = parent;
     }
 
@@ -30,6 +34,9 @@ public class Food extends GameObject {
 
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
+        state.setMoney(state.getMoney() - this.price);
+        state.setHungerPoints(state.getHungerPoints() + hungerPoints);
+        state.setHappinessPoints(state.getHappinessPoints() + happinessPoints);
     }
     protected int getNumberOfSteps()
     {
@@ -45,6 +52,6 @@ public class Food extends GameObject {
     }
     public String getOptionMessage()
     {
-        return name+" "+price;
+        return name+" for "+price+"$ --> get "+hungerPoints+" hunger points and "+happinessPoints+" happiness points!";
     }
 }
