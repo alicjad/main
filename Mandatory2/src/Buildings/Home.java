@@ -3,7 +3,6 @@ package Buildings;
 import Game.State;
 
 public class Home extends Building {
-
     public void execute(State state) {
         super.execute(state);
         relax(state);

@@ -37,6 +37,7 @@ public class Factory extends Building {
         state.setMoney(state.getMoney()+ getAmountOfMoney(state));
         state.setExperiencePoints(state.getExperiencePoints()+ 10);
         state.setHappinessPoints(state.getHappinessPoints()- 10);
+        state.setHungerPoints(state.getHungerPoints() - 5);
     }
     public List<GameObject> getAccessibleObjects() {
 
