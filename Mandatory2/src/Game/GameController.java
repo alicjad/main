@@ -19,10 +19,15 @@ public class GameController {
           //      currentOptions.add(endDayCommand);
             //}
             currentGameObject.execute(state);
-            System.out.println(currentGameObject.getWelcomeMessage());
+            System.out.println("~~ Personal Status ~~");
             System.out.println("Remaining steps: "+state.getSteps());
-            System.out.println("Remaining money: "+state.getMoney() + " $");
-
+            System.out.println("Remaining money: "+state.getMoney() + "$");
+            //happiness points or level?
+            //hunger points or level?
+            //educationPoints and experience points?
+            // Should they all be included here?
+            System.out.println(currentGameObject.getWelcomeMessage());
+            
             while (true) {
                 for (int i = 0; i < currentOptions.size(); ++i) {
                     System.out.print(i + 1);
