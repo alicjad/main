@@ -74,6 +74,11 @@ public class EducationCourse extends GameObject {
     }
     public String getOptionMessage()
     {
-        return "Choose "+name+" course.";
+        if (this.status == EducationCourseStatus.NotEnrolled){
+            return "Start "+name+" course for "+price+" $";
+        }
+        else {
+            return "Study "+name+".";
+        }
     }
 }

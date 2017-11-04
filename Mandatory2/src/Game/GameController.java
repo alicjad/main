@@ -21,7 +21,7 @@ public class GameController {
             currentGameObject.execute(state);
             System.out.println(currentGameObject.getWelcomeMessage());
             System.out.println("Remaining steps: "+state.getSteps());
-            System.out.println("Remaining money: "+state.getMoney());
+            System.out.println("Remaining money: "+state.getMoney() + " $");
 
             while (true) {
                 for (int i = 0; i < currentOptions.size(); ++i) {
