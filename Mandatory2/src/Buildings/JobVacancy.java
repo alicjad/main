@@ -10,7 +10,6 @@ import java.util.List;
 public class JobVacancy extends GameObject {
     protected String name;
     protected int hourlyWage;
-    protected JobVacancyStatus status;
     protected EmploymentOffice parent;
     protected int requiredExperiencePoints;
 
@@ -22,12 +21,24 @@ public class JobVacancy extends GameObject {
         this.parent = parent;
         this.requiredEducationLevel = requiredEducationLevel;
         this.requiredExperiencePoints = requiredExperiencePoints;
-        this.status = JobVacancyStatus.notAvailable;
-
     }
+
+    @Override
+    public Boolean canExecute(State state) {
+        if (this.requiredEducationLevel != state.getEducationLevel() || state.getExperiencePoints() != this.requiredExperiencePoints){
+            return false;
+        }
+        if (state.getCurrentOccupation() == this){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
-        chooseJobVacancy(state);
+        state.setCurrentOccupation(this);
     }
     protected int getNumberOfSteps()
     {
@@ -35,25 +46,9 @@ public class JobVacancy extends GameObject {
     }
 
     public int getHourlyWage(){
-        return this.hourlyWage;}
+        return this.hourlyWage;
+    }
 
-    private JobVacancyStatus getJobVacancyStatus(State state){
-        if (this.requiredEducationLevel == state.getEducationLevel() && state.getEducationPoints() == this.requiredExperiencePoints){
-            this.status = JobVacancyStatus.available;
-        }
-        return this.status;
-    }
-    private void chooseJobVacancy (State state){
-        if (this.getJobVacancyStatus(state) == JobVacancyStatus.available){
-            state.setCurrentOccupation(this);
-        }
-        if (this.status == JobVacancyStatus.currentOccupancy){
-            //todo System.out.println("You already have this job.");
-        }
-        if (this.status == JobVacancyStatus.notAvailable){
-            //todo System.out.println("You are not entitled to get this job.")
-        }
-    }
     public List<GameObject> getAccessibleObjects() {
 
         List<GameObject> goToObjectList = new ArrayList<GameObject>();
@@ -64,5 +59,9 @@ public class JobVacancy extends GameObject {
     public String getOptionMessage()
     {
         return "Get position of "+name+".";
+    }
+    public String getWelcomeMessage()
+    {
+        return "Congratulations you have got the job!";
     }
 }

@@ -1,14 +1,28 @@
 package Buildings;
 
+import Game.GameObject;
 import Game.State;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Factory extends Building {
 
     @Override
+    public Boolean canExecute(State state) {
+        if (state.getSteps() < this.getNumberOfSteps()){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    @Override
     public void execute(State state) {
-        super.execute(state);
         work(state);
     }
+
     public int getAmountOfMoney(State state){
         int amount = state.currentOccupation.getHourlyWage();
         return amount;
@@ -21,7 +35,16 @@ public class Factory extends Building {
     private void work(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         state.setMoney(state.getMoney()+ getAmountOfMoney(state));
-        state.setEducationPoints(state.getEducationPoints()+ 10);
+        state.setExperiencePoints(state.getExperiencePoints()+ 10);
+    }
+    public List<GameObject> getAccessibleObjects() {
+
+        List<GameObject> goToObjectList = new ArrayList<GameObject>();
+
+        goToObjectList.addAll(accessibleObjectList);
+        goToObjectList.add(this);
+
+        return goToObjectList;
     }
 
     public String getWelcomeMessage()

@@ -12,11 +12,11 @@ public class State {
     public JobVacancy currentOccupation;
 
     State(){
-        setSteps(50);
+        setSteps(125);
         setHungerPoints(50);
         setHappinessPoints(50);
         setEducationPoints(0);
-        setMoney(200);
+        setMoney(500);
     }
 
     public JobVacancy getCurrentOccupation(){

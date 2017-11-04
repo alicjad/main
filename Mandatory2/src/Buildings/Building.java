@@ -4,8 +4,17 @@ import Game.GameObject;
 import Game.State;
 
 public class Building extends GameObject {
-    public void execute(State state){
-
+    @Override
+    public Boolean canExecute(State state) {
+        if (state.getSteps() < this.getNumberOfSteps()){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    public void execute(State state)
+    {
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
     }
     protected int getNumberOfSteps()

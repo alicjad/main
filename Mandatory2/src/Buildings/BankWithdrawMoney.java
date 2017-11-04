@@ -15,6 +15,16 @@ public class BankWithdrawMoney extends GameObject {
         this.amount = amount;
     }
 
+    @Override
+    public Boolean canExecute(State state) {
+        if (parent.getBalance() < amount){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         withdrawMoney(this, state);
@@ -26,13 +36,8 @@ public class BankWithdrawMoney extends GameObject {
     }
 
     private void withdrawMoney (BankWithdrawMoney chosenWithdraw, State state){
-        if (parent.getBalance() >= amount){
-            state.setMoney(state.getMoney()+ amount);
-            parent.setBalance(parent.getBalance()- amount);
-        }
-        else {
-            //todo alternative option to send the user back because he doesn't have enough money
-        }
+        state.setMoney(state.getMoney()+ amount);
+        parent.setBalance(parent.getBalance()- amount);
     }
 
     public List<GameObject> getAccessibleObjects() {

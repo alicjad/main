@@ -17,6 +17,17 @@ public class Food extends GameObject {
         this.price = price;
         this.parent = parent;
     }
+
+    @Override
+    public Boolean canExecute(State state) {
+        if (state.getMoney() < this.price){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
     }

@@ -10,6 +10,8 @@ public abstract class GameObject{
         this.accessibleObjectList = new ArrayList<GameObject>();
     }
 
+    public abstract Boolean canExecute(State state);
+
     public void execute(State state)
     {
 

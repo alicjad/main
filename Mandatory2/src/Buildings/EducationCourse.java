@@ -19,6 +19,23 @@ public class EducationCourse extends GameObject {
         this.parent = parent;
         this.status = EducationCourseStatus.NotEnrolled;
     }
+
+    @Override
+    public Boolean canExecute(State state) {
+        if (state.getMoney() < this.getPrice() && this.status == EducationCourseStatus.NotEnrolled){
+            return false;
+        }
+        if (this.status == EducationCourseStatus.Enrolled && state.getSteps() < 10){
+            return false;
+        }
+        if (this.status == EducationCourseStatus.Finished){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         study(state);
@@ -30,12 +47,9 @@ public class EducationCourse extends GameObject {
     protected int getPrice() {return price;}
 
     private void study(State state){
-        if (this.status == EducationCourseStatus.NotEnrolled && state.getMoney() >= this.getPrice()){
+        if (this.status == EducationCourseStatus.NotEnrolled){
             state.setMoney(state.getMoney() - this.getPrice());
             this.status = EducationCourseStatus.Enrolled;
-        }
-        else if (state.getMoney() < getPrice()){
-           //todo System.out.println("Sorry, you don't have enough money.");
         }
         else {
             state.setSteps(state.getSteps() - 10);
@@ -51,6 +65,7 @@ public class EducationCourse extends GameObject {
 
         List<GameObject> goToObjectList = new ArrayList<GameObject>();
         goToObjectList.add(parent);
+        goToObjectList.add(this);
 
         return goToObjectList;
     }
