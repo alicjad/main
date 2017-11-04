@@ -39,6 +39,7 @@ public class JobVacancy extends GameObject {
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         state.setCurrentOccupation(this);
+        state.setHappinessPoints(state.getHappinessPoints() + 15);
     }
     protected int getNumberOfSteps()
     {
