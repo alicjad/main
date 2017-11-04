@@ -53,9 +53,11 @@ public class EducationCourse extends GameObject {
         }
         else {
             state.setSteps(state.getSteps() - 10);
+            state.setHappinessPoints(state.getHappinessPoints() - 10);
             if (studyCounter == 4){
                 this.status = EducationCourseStatus.Finished;
                 state.setEducationPoints(state.getEducationPoints()+20);
+                state.setHappinessPoints(state.getHappinessPoints() + 20);
             }
             else{ studyCounter += 1;}
         }
