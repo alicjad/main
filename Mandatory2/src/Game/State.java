@@ -14,7 +14,7 @@ public class State {
     State(){
         setSteps(125);
         setHungerPoints(50);
-        setHappinessPoints(50);
+        setHappinessPoints(40);
         setEducationPoints(0);
         setMoney(500);
     }

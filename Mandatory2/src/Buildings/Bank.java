@@ -39,6 +39,6 @@ public class Bank extends Building{
         return "Welcome to the Bank!";
     }
     public String getOptionMessage(){
-        return "Go to Bank";
+        return "Go to Bank.";
     }
 }
