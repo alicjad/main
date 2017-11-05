@@ -8,6 +8,12 @@ public class GameController {
     UserInputHandle userInput = new UserInputHandle();
     GameBoardCreator gameBoardCreator = new GameBoardCreator();
 
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     public void askUserForNextStep()
     {
         currentGameObject = gameBoardCreator.getInitialGameObject();
@@ -19,21 +25,24 @@ public class GameController {
           //      currentOptions.add(endDayCommand);
             //}
             currentGameObject.execute(state);
-            System.out.println("~~ Personal Status ~~");
+            System.out.println(ANSI_BLUE + "~~ Personal Status ~~");
             System.out.println("Remaining steps: "+state.getSteps());
             System.out.println("Remaining money: "+state.getMoney() + "$");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~");
-            //happiness points or level?
-            //hunger points or level?
-            //educationPoints and experience points?
-            // Should they all be included here?
-            System.out.println(currentGameObject.getWelcomeMessage());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~" + ANSI_RESET);
+
+            System.out.println(ANSI_PURPLE+ currentGameObject.getWelcomeMessage() + ANSI_RESET);
 
             while (true) {
                 for (int i = 0; i < currentOptions.size(); ++i) {
                     System.out.print(i + 1);
                     System.out.print(". ");
-                    System.out.println(currentOptions.get(i).getOptionMessage());
+                    GameObject nextGameObject = currentOptions.get(i);
+                    if (nextGameObject.canExecute(state)) {
+                        System.out.println(ANSI_GREEN+ nextGameObject.getOptionMessage() +ANSI_RESET );
+                    }
+                    else {
+                        System.out.println(nextGameObject.getOptionMessage());
+                    }
                 }
                 int gameObjectNumber = userInput.askForGameObjectNumber();
                 try {
@@ -43,11 +52,11 @@ public class GameController {
                         break;
                     }
                     else {
-                        System.out.println("You can not choose this option now.");
+                        System.out.println(ANSI_RED+ "You can not choose this option now." + ANSI_RESET);
                     }
                 } catch (IndexOutOfBoundsException ex) {
-                    System.out.println("There is no option with such number.");
-                    System.out.println("Choose another number.");
+                    System.out.println(ANSI_RED+ "There is no option with such number.");
+                    System.out.println("Choose another number." + ANSI_RESET);
                 }
             }
         }
