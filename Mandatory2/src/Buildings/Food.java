@@ -52,6 +52,6 @@ public class Food extends GameObject {
     }
     public String getOptionMessage()
     {
-        return name+" for "+price+"$ --> get "+hungerPoints+" hunger points and "+happinessPoints+" happiness points!";
+        return name+" for "+price+"$"; //--> get "+hungerPoints+" hunger points and "+happinessPoints+" happiness points!";
     }
 }
