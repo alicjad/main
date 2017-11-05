@@ -3,9 +3,6 @@ package Buildings;
 import Game.GameObject;
 import Game.State;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BankDepositMoney extends GameObject {
     protected Bank parent;
     protected int amount;
@@ -13,6 +10,7 @@ public class BankDepositMoney extends GameObject {
     public BankDepositMoney(Bank parent, int amount){
         this.parent = parent;
         this.amount = amount;
+        this.addAccessibleObject(this.parent);
     }
 
     @Override
@@ -39,13 +37,6 @@ public class BankDepositMoney extends GameObject {
         parent.setBalance(parent.getBalance()+amount);
     }
 
-    public List<GameObject> getAccessibleObjects() {
-
-        List<GameObject> goToObjectList = new ArrayList<GameObject>();
-        goToObjectList.add(parent);
-
-        return goToObjectList;
-    }
     public String getOptionMessage()
     {
         return "Deposit "+ amount + " $";

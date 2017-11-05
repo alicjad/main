@@ -3,9 +3,6 @@ package Buildings;
 import Game.GameObject;
 import Game.State;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EducationCourse extends GameObject {
     protected String name;
     protected int price;
@@ -18,6 +15,8 @@ public class EducationCourse extends GameObject {
         this.price = price;
         this.parent = parent;
         this.status = EducationCourseStatus.NotEnrolled;
+        this.addAccessibleObject(this.parent);
+        this.addAccessibleObject(this);
     }
 
     @Override
@@ -64,14 +63,6 @@ public class EducationCourse extends GameObject {
         }
     }
 
-    public List<GameObject> getAccessibleObjects() {
-
-        List<GameObject> goToObjectList = new ArrayList<GameObject>();
-        goToObjectList.add(parent);
-        goToObjectList.add(this);
-
-        return goToObjectList;
-    }
     public String getOptionMessage()
     {
         if (this.status == EducationCourseStatus.NotEnrolled){

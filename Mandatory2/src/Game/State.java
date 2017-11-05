@@ -10,6 +10,7 @@ public class State {
     private int experiencePoints;
     private int money;
     public JobVacancy currentOccupation;
+    private int dayCounter;
 
     State(){
         setSteps(125);
@@ -17,6 +18,7 @@ public class State {
         setHappinessPoints(40);
         setEducationPoints(0);
         setMoney(500);
+        setDayCounter(1);
     }
 
     public JobVacancy getCurrentOccupation(){
@@ -26,7 +28,15 @@ public class State {
         this.currentOccupation = currentOccupation;
     }
 
-    private HungerStateStatus getHungerLevel (){
+    public void setDayCounter(int dayCounter) {
+        this.dayCounter = dayCounter;
+    }
+
+    public int getDayCounter() {
+        return dayCounter;
+    }
+
+    public HungerStateStatus getHungerLevel (){
         if (hungerPoints < 20){
             return HungerStateStatus.starving;
         }
@@ -46,7 +56,7 @@ public class State {
             return HungerStateStatus.Full;}
     }
 
-    private HappinessStateStatus getHappinessLevel(){
+    public HappinessStateStatus getHappinessLevel(){
         if (happinessPoints < 20){
             return HappinessStateStatus.depressed;
         }

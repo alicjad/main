@@ -9,29 +9,17 @@ import java.util.List;
 public class EmploymentOffice extends Building {
 
     public EmploymentOffice(){
-        this.setAvailableJobs(availableJobs);
+        this.addAccessibleObjects(getAvailableJobs());
     }
 
-    public List<GameObject> availableJobs = new ArrayList<GameObject>();
-
-    public void setAvailableJobs(List<GameObject> availableJobs) {
+    public List<GameObject> getAvailableJobs() {
+        List<GameObject> availableJobs = new ArrayList<GameObject>();
         availableJobs.add(new JobVacancy("Factory Worker", 80,this, EducationStateStatus.notEducated, 0));
         availableJobs.add(new JobVacancy("Shift Manager", 120,this, EducationStateStatus.quiteEducated, 50));
         availableJobs.add(new JobVacancy("Engineer", 180,this, EducationStateStatus.educated, 100));
         availableJobs.add(new JobVacancy("Production Manager", 210, this, EducationStateStatus.wellEducated, 150));
         availableJobs.add(new JobVacancy("Factory Executive Manager", 300,this, EducationStateStatus.fullyEducated,200));
-    }
 
-    public List<GameObject> getAccessibleObjects() {
-
-        List<GameObject> availableOptions = new ArrayList<GameObject>();
-        availableOptions.addAll(this.getAvailableJobs());
-        availableOptions.addAll(super.getAccessibleObjects());
-
-        return availableOptions;
-    }
-
-    public List<GameObject> getAvailableJobs() {
         return availableJobs;
     }
 

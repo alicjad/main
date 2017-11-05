@@ -9,6 +9,11 @@ public class Bank extends Building{
 
     protected int balance;
 
+    public Bank(){
+        this.balance = this.getBalance();
+        this.addAccessibleObjects(getAvailableOptions());
+    }
+
     protected void setBalance(int balance){
         this.balance = balance;
     }
@@ -20,7 +25,9 @@ public class Bank extends Building{
         return 5;
     }
 
-    public List<GameObject> getAccessibleObjects() {
+    public List<GameObject> availableOptions = new ArrayList<GameObject>();
+
+    public List<GameObject> getAvailableOptions() {
 
         List<GameObject> availableOptions = new ArrayList<GameObject>();
         availableOptions.add(new BankDepositMoney(this, 100));
@@ -29,7 +36,6 @@ public class Bank extends Building{
         availableOptions.add(new BankWithdrawMoney(this, 100));
         availableOptions.add(new BankWithdrawMoney(this, 500));
         availableOptions.add(new BankWithdrawMoney(this, 1000));
-        availableOptions.addAll(super.getAccessibleObjects());
 
         return availableOptions;
     }

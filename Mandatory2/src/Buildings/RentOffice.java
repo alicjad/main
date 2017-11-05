@@ -7,12 +7,16 @@ import java.util.List;
 
 public class RentOffice extends Building {
 
+    public RentOffice(){
+        this.addAccessibleObjects(getAvailableOptions());
+    }
+
     protected int getNumberOfSteps()
     {
         return 5;
     }
 
-    public List<GameObject> getAccessibleObjects() {
+    private List<GameObject> getAvailableOptions() {
 
         List<GameObject> availableOptions = new ArrayList<GameObject>();
         availableOptions.add(new RentOfficePayment(this, 550, 7));

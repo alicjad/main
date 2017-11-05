@@ -17,13 +17,12 @@ public class GameController {
     public void askUserForNextStep()
     {
         currentGameObject = gameBoardCreator.getInitialGameObject();
-        //GameObject endDayCommand = new EndDayCommand(currentGameObject);
 
         while (true) {
             List<GameObject> currentOptions = currentGameObject.getAccessibleObjects();
-            //if(currentGameObject.isDisplayEndDayOptionAllowed()) {
-          //      currentOptions.add(endDayCommand);
-            //}
+            if(currentGameObject.isEndDayOptionAllowed()== true) {
+                currentOptions.add(gameBoardCreator.getEndDayCommand());
+            }
             currentGameObject.execute(state);
             System.out.println(ANSI_BLUE + "~~ Personal Status ~~");
             System.out.println("Remaining steps: "+state.getSteps());

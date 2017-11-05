@@ -3,6 +3,7 @@ package Game;
 import Buildings.*;
 
 public class GameBoardCreator {
+    protected GameObject EndDayCommand;
 
     public GameObject getInitialGameObject(){
 
@@ -13,7 +14,8 @@ public class GameBoardCreator {
         GameObject RentOffice = new RentOffice();
         GameObject PawnShop = new PawnShop();
         GameObject Restaurant = new Restaurant();
-        GameObject Home = new Home();
+        Home Home = new Home();
+        EndDayCommand = new EndDayCommand();
 
         University.addAccessibleObject(Bank);
         University.addAccessibleObject(Factory);
@@ -49,6 +51,11 @@ public class GameBoardCreator {
         Home.addAccessibleObject(EmploymentOffice);
         Home.addAccessibleObject(Restaurant);
 
+        EndDayCommand.addAccessibleObject(Home);
+
         return Home;
+    }
+    public GameObject getEndDayCommand(){
+        return this.EndDayCommand;
     }
 }

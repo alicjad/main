@@ -3,9 +3,6 @@ package Buildings;
 import Game.GameObject;
 import Game.State;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PawnShopItem extends GameObject {
 
     protected String name;
@@ -20,6 +17,7 @@ public class PawnShopItem extends GameObject {
         this.happinessPoints = happinessPoints;
         this.itemStatus = itemStatus;
         this.parent = parent;
+        this.addAccessibleObject(parent);
     }
 
     @Override
@@ -62,13 +60,6 @@ public class PawnShopItem extends GameObject {
         this.itemStatus = PawnShopItemStatus.ForSale;
     }
 
-    public List<GameObject> getAccessibleObjects() {
-
-        List<GameObject> goToObjectList = new ArrayList<GameObject>();
-        goToObjectList.add(parent);
-
-        return goToObjectList;
-    }
     public String getOptionMessage()
     {
         if (this.itemStatus == PawnShopItemStatus.ForSale){

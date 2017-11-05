@@ -1,19 +1,9 @@
 package Buildings;
 
-import Game.GameObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Restaurant extends Building{
-    @Override
-    public List<GameObject> getAccessibleObjects() {
 
-        List<GameObject> accessibleObjectList2 = new ArrayList<GameObject>();
-        accessibleObjectList2.add(new RestaurantMenu(this));
-        accessibleObjectList2.addAll(super.getAccessibleObjects());
-
-        return accessibleObjectList2;
+    public Restaurant(){
+        this.addAccessibleObject(new RestaurantMenu(this));
     }
 
     public String getWelcomeMessage()
@@ -21,7 +11,7 @@ public class Restaurant extends Building{
             return "Welcome to the Burger Palace restaurant!";
         }
     public String getOptionMessage(){
-            return "Go to Burger Palace";
+            return "Go to Burger Palace.";
         }
 
 }

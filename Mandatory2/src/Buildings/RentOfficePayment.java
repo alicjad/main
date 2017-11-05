@@ -3,9 +3,6 @@ package Buildings;
 import Game.GameObject;
 import Game.State;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RentOfficePayment extends GameObject {
 
     protected RentOffice parent;
@@ -16,6 +13,7 @@ public class RentOfficePayment extends GameObject {
         this.parent = parent;
         this.amount = amount;
         this.rentDays = rentDays;
+        this.addAccessibleObject(this.parent);
     }
     @Override
     public Boolean canExecute(State state) {
@@ -39,13 +37,6 @@ public class RentOfficePayment extends GameObject {
         state.setMoney(state.getMoney() - amount);
     }
 
-    public List<GameObject> getAccessibleObjects() {
-
-        List<GameObject> goToObjectList = new ArrayList<GameObject>();
-        goToObjectList.add(parent);
-
-        return goToObjectList;
-    }
     public String getOptionMessage()
     {
         return "Pay rent for "+rentDays+" days for "+amount+"$";

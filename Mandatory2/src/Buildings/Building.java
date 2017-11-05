@@ -5,6 +5,11 @@ import Game.State;
 
 public class Building extends GameObject {
     @Override
+    public Boolean isEndDayOptionAllowed() {
+        return true;
+    }
+
+    @Override
     public Boolean canExecute(State state) {
         if (state.getSteps() < this.getNumberOfSteps()){
             return false;

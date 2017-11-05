@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GameObject{
-    protected List<GameObject> accessibleObjectList;
+    private List<GameObject> accessibleObjectList;
 
     public GameObject (){
         this.accessibleObjectList = new ArrayList<GameObject>();
@@ -17,13 +17,23 @@ public abstract class GameObject{
 
     }
 
+    public Boolean isEndDayOptionAllowed(){
+        return false;
+    }
+
     public void addAccessibleObject(GameObject chosenGameObject){
         this.accessibleObjectList.add(chosenGameObject);
     }
 
-    public List<GameObject> getAccessibleObjects()
+    public void addAccessibleObjects(List<GameObject> chosenGameObject){
+        this.accessibleObjectList.addAll(chosenGameObject);
+    }
+
+    public final List<GameObject> getAccessibleObjects()
     {
-        return accessibleObjectList;
+        List<GameObject> accessibleObjectListCopy = new ArrayList<>();
+        accessibleObjectListCopy.addAll(this.accessibleObjectList);
+        return accessibleObjectListCopy;
     }
 
     public String getWelcomeMessage()
