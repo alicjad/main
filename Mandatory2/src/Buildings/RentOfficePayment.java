@@ -35,6 +35,9 @@ public class RentOfficePayment extends GameObject {
 
     private void payRent (State state){
         state.setMoney(state.getMoney() - amount);
+        for (int i = state.getDayCounter(); i <= state.getDayCounter()+this.rentDays; i++){
+            state.setRentStatus(RentOfficePaymentStatus.Paid);
+        }
     }
 
     public String getOptionMessage()

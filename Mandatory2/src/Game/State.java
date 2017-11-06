@@ -1,6 +1,7 @@
 package Game;
 
 import Buildings.JobVacancy;
+import Buildings.RentOfficePaymentStatus;
 
 public class State {
     private int steps;
@@ -11,6 +12,7 @@ public class State {
     private int money;
     public JobVacancy currentOccupation;
     private int dayCounter;
+    protected RentOfficePaymentStatus rentStatus;
 
     State(){
         setSteps(125);
@@ -18,7 +20,8 @@ public class State {
         setHappinessPoints(40);
         setEducationPoints(0);
         setMoney(500);
-        setDayCounter(1);
+        setDayCounter(0);
+        setRentStatus(RentOfficePaymentStatus.NotPaid);
     }
 
     public JobVacancy getCurrentOccupation(){
@@ -34,6 +37,13 @@ public class State {
 
     public int getDayCounter() {
         return dayCounter;
+    }
+
+    public void setRentStatus(RentOfficePaymentStatus rentStatus){
+        this.rentStatus = rentStatus;
+    }
+    public RentOfficePaymentStatus getRentStatus(){
+        return rentStatus;
     }
 
     public HungerStateStatus getHungerLevel (){

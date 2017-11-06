@@ -1,5 +1,7 @@
 package Game;
 
+import Buildings.RentOfficePaymentStatus;
+
 public class EndDayCommand extends GameObject {
 
     @Override
@@ -11,6 +13,10 @@ public class EndDayCommand extends GameObject {
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         //checkGoals - return boolean - if true - winGameMessage/endProgram - if false go to next method (startNewDay)
         startNewDay(state);
+        checkRentStatus(state);
+        if (checkRentStatus(state) == false){
+            printReminder("REMEMBER to pay your rent!");
+        }
     }
 
     private void startNewDay (State state){
@@ -22,6 +28,18 @@ public class EndDayCommand extends GameObject {
             state.setSteps(state.getSteps() - 20);
         }
         state.setDayCounter(state.getDayCounter() + 1);
+    }
+
+    private Boolean checkRentStatus(State state){
+        if (state.getRentStatus() == RentOfficePaymentStatus.Paid){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    private void printReminder(String reminder){
+        System.out.println(reminder);
     }
     protected int getNumberOfSteps()
     {
