@@ -4,12 +4,19 @@ import java.util.Scanner;
 
 public class UserInputHandle {
 
+    /**
+     * Waits for user to hit Enter.
+     */
     public void pressEnterToContinue(){
         System.out.println("Press Enter to continue");
         Scanner k = new Scanner(System.in);
         k.nextLine();
     }
 
+    /**
+     * Gets integer form user.
+     * @return integer from user.
+     */
     public int getIntFromUser(){
         while(true){
             try {
@@ -24,6 +31,10 @@ public class UserInputHandle {
         }
     }
 
+    /**
+     * Asks the user in which object(=option) he is interested in
+     * @return number of object user wants to choose
+     */
     public int askForGameObjectNumber(){
         System.out.println("Type your number: ");
         return getIntFromUser();
