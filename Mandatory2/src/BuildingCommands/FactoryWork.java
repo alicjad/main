@@ -1,5 +1,6 @@
-package Buildings;
+package BuildingCommands;
 
+import Buildings.Factory;
 import Game.GameObject;
 import Game.State;
 
@@ -13,12 +14,12 @@ public class FactoryWork extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return (state.getSteps() >= this.getNumberOfSteps());
     }
 
     @Override
-    public void execute(State state) {
+    public void execute(State state, GameObject previousGameObject) {
         work(state);
     }
 

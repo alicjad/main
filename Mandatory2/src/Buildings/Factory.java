@@ -1,5 +1,7 @@
 package Buildings;
 
+import BuildingCommands.FactoryWork;
+
 /**
  * This class contains FactoryWork class.
  */

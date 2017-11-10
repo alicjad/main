@@ -1,4 +1,4 @@
-package Buildings;
+package BuildingCommands;
 
 /**
  * The class Drink represents an drinks in the RestaurantMenu.

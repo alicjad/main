@@ -1,6 +1,8 @@
 package Game;
 
-import Buildings.RentOfficePaymentStatus;
+import Enums.HappinessStateStatus;
+import Enums.HungerStateStatus;
+import Enums.RentOfficePaymentStatus;
 
 /**
  * This class is responsible for checking goals progress and personal status.
@@ -12,11 +14,12 @@ public class EndDayCommand extends GameObject {
     private static final String ANSI_RESET = "\u001B[0m";
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return true;
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
         if (checkGoals(state)) {
             throw new GameEndException();
         } else {

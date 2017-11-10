@@ -1,6 +1,10 @@
 package Game;
 
 import Buildings.EmploymentOffice;
+import Enums.EducationStateStatus;
+import Enums.FinancialStateStatus;
+import Enums.HappinessStateStatus;
+import Enums.HungerStateStatus;
 
 /**
  * This class ir responsible for setting game goals.
@@ -20,12 +24,12 @@ public class GoalSetter extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return true;
     }
 
     @Override
-    public void execute(State state) {
+    public void execute(State state, GameObject previousGameObject) {
         goalsMenu(state);
     }
 

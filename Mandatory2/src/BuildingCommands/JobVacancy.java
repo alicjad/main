@@ -1,6 +1,7 @@
-package Buildings;
+package BuildingCommands;
 
-import Game.EducationStateStatus;
+import Buildings.EmploymentOffice;
+import Enums.EducationStateStatus;
 import Game.GameObject;
 import Game.State;
 
@@ -23,14 +24,15 @@ public class JobVacancy extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         if (this.requiredEducationLevel != state.getEducationLevel() || state.getExperiencePoints() != this.requiredExperiencePoints) {
             return false;
         }
         return state.getCurrentOccupation() != this;
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
         state.setCurrentOccupation(this);
         state.setHappinessPoints(state.getHappinessPoints() + 15);
     }

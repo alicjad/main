@@ -27,6 +27,7 @@ class GameController {
     public void askUserForNextStep() {
         //gets map
         GameObject currentGameObject = gameBoardCreator.getInitialGameObject();
+        GameObject previousGameObject = null;
 
         while (true) {
             List<GameObject> currentOptions = currentGameObject.getAccessibleObjects();
@@ -35,7 +36,7 @@ class GameController {
                 currentOptions.add(gameBoardCreator.getEndDayCommand());
             }
             try {
-                currentGameObject.execute(state);
+                currentGameObject.execute(state, previousGameObject);
             }
             //Ending the game
             catch (GameEndException ex) {
@@ -44,13 +45,7 @@ class GameController {
                 return;
             }
             //Printing information for user
-            System.out.println(ANSI_BLUE + "~~ Personal Status ~~");
-            System.out.println("Remaining steps: " + state.getSteps());
-            System.out.println("Remaining money: " + state.getMoney() + "$");
-            System.out.println("Your hunger status: " + state.getHungerLevel());
-            System.out.println("Day no: " + state.getDayCounter());
-            System.out.println("Rent deadline, day: " + state.getRentDeadline());
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~~" + ANSI_RESET);
+            printState();
 
             System.out.println(ANSI_PURPLE + currentGameObject.getWelcomeMessage() + ANSI_RESET);
 
@@ -61,7 +56,7 @@ class GameController {
                     System.out.print(". ");
                     GameObject nextGameObject = currentOptions.get(i);
                     //available options in green
-                    if (nextGameObject.canExecute(state)) {
+                    if (nextGameObject.canExecute(state, previousGameObject)) {
                         System.out.println(ANSI_GREEN + nextGameObject.getOptionMessage() + ANSI_RESET);
                     } else {
                         System.out.println(nextGameObject.getOptionMessage());
@@ -71,7 +66,8 @@ class GameController {
                 //changes nextGameObject to currentGameObject if possible
                 try {
                     GameObject nextGameObject = currentOptions.get(gameObjectNumber - 1);
-                    if (nextGameObject.canExecute(state)) {
+                    if (nextGameObject.canExecute(state, previousGameObject)) {
+                        previousGameObject = currentGameObject;
                         currentGameObject = nextGameObject;
                         break;
                     } else {
@@ -85,5 +81,16 @@ class GameController {
                 }
             }
         }
+    }
+
+    private void printState() {
+        System.out.println(ANSI_BLUE + "~~~~~~~~~~ Personal Status ~~~~~~~~~~");
+        System.out.println("Remaining steps:       " + state.getSteps());
+        System.out.println("Remaining money:       " + state.getMoney() + "$");
+        System.out.println("Your hunger status:    " + state.getHungerLevel());
+        System.out.println("Your happiness status: " + state.getGoalHappinessLevel());
+        System.out.println("Day no:                " + state.getDayCounter());
+        System.out.println("Rent deadline, day:    " + state.getRentDeadline());
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + ANSI_RESET);
     }
 }

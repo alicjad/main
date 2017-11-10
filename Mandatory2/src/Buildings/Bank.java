@@ -1,5 +1,7 @@
 package Buildings;
 
+import BuildingCommands.BankDepositMoney;
+import BuildingCommands.BankWithdrawMoney;
 import Game.GameObject;
 
 import java.util.ArrayList;
@@ -22,7 +24,7 @@ public class Bank extends Building {
         return balance;
     }
 
-    void setBalance(int balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
     }
 

@@ -1,5 +1,7 @@
-package Buildings;
+package BuildingCommands;
 
+import Buildings.PawnShop;
+import Enums.PawnShopItemStatus;
 import Game.GameObject;
 import Game.State;
 
@@ -22,11 +24,12 @@ public class PawnShopItem extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return this.itemStatus != PawnShopItemStatus.ForSale || state.getMoney() >= this.price && (this.itemStatus != PawnShopItemStatus.Sold || state.getHappinessPoints() >= this.happinessPoints / 2);
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
 
         if (itemStatus == PawnShopItemStatus.ForSale) {
             buyItem(state);

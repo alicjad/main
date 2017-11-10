@@ -1,6 +1,7 @@
 package Buildings;
 
-import Game.EducationStateStatus;
+import BuildingCommands.JobVacancy;
+import Enums.EducationStateStatus;
 import Game.GameObject;
 
 import java.util.ArrayList;

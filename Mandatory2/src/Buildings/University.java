@@ -1,5 +1,6 @@
 package Buildings;
 
+import BuildingCommands.EducationCourse;
 import Game.GameObject;
 
 import java.util.ArrayList;

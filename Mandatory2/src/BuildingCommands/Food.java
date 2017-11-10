@@ -1,4 +1,4 @@
-package Buildings;
+package BuildingCommands;
 
 import Game.GameObject;
 import Game.State;
@@ -22,11 +22,12 @@ public class Food extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return (state.getMoney() >= this.price);
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
         state.setMoney(state.getMoney() - this.price);
         state.setHungerPoints(state.getHungerPoints() + hungerPoints);
         state.setHappinessPoints(state.getHappinessPoints() + happinessPoints);

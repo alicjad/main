@@ -1,5 +1,7 @@
-package Buildings;
+package BuildingCommands;
 
+import Enums.EducationCourseStatus;
+import Buildings.University;
 import Game.GameObject;
 import Game.State;
 
@@ -19,7 +21,7 @@ public class EducationCourse extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         if (state.getMoney() < this.getPrice() && this.status == EducationCourseStatus.NotEnrolled) {
             return false;
         }
@@ -29,7 +31,8 @@ public class EducationCourse extends GameObject {
         return this.status != EducationCourseStatus.Finished;
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
         study(state);
     }
 

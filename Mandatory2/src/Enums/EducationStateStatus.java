@@ -1,4 +1,4 @@
-package Game;
+package Enums;
 
 /**
  * This enum contains all possible types of education status.

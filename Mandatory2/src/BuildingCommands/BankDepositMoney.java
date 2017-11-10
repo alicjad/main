@@ -1,5 +1,6 @@
-package Buildings;
+package BuildingCommands;
 
+import Buildings.Bank;
 import Game.GameObject;
 import Game.State;
 
@@ -17,11 +18,12 @@ public class BankDepositMoney extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return state.getMoney() >= amount;
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
         this.depositMoney(state);
     }
 

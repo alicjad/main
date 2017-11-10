@@ -1,5 +1,6 @@
 package Buildings;
 
+import Game.GameObject;
 import Game.State;
 
 /**
@@ -7,8 +8,8 @@ import Game.State;
  */
 public class Home extends Building {
 
-    public void execute(State state) {
-        super.execute(state);
+    public void execute(State state, GameObject previousGameObject) {
+        super.execute(state, previousGameObject);
         relax(state);
     }
 

@@ -1,5 +1,9 @@
-package Buildings;
+package BuildingCommands;
 
+import BuildingCommands.Burger;
+import BuildingCommands.Drink;
+import BuildingCommands.Extra;
+import Buildings.Restaurant;
 import Game.GameObject;
 import Game.State;
 
@@ -30,7 +34,7 @@ public class RestaurantMenu extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return true;
     }
 

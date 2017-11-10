@@ -20,13 +20,17 @@ public abstract class GameObject {
      * @param state gives information saved in State class,
      * @return boolean
      */
-    public abstract Boolean canExecute(State state);
+    public abstract Boolean canExecute(State state, GameObject previousGameObject);
+
+    public boolean isNextObjectForFree() {
+        return true;
+    }
 
     /**
      * This function calls other methods - they differ depending on object.
      * It is responsible for action connected to game objects.
      */
-    public void execute(State state) {
+    public void execute(State state, GameObject previousGameObject) {
 
     }
 

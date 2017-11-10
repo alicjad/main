@@ -1,4 +1,4 @@
-package Buildings;
+package Enums;
 
 /**
  * This enum contains all possible types of education courses' status.

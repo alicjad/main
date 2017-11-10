@@ -1,7 +1,7 @@
 package Game;
 
-import Buildings.JobVacancy;
-import Buildings.RentOfficePaymentStatus;
+import BuildingCommands.JobVacancy;
+import Enums.*;
 
 /**
  * This class contains all variables connected to user accomplishments.

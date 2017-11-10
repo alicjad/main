@@ -1,4 +1,4 @@
-package Buildings;
+package BuildingCommands;
 
 /**
  * The class Extra represents an extra type of food in the RestaurantMenu.

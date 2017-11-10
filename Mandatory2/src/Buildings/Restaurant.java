@@ -1,5 +1,7 @@
 package Buildings;
 
+import BuildingCommands.RestaurantMenu;
+
 /**
  * This class contains restaurant menu.
  */

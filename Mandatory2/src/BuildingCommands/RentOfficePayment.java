@@ -1,5 +1,6 @@
-package Buildings;
+package BuildingCommands;
 
+import Buildings.RentOffice;
 import Game.GameObject;
 import Game.State;
 
@@ -18,11 +19,12 @@ public class RentOfficePayment extends GameObject {
     }
 
     @Override
-    public Boolean canExecute(State state) {
+    public Boolean canExecute(State state, GameObject previousGameObject) {
         return (state.getMoney() >= amount);
     }
 
-    public void execute(State state) {
+    @Override
+    public void execute(State state, GameObject previousGameObject) {
         payRent(state);
     }
 
