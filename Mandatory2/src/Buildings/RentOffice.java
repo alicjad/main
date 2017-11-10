@@ -1,24 +1,29 @@
 package Buildings;
+
 import Game.GameObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * This class allows the user to choose from rent payment option.
  */
 public class RentOffice extends Building {
 
-    public RentOffice (){
+    public RentOffice() {
         this.addAccessibleObjects(getAvailableOptions());
     }
 
-    protected int getNumberOfSteps(){
+    protected int getNumberOfSteps() {
         return 5;
     }
+
     /**
      * This method adds possible rent payments to the RentOffice's accessibleObjects.
+     *
      * @return list of options to choose from when entering RentOffice.
      */
-    private List<GameObject> getAvailableOptions(){
+    private List<GameObject> getAvailableOptions() {
 
         List<GameObject> availableOptions = new ArrayList<GameObject>();
         availableOptions.add(new RentOfficePayment(this, 550, 7));
@@ -28,10 +33,11 @@ public class RentOffice extends Building {
         return availableOptions;
     }
 
-    public String getWelcomeMessage(){
+    public String getWelcomeMessage() {
         return "Welcome to the Rent Office!";
     }
-    public String getOptionMessage(){
+
+    public String getOptionMessage() {
         return "Go to Rent Office.";
     }
 }

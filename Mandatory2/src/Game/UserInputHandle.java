@@ -1,6 +1,8 @@
 package Game;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
  * It is responsible for displaying the menu and handling the user input.
  */
@@ -8,7 +10,7 @@ public class UserInputHandle {
     /**
      * Waits for user to hit Enter.
      */
-    public void pressEnterToContinue(){
+    public void pressEnterToContinue() {
         System.out.println("Press Enter to continue");
         Scanner k = new Scanner(System.in);
         k.nextLine();
@@ -16,16 +18,16 @@ public class UserInputHandle {
 
     /**
      * Gets integer form user.
+     *
      * @return integer from user.
      */
-    public int getIntFromUser(){
-        while(true){
+    public int getIntFromUser() {
+        while (true) {
             try {
                 Scanner a = new Scanner(System.in);
                 int answer = a.nextInt();
                 return answer;
-            }
-            catch (InputMismatchException ex) {
+            } catch (InputMismatchException ex) {
                 System.out.println("This is not a number");
                 System.out.println("Try again");
             }
@@ -34,9 +36,10 @@ public class UserInputHandle {
 
     /**
      * Asks the user in which object(=option) he is interested in
+     *
      * @return number of object user wants to choose.
      */
-    public int askForGameObjectNumber(){
+    public int askForGameObjectNumber() {
         System.out.println("Type your number: ");
         return getIntFromUser();
     }

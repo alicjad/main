@@ -1,4 +1,5 @@
 package Buildings;
+
 /**
  * The class Burger represents burgers in the RestaurantMenu.
  */

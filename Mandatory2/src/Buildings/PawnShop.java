@@ -1,20 +1,25 @@
 package Buildings;
+
 import Game.GameObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * This class contains a list of items user can find int the pawn shop.
  */
 public class PawnShop extends Building {
 
-    public PawnShop (){
+    public PawnShop() {
         this.addAccessibleObjects(getItems());
     }
+
     /**
      * This method creates a list of item user can find in the pawn shop. Adds them to the PawnShop's accessibleObjectList.
+     *
      * @return list of items
      */
-    public List<GameObject> getItems(){
+    public List<GameObject> getItems() {
 
         List<GameObject> items = new ArrayList<GameObject>();
         items.add(new PawnShopItem("plant", 50, 10, PawnShopItemStatus.ForSale, this));
@@ -27,10 +32,11 @@ public class PawnShop extends Building {
         return items;
     }
 
-    public String getWelcomeMessage(){
+    public String getWelcomeMessage() {
         return "Welcome to the Pawn Shop!";
     }
-    public String getOptionMessage(){
+
+    public String getOptionMessage() {
         return "Go to Pawn Shop.";
     }
 }

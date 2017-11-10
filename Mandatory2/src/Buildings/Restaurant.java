@@ -1,18 +1,20 @@
 package Buildings;
+
 /**
  * This class contains restaurant menu.
  */
-public class Restaurant extends Building{
+public class Restaurant extends Building {
 
-    public Restaurant (){
+    public Restaurant() {
         this.addAccessibleObject(new RestaurantMenu(this));
     }
 
-    public String getWelcomeMessage(){
-            return "Welcome to the Burger Palace restaurant!";
-        }
-    public String getOptionMessage(){
-            return "Go to Burger Palace.";
-        }
+    public String getWelcomeMessage() {
+        return "Welcome to the Burger Palace restaurant!";
+    }
+
+    public String getOptionMessage() {
+        return "Go to Burger Palace.";
+    }
 
 }

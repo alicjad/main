@@ -1,19 +1,20 @@
 package Game;
+
 import Buildings.JobVacancy;
 import Buildings.RentOfficePaymentStatus;
+
 /**
  * This class contains all variables connected to user accomplishments.
  */
 public class State {
 
+    public JobVacancy currentOccupation;
     private int steps;
     private int hungerPoints;
     private int happinessPoints;
     private int educationPoints;
     private int experiencePoints;
     private int money;
-    public JobVacancy currentOccupation;
-
     private int dayCounter;
     private int rentDeadline;
 
@@ -23,10 +24,11 @@ public class State {
     private EducationStateStatus goalEducationLevel;
     private FinancialStateStatus goalFinancialStatus;
     private int goalPackageNo;
+
     /**
      * This constructor sets start values of given variables.
      */
-    State(){
+    State() {
         setSteps(125);
         setHungerPoints(50);
         setHappinessPoints(40);
@@ -35,132 +37,129 @@ public class State {
         setDayCounter(0);
     }
 
-    public JobVacancy getCurrentOccupation(){
+    public JobVacancy getCurrentOccupation() {
         return currentOccupation;
     }
 
-    public void setCurrentOccupation(JobVacancy currentOccupation){
+    public void setCurrentOccupation(JobVacancy currentOccupation) {
         this.currentOccupation = currentOccupation;
-    }
-
-    public void setDayCounter(int dayCounter) {
-        this.dayCounter = dayCounter;
     }
 
     public int getDayCounter() {
         return dayCounter;
     }
 
+    public void setDayCounter(int dayCounter) {
+        this.dayCounter = dayCounter;
+    }
 
-    public RentOfficePaymentStatus getRentStatus(){
+    public RentOfficePaymentStatus getRentStatus() {
 
-        if (dayCounter <= rentDeadline){
+        if (dayCounter <= rentDeadline) {
             return RentOfficePaymentStatus.Paid;
-        }
-        else {
-            if (dayCounter > rentDeadline+7){
+        } else {
+            if (dayCounter > rentDeadline + 7) {
                 return RentOfficePaymentStatus.Homeless;
             }
         }
         return RentOfficePaymentStatus.NotPaid;
     }
 
-    public HungerStateStatus getHungerLevel (){
+    public HungerStateStatus getHungerLevel() {
 
-        if (hungerPoints < 20){
+        if (hungerPoints < 20) {
             return HungerStateStatus.starving;
         }
-        if (hungerPoints <= 30){
+        if (hungerPoints <= 30) {
             return HungerStateStatus.veryHungry;
         }
-        if (hungerPoints > 35 && hungerPoints <= 40){
+        if (hungerPoints > 35 && hungerPoints <= 40) {
             return HungerStateStatus.hungry;
         }
-        if (hungerPoints < 40 && hungerPoints <= 50){
+        if (hungerPoints < 40 && hungerPoints <= 50) {
             return HungerStateStatus.notHungry;
         }
-        if (hungerPoints > 50 && hungerPoints <= 75){
+        if (hungerPoints > 50 && hungerPoints <= 75) {
             return HungerStateStatus.quiteFull;
-        }
-        else {
+        } else {
             return HungerStateStatus.Full;
         }
     }
 
-    public HappinessStateStatus getHappinessLevel(){
+    public HappinessStateStatus getHappinessLevel() {
 
-        if (happinessPoints < 20){
+        if (happinessPoints < 20) {
             return HappinessStateStatus.depressed;
         }
-        if (happinessPoints <= 35){
+        if (happinessPoints <= 35) {
             return HappinessStateStatus.notHappy;
         }
-        if (happinessPoints > 35 && happinessPoints < 50){
+        if (happinessPoints > 35 && happinessPoints < 50) {
             return HappinessStateStatus.normal;
         }
-        if (happinessPoints >= 50 && happinessPoints < 75){
+        if (happinessPoints >= 50 && happinessPoints < 75) {
             return HappinessStateStatus.quiteHappy;
-        }
-        else {
+        } else {
             return HappinessStateStatus.veryHappy;
         }
     }
 
-    public EducationStateStatus getEducationLevel(){
+    public EducationStateStatus getEducationLevel() {
 
-        if (educationPoints <= 20){
+        if (educationPoints <= 20) {
             return EducationStateStatus.notEducated;
         }
-        if (educationPoints > 20 && educationPoints <= 40){
+        if (educationPoints > 20 && educationPoints <= 40) {
             return EducationStateStatus.quiteEducated;
         }
-        if (educationPoints > 40 && educationPoints <= 60){
+        if (educationPoints > 40 && educationPoints <= 60) {
             return EducationStateStatus.educated;
         }
-        if (educationPoints > 60 && educationPoints <= 80){
+        if (educationPoints > 60 && educationPoints <= 80) {
             return EducationStateStatus.wellEducated;
-        }
-        else{
+        } else {
             return EducationStateStatus.fullyEducated;
         }
     }
 
-    public FinancialStateStatus getFinancialLevel(){
+    public FinancialStateStatus getFinancialLevel() {
 
-        if (money < 500){
+        if (money < 500) {
             return FinancialStateStatus.poor;
         }
-        if (money >= 2000){
+        if (money >= 2000) {
             return FinancialStateStatus.quitePoor;
         }
-        if (money >= 5000){
+        if (money >= 5000) {
             return FinancialStateStatus.averageWageReceiver;
         }
-        if (money >= 10000){
+        if (money >= 10000) {
             return FinancialStateStatus.growingRich;
-        }
-        else {
+        } else {
             return FinancialStateStatus.rich;
         }
     }
 
-    public void setMoney(int money){
-        this.money = money;
-    }
-    public int getMoney(){
+    public int getMoney() {
         return money;
     }
 
-    public int getSteps(){
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getSteps() {
         return steps;
     }
-    public void setSteps(int steps){
+
+    public void setSteps(int steps) {
         this.steps = steps;
     }
 
     public int getHungerPoints() {
         return hungerPoints;
     }
+
     public void setHungerPoints(int hungerPoints) {
         this.hungerPoints = hungerPoints;
     }
@@ -168,6 +167,7 @@ public class State {
     public int getHappinessPoints() {
         return happinessPoints;
     }
+
     public void setHappinessPoints(int happinessPoints) {
         this.happinessPoints = happinessPoints;
     }
@@ -175,20 +175,23 @@ public class State {
     public int getEducationPoints() {
         return educationPoints;
     }
+
     public void setEducationPoints(int educationPoints) {
         this.educationPoints = educationPoints;
     }
 
-    public int getExperiencePoints(){
-        return  experiencePoints;
+    public int getExperiencePoints() {
+        return experiencePoints;
     }
-    public void setExperiencePoints(int experiencePoints){
+
+    public void setExperiencePoints(int experiencePoints) {
         this.experiencePoints = experiencePoints;
     }
 
     public GameObject getGoalJobVacancy() {
         return goalJobVacancy;
     }
+
     public void setGoalJobVacancy(GameObject goalJobVacancy) {
         this.goalJobVacancy = goalJobVacancy;
     }
@@ -204,6 +207,7 @@ public class State {
     public HappinessStateStatus getGoalHappinessLevel() {
         return goalHappinessLevel;
     }
+
     public void setGoalHappinessLevel(HappinessStateStatus goalHappinessLevel) {
         this.goalHappinessLevel = goalHappinessLevel;
     }
@@ -211,6 +215,7 @@ public class State {
     public EducationStateStatus getGoalEducationLevel() {
         return goalEducationLevel;
     }
+
     public void setGoalEducationLevel(EducationStateStatus goalEducationLevel) {
         this.goalEducationLevel = goalEducationLevel;
     }
@@ -226,6 +231,7 @@ public class State {
     public int getGoalPackageNo() {
         return goalPackageNo;
     }
+
     public void setGoalPackageNo(int goalPackageNo) {
         this.goalPackageNo = goalPackageNo;
     }
@@ -233,6 +239,7 @@ public class State {
     public int getRentDeadline() {
         return rentDeadline;
     }
+
     public void setRentDeadline(int rentDeadline) {
         this.rentDeadline = rentDeadline;
     }

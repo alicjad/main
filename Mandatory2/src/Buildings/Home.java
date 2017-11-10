@@ -1,5 +1,7 @@
 package Buildings;
+
 import Game.State;
+
 /**
  * The class Home is the only accessible object after using EndDayCommand. It is adding happiness points when user enters home.
  */
@@ -10,14 +12,15 @@ public class Home extends Building {
         relax(state);
     }
 
-    private void relax(State state){
-        state.setHappinessPoints(state.getHappinessPoints()+ 10);
+    private void relax(State state) {
+        state.setHappinessPoints(state.getHappinessPoints() + 10);
     }
 
-    public String getWelcomeMessage(){
+    public String getWelcomeMessage() {
         return "Home sweet home!";
     }
-    public String getOptionMessage(){
+
+    public String getOptionMessage() {
         return "Go home.";
     }
 }
