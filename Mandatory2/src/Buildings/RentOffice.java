@@ -25,7 +25,7 @@ public class RentOffice extends Building {
      */
     private List<GameObject> getAvailableOptions() {
 
-        List<GameObject> availableOptions = new ArrayList<GameObject>();
+        List<GameObject> availableOptions = new ArrayList<>();
         availableOptions.add(new RentOfficePayment(this, 550, 7));
         availableOptions.add(new RentOfficePayment(this, 900, 14));
         availableOptions.add(new RentOfficePayment(this, 1800, 30));

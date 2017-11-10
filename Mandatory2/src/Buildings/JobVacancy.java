@@ -9,10 +9,10 @@ import Game.State;
  */
 public class JobVacancy extends GameObject {
 
-    protected String name;
-    protected int hourlyWage;
-    protected int requiredExperiencePoints;
-    protected EducationStateStatus requiredEducationLevel;
+    private final String name;
+    private final int hourlyWage;
+    private final int requiredExperiencePoints;
+    private final EducationStateStatus requiredEducationLevel;
 
     public JobVacancy(String name, int hourlyWage, EmploymentOffice parent, EducationStateStatus requiredEducationLevel, int requiredExperiencePoints) {
         this.name = name;

@@ -8,11 +8,8 @@ import Game.State;
  */
 public class FactoryWork extends GameObject {
 
-    protected Factory parent;
-
     public FactoryWork(Factory parent) {
-        this.parent = parent;
-        this.addAccessibleObject(this.parent);
+        this.addAccessibleObject(parent);
     }
 
     @Override
@@ -30,12 +27,11 @@ public class FactoryWork extends GameObject {
      *
      * @return int hourly wage.
      */
-    public int getAmountOfMoney(State state) {
-        int amount = state.currentOccupation.getHourlyWage();
-        return amount;
+    private int getAmountOfMoney(State state) {
+        return state.currentOccupation.getHourlyWage();
     }
 
-    protected int getNumberOfSteps() {
+    private int getNumberOfSteps() {
         return 10;
     }
 

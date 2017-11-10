@@ -7,13 +7,13 @@ import Buildings.EmploymentOffice;
  */
 public class GoalSetter extends GameObject {
 
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public EmploymentOffice employmentOffice;
-    UserInputHandle userInputHandle = new UserInputHandle();
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_PURPLE = "\u001B[35m";
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private EmploymentOffice employmentOffice;
+    private final UserInputHandle userInputHandle = new UserInputHandle();
 
     public void setEmploymentOffice(EmploymentOffice employmentOffice) {
         this.employmentOffice = employmentOffice;
@@ -32,7 +32,7 @@ public class GoalSetter extends GameObject {
     /**
      * This method prints possible goal sets.
      */
-    public void printGoalOptions() {
+    private void printGoalOptions() {
         System.out.println(ANSI_PURPLE + "CHOOSE YOUR GOALS: " + ANSI_RESET);
         System.out.println("----------------------------------------------------------------------------------------------------------------");
         System.out.println("1. I can be poor - I don't care about the money but I want to be as" + ANSI_BLUE + " happy and" + ANSI_RESET + " as" + ANSI_BLUE + " educated" + ANSI_RESET + " as possible.");
@@ -45,7 +45,7 @@ public class GoalSetter extends GameObject {
     /**
      * This method set the goals depending on user input.
      */
-    public void goalsMenu(State state) {
+    private void goalsMenu(State state) {
         printGoalOptions();
         while (true) {
             System.out.print(ANSI_GREEN + "Type your number: " + ANSI_RESET);

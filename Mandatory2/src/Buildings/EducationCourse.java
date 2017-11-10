@@ -5,18 +5,16 @@ import Game.State;
 
 public class EducationCourse extends GameObject {
 
-    protected String name;
-    protected int price;
-    protected University parent;
-    protected EducationCourseStatus status;
-    protected int studyCounter = 0;
+    private final String name;
+    private final int price;
+    private EducationCourseStatus status;
+    private int studyCounter = 0;
 
     public EducationCourse(String name, int price, University parent) {
         this.name = name;
         this.price = price;
-        this.parent = parent;
         this.status = EducationCourseStatus.NotEnrolled;
-        this.addAccessibleObject(this.parent);
+        this.addAccessibleObject(parent);
         this.addAccessibleObject(this);
     }
 
@@ -35,7 +33,7 @@ public class EducationCourse extends GameObject {
         study(state);
     }
 
-    protected int getPrice() {
+    private int getPrice() {
         return price;
     }
 

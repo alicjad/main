@@ -73,13 +73,13 @@ public class State {
         if (hungerPoints <= 30) {
             return HungerStateStatus.veryHungry;
         }
-        if (hungerPoints > 35 && hungerPoints <= 40) {
+        if (hungerPoints <= 40) {
             return HungerStateStatus.hungry;
         }
-        if (hungerPoints < 40 && hungerPoints <= 50) {
+        if (hungerPoints <= 50) {
             return HungerStateStatus.notHungry;
         }
-        if (hungerPoints > 50 && hungerPoints <= 75) {
+        if (hungerPoints <= 75) {
             return HungerStateStatus.quiteFull;
         } else {
             return HungerStateStatus.Full;
@@ -94,10 +94,10 @@ public class State {
         if (happinessPoints <= 35) {
             return HappinessStateStatus.notHappy;
         }
-        if (happinessPoints > 35 && happinessPoints < 50) {
+        if (happinessPoints <= 50) {
             return HappinessStateStatus.normal;
         }
-        if (happinessPoints >= 50 && happinessPoints < 75) {
+        if (happinessPoints <= 75) {
             return HappinessStateStatus.quiteHappy;
         } else {
             return HappinessStateStatus.veryHappy;
@@ -109,13 +109,13 @@ public class State {
         if (educationPoints <= 20) {
             return EducationStateStatus.notEducated;
         }
-        if (educationPoints > 20 && educationPoints <= 40) {
+        if (educationPoints <= 40) {
             return EducationStateStatus.quiteEducated;
         }
-        if (educationPoints > 40 && educationPoints <= 60) {
+        if (educationPoints <= 60) {
             return EducationStateStatus.educated;
         }
-        if (educationPoints > 60 && educationPoints <= 80) {
+        if (educationPoints <= 80) {
             return EducationStateStatus.wellEducated;
         } else {
             return EducationStateStatus.fullyEducated;
@@ -127,13 +127,13 @@ public class State {
         if (money < 500) {
             return FinancialStateStatus.poor;
         }
-        if (money >= 2000) {
+        if (money <= 2000) {
             return FinancialStateStatus.quitePoor;
         }
-        if (money >= 5000) {
+        if (money <= 5000) {
             return FinancialStateStatus.averageWageReceiver;
         }
-        if (money >= 10000) {
+        if (money <= 10000) {
             return FinancialStateStatus.growingRich;
         } else {
             return FinancialStateStatus.rich;

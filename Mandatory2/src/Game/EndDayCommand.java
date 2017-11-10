@@ -8,8 +8,8 @@ import Buildings.RentOfficePaymentStatus;
  */
 public class EndDayCommand extends GameObject {
 
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
     @Override
     public Boolean canExecute(State state) {
@@ -17,8 +17,6 @@ public class EndDayCommand extends GameObject {
     }
 
     public void execute(State state) {
-
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
         if (checkGoals(state)) {
             throw new GameEndException();
         } else {
@@ -82,16 +80,12 @@ public class EndDayCommand extends GameObject {
         System.out.println(reminder);
     }
 
-    protected int getNumberOfSteps() {
-        return 0;
-    }
-
-    /**
+        /**
      * This method contains conditions based on which user gets certain amount of steps for the next day.
      *
      * @return int - number of steps for the next day.
      */
-    protected int getNumberOfNextDaySteps(State state) {
+    private int getNumberOfNextDaySteps(State state) {
 
         if (state.getHungerLevel() == HungerStateStatus.Full) {
             return 155;

@@ -19,9 +19,9 @@ public class PawnShop extends Building {
      *
      * @return list of items
      */
-    public List<GameObject> getItems() {
+    private List<GameObject> getItems() {
 
-        List<GameObject> items = new ArrayList<GameObject>();
+        List<GameObject> items = new ArrayList<>();
         items.add(new PawnShopItem("plant", 50, 10, PawnShopItemStatus.ForSale, this));
         items.add(new PawnShopItem("book", 70, 12, PawnShopItemStatus.ForSale, this));
         items.add(new PawnShopItem("MP3 player", 200, 18, PawnShopItemStatus.ForSale, this));

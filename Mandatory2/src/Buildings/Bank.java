@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Bank extends Building {
 
-    protected int balance;
+    private int balance;
 
     public Bank() {
         this.balance = this.getBalance();
@@ -22,7 +22,7 @@ public class Bank extends Building {
         return balance;
     }
 
-    protected void setBalance(int balance) {
+    void setBalance(int balance) {
         this.balance = balance;
     }
 
@@ -30,9 +30,9 @@ public class Bank extends Building {
         return 5;
     }
 
-    public List<GameObject> getAvailableOptions() {
+    private List<GameObject> getAvailableOptions() {
 
-        List<GameObject> availableOptions = new ArrayList<GameObject>();
+        List<GameObject> availableOptions = new ArrayList<>();
         availableOptions.add(new BankDepositMoney(this, 100));
         availableOptions.add(new BankDepositMoney(this, 500));
         availableOptions.add(new BankDepositMoney(this, 1000));

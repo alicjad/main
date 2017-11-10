@@ -8,27 +8,22 @@ import Game.State;
  */
 public class PawnShopItem extends GameObject {
 
-    protected String name;
-    protected int price;
-    protected int happinessPoints;
-    protected PawnShopItemStatus itemStatus;
-    protected PawnShop parent;
+    private final String name;
+    private final int price;
+    private final int happinessPoints;
+    private PawnShopItemStatus itemStatus;
 
     public PawnShopItem(String name, int price, int happinessPoints, PawnShopItemStatus itemStatus, PawnShop parent) {
         this.name = name;
         this.price = price;
         this.happinessPoints = happinessPoints;
         this.itemStatus = itemStatus;
-        this.parent = parent;
         this.addAccessibleObject(parent);
     }
 
     @Override
     public Boolean canExecute(State state) {
-        if (this.itemStatus == PawnShopItemStatus.ForSale && state.getMoney() < this.price) {
-            return false;
-        }
-        return this.itemStatus != PawnShopItemStatus.Sold || state.getHappinessPoints() >= this.happinessPoints / 2;
+        return this.itemStatus != PawnShopItemStatus.ForSale || state.getMoney() >= this.price && (this.itemStatus != PawnShopItemStatus.Sold || state.getHappinessPoints() >= this.happinessPoints / 2);
     }
 
     public void execute(State state) {

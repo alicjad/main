@@ -8,15 +8,13 @@ import Game.State;
  */
 public class RentOfficePayment extends GameObject {
 
-    protected RentOffice parent;
-    protected int amount;
-    protected int rentDays;
+    private final int amount;
+    private final int rentDays;
 
     public RentOfficePayment(RentOffice parent, int amount, int rentDays) {
-        this.parent = parent;
         this.amount = amount;
         this.rentDays = rentDays;
-        this.addAccessibleObject(this.parent);
+        this.addAccessibleObject(parent);
     }
 
     @Override

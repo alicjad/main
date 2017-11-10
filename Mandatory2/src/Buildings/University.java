@@ -16,7 +16,7 @@ public class University extends Building {
 
     private List<GameObject> getAvailableCourses() {
 
-        List<GameObject> availableCourses = new ArrayList<GameObject>();
+        List<GameObject> availableCourses = new ArrayList<>();
         availableCourses.add(new EducationCourse("Math", 100, this));
         availableCourses.add(new EducationCourse("Physics", 110, this));
         availableCourses.add(new EducationCourse("Logistics", 140, this));

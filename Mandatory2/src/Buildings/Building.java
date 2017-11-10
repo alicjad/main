@@ -21,7 +21,7 @@ public class Building extends GameObject {
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
     }
 
-    protected int getNumberOfSteps() {
+    int getNumberOfSteps() {
         return 5;
     }
 }

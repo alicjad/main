@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * It is responsible for displaying the menu and handling the user input.
  */
-public class UserInputHandle {
+class UserInputHandle {
     /**
      * Waits for user to hit Enter.
      */
@@ -25,8 +25,7 @@ public class UserInputHandle {
         while (true) {
             try {
                 Scanner a = new Scanner(System.in);
-                int answer = a.nextInt();
-                return answer;
+                return a.nextInt();
             } catch (InputMismatchException ex) {
                 System.out.println("This is not a number");
                 System.out.println("Try again");

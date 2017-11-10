@@ -5,10 +5,10 @@ import Buildings.*;
 /**
  * This class is responsible for creating board for the game.(=map with buildings)
  */
-public class GameBoardCreator {
+class GameBoardCreator {
 
-    protected GameObject EndDayCommand;
-    protected GoalSetter GoalSetter;
+    private GameObject EndDayCommand;
+    private GoalSetter GoalSetter;
 
     /**
      * This method created map with all buildings and determine connections between them.
@@ -74,7 +74,7 @@ public class GameBoardCreator {
         return this.EndDayCommand;
     }
 
-    public GameObject getGoalSetter() {
+    private GameObject getGoalSetter() {
         return GoalSetter;
     }
 }

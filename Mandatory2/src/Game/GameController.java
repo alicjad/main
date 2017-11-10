@@ -5,18 +5,18 @@ import java.util.List;
 /**
  * This class is responsible for the flow of the game.
  */
-public class GameController {
+class GameController {
 
     //for colors
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_RESET = "\u001B[0m";
-    State state = new State();
-    GameObject currentGameObject;
-    UserInputHandle userInput = new UserInputHandle();
-    GameBoardCreator gameBoardCreator = new GameBoardCreator();
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_PURPLE = "\u001B[35m";
+    private static final String ANSI_RESET = "\u001B[0m";
+
+    private final State state = new State();
+    private final UserInputHandle userInput = new UserInputHandle();
+    private final GameBoardCreator gameBoardCreator = new GameBoardCreator();
 
     /**
      * Operates on variables currentGameObject and nextGameObject.
@@ -26,12 +26,12 @@ public class GameController {
      */
     public void askUserForNextStep() {
         //gets map
-        currentGameObject = gameBoardCreator.getInitialGameObject();
+        GameObject currentGameObject = gameBoardCreator.getInitialGameObject();
 
         while (true) {
             List<GameObject> currentOptions = currentGameObject.getAccessibleObjects();
             //adds EndDayCommand to the list - if possible
-            if (currentGameObject.isEndDayOptionAllowed() == true) {
+            if (currentGameObject.isEndDayOptionAllowed()) {
                 currentOptions.add(gameBoardCreator.getEndDayCommand());
             }
             try {

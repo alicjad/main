@@ -8,12 +8,12 @@ import Game.State;
  */
 public class Food extends GameObject {
 
-    protected String name;
-    protected int price;
-    protected int hungerPoints;
-    protected int happinessPoints;
+    private final String name;
+    private final int price;
+    private final int hungerPoints;
+    private final int happinessPoints;
 
-    public Food(String name, int price, int hungerPoints, int happinessPoints, RestaurantMenu parent) {
+    Food(String name, int price, int hungerPoints, int happinessPoints, RestaurantMenu parent) {
         this.name = name;
         this.price = price;
         this.hungerPoints = hungerPoints;

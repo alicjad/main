@@ -14,7 +14,7 @@ public class EmploymentOffice extends Building {
 
     public List<GameObject> getAvailableJobs() {
 
-        List<GameObject> availableJobs = new ArrayList<GameObject>();
+        List<GameObject> availableJobs = new ArrayList<>();
         availableJobs.add(new JobVacancy("Factory Worker", 80, this, EducationStateStatus.notEducated, 0));
         availableJobs.add(new JobVacancy("Shift Manager", 120, this, EducationStateStatus.quiteEducated, 50));
         availableJobs.add(new JobVacancy("Engineer", 180, this, EducationStateStatus.educated, 100));

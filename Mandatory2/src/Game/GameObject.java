@@ -8,10 +8,10 @@ import java.util.List;
  */
 public abstract class GameObject {
 
-    private List<GameObject> accessibleObjectList;
+    private final List<GameObject> accessibleObjectList;
 
-    public GameObject() {
-        this.accessibleObjectList = new ArrayList<GameObject>();
+    protected GameObject() {
+        this.accessibleObjectList = new ArrayList<>();
     }
 
     /**

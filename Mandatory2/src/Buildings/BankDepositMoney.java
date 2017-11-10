@@ -7,8 +7,8 @@ import Game.State;
  * This class is responsible for depositMoney function.
  */
 public class BankDepositMoney extends GameObject {
-    protected Bank parent;
-    protected int amount;
+    private final Bank parent;
+    private final int amount;
 
     public BankDepositMoney(Bank parent, int amount) {
         this.parent = parent;

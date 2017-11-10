@@ -1,4 +1,4 @@
 package Game;
 
-public class GameEndException extends java.lang.RuntimeException {
+class GameEndException extends java.lang.RuntimeException {
 }
