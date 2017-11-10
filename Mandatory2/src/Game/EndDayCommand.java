@@ -3,6 +3,8 @@ package Game;
 import Buildings.RentOfficePaymentStatus;
 
 public class EndDayCommand extends GameObject {
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     @Override
     public Boolean canExecute(State state) {
@@ -11,14 +13,54 @@ public class EndDayCommand extends GameObject {
 
     public void execute(State state){
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
-        //checkGoals - return boolean - if true - winGameMessage/endProgram - if false go to next method (startNewDay)
-        startNewDay(state);
-        checkRentStatus(state);
-        if (checkRentStatus(state) == false){
-            printReminder("REMEMBER to pay your rent!");
+        if (checkGoals(state)){
+            throw new GameEndException();
+        }
+        else {
+            enforceRent(state);
+            startNewDay(state);
+        }
+    }
+    private Boolean checkGoals(State state){
+        int goalNumber = state.getGoalPackageNo();
+        switch (goalNumber){
+            case 1: if (state.getHappinessLevel() == state.getGoalHappinessLevel() && state.getEducationLevel() == state.getGoalEducationLevel()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+            case 2: if (state.getFinancialLevel() == state.getGoalFinancialStatus() && state.getHappinessLevel() == state.getGoalHappinessLevel()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+            case 3: if (state.getEducationLevel() == state.getGoalEducationLevel() && state.getGoalHungerLevel() == state.getGoalHungerLevel()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+            case 4: if (state.getFinancialLevel() == state.getGoalFinancialStatus() && state.getCurrentOccupation() == state.getGoalJobVacancy()){
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+            default: return false;
         }
     }
 
+    private void enforceRent(State state){
+        if (state.getRentStatus() == RentOfficePaymentStatus.NotPaid){
+            printReminder(ANSI_RED+"REMEMBER to pay your rent!");
+            printReminder("If you don't pay within 7 days you will be HOMELESS!"+ANSI_RESET);
+            if (state.getRentStatus() == RentOfficePaymentStatus.Homeless){
+                state.setHappinessPoints(0);
+            }
+        }
+    }
     private void startNewDay (State state){
         state.setSteps(getNumberOfNextDaySteps(state));
         if (state.getHappinessLevel() == HappinessStateStatus.notHappy){
@@ -30,14 +72,6 @@ public class EndDayCommand extends GameObject {
         state.setDayCounter(state.getDayCounter() + 1);
     }
 
-    private Boolean checkRentStatus(State state){
-        if (state.getRentStatus() == RentOfficePaymentStatus.Paid){
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
     private void printReminder(String reminder){
         System.out.println(reminder);
     }

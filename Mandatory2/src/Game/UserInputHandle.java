@@ -24,12 +24,6 @@ public class UserInputHandle {
         }
     }
 
-    public String getLineFromUser(){
-        Scanner l = new Scanner(System.in);
-        String line = l.nextLine();
-        return line;
-    }
-
     public int askForGameObjectNumber(){
         System.out.println("Type your number: ");
         return getIntFromUser();

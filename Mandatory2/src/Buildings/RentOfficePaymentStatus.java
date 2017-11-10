@@ -2,5 +2,6 @@ package Buildings;
 
 public enum RentOfficePaymentStatus {
     Paid,
-    NotPaid
+    NotPaid,
+    Homeless
 }

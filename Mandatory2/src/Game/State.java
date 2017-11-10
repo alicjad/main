@@ -12,7 +12,14 @@ public class State {
     private int money;
     public JobVacancy currentOccupation;
     private int dayCounter;
-    protected RentOfficePaymentStatus rentStatus;
+    private int rentDeadline;
+
+    private GameObject goalJobVacancy;
+    private HungerStateStatus goalHungerLevel;
+    private HappinessStateStatus goalHappinessLevel;
+    private EducationStateStatus goalEducationLevel;
+    private FinancialStateStatus goalFinancialStatus;
+    private int goalPackageNo;
 
     State(){
         setSteps(125);
@@ -21,7 +28,7 @@ public class State {
         setEducationPoints(0);
         setMoney(500);
         setDayCounter(0);
-        setRentStatus(RentOfficePaymentStatus.NotPaid);
+
     }
 
     public JobVacancy getCurrentOccupation(){
@@ -39,12 +46,19 @@ public class State {
         return dayCounter;
     }
 
-    public void setRentStatus(RentOfficePaymentStatus rentStatus){
-        this.rentStatus = rentStatus;
-    }
+
     public RentOfficePaymentStatus getRentStatus(){
-        return rentStatus;
+        if (dayCounter <= rentDeadline){
+            return RentOfficePaymentStatus.Paid;
+        }
+        else {
+            if (dayCounter > rentDeadline+7){
+                return RentOfficePaymentStatus.Homeless;
+            }
+        }
+        return RentOfficePaymentStatus.NotPaid;
     }
+
 
     public HungerStateStatus getHungerLevel (){
         if (hungerPoints < 20){
@@ -102,17 +116,17 @@ public class State {
         }
     }
 
-    private FinancialStateStatus getFinancialLevel(){
+    public FinancialStateStatus getFinancialLevel(){
         if (money < 500){
             return FinancialStateStatus.poor;
         }
-        if (money >= 1000){
+        if (money >= 2000){
             return FinancialStateStatus.quitePoor;
         }
-        if (money >= 1500){
+        if (money >= 5000){
             return FinancialStateStatus.averageWageReceiver;
         }
-        if (money >= 2000){
+        if (money >= 10000){
             return FinancialStateStatus.growingRich;
         }
         else {
@@ -157,4 +171,56 @@ public class State {
 
     public int getExperiencePoints(){return  experiencePoints;}
     public void setExperiencePoints(int experiencePoints){this.experiencePoints = experiencePoints;}
+
+    public GameObject getGoalJobVacancy() {
+        return goalJobVacancy;
+    }
+    public void setGoalJobVacancy(GameObject goalJobVacancy) {
+        this.goalJobVacancy = goalJobVacancy;
+    }
+
+    public HungerStateStatus getGoalHungerLevel() {
+        return goalHungerLevel;
+    }
+
+    public void setGoalHungerLevel(HungerStateStatus goalHungerLevel) {
+        this.goalHungerLevel = goalHungerLevel;
+    }
+
+    public HappinessStateStatus getGoalHappinessLevel() {
+        return goalHappinessLevel;
+    }
+    public void setGoalHappinessLevel(HappinessStateStatus goalHappinessLevel) {
+        this.goalHappinessLevel = goalHappinessLevel;
+    }
+
+    public EducationStateStatus getGoalEducationLevel() {
+        return goalEducationLevel;
+    }
+    public void setGoalEducationLevel(EducationStateStatus goalEducationLevel) {
+        this.goalEducationLevel = goalEducationLevel;
+    }
+
+    public FinancialStateStatus getGoalFinancialStatus() {
+        return goalFinancialStatus;
+    }
+
+    public void setGoalFinancialStatus(FinancialStateStatus goalFinancialStatus) {
+        this.goalFinancialStatus = goalFinancialStatus;
+    }
+
+    public int getGoalPackageNo() {
+        return goalPackageNo;
+    }
+    public void setGoalPackageNo(int goalPackageNo) {
+        this.goalPackageNo = goalPackageNo;
+    }
+
+    public int getRentDeadline() {
+        return rentDeadline;
+    }
+
+    public void setRentDeadline(int rentDeadline) {
+        this.rentDeadline = rentDeadline;
+    }
 }

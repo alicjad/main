@@ -23,10 +23,17 @@ public class GameController {
             if(currentGameObject.isEndDayOptionAllowed()== true) {
                 currentOptions.add(gameBoardCreator.getEndDayCommand());
             }
-            currentGameObject.execute(state);
+            try {
+                currentGameObject.execute(state);
+            } catch (GameEndException ex){
+                System.out.println(ANSI_RED + "---> CONGRATULATIONS <---");
+                System.out.println("ALL GOALS ACHEIVED! YOU WON!"+ANSI_RESET);
+                return;
+            }
             System.out.println(ANSI_BLUE + "~~ Personal Status ~~");
             System.out.println("Remaining steps: "+state.getSteps());
             System.out.println("Remaining money: "+state.getMoney() + "$");
+            System.out.println("Rent deadline: "+state.getRentDeadline());
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~" + ANSI_RESET);
 
             System.out.println(ANSI_PURPLE+ currentGameObject.getWelcomeMessage() + ANSI_RESET);

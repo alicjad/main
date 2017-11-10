@@ -4,18 +4,20 @@ import Buildings.*;
 
 public class GameBoardCreator {
     protected GameObject EndDayCommand;
+    protected GoalSetter GoalSetter;
 
     public GameObject getInitialGameObject(){
 
         GameObject University = new University();
         GameObject Factory = new Factory();
-        GameObject EmploymentOffice = new EmploymentOffice();
+        EmploymentOffice EmploymentOffice = new EmploymentOffice();
         GameObject Bank = new Bank();
         GameObject RentOffice = new RentOffice();
         GameObject PawnShop = new PawnShop();
         GameObject Restaurant = new Restaurant();
         Home Home = new Home();
         EndDayCommand = new EndDayCommand();
+        GoalSetter = new GoalSetter();
 
         University.addAccessibleObject(Bank);
         University.addAccessibleObject(Factory);
@@ -52,10 +54,17 @@ public class GameBoardCreator {
         Home.addAccessibleObject(Restaurant);
 
         EndDayCommand.addAccessibleObject(Home);
+        GoalSetter.addAccessibleObject(Home);
 
-        return Home;
+        GoalSetter.setEmploymentOffice(EmploymentOffice);
+
+        return getGoalSetter();
     }
     public GameObject getEndDayCommand(){
         return this.EndDayCommand;
+    }
+
+    public GameObject getGoalSetter() {
+        return GoalSetter;
     }
 }
