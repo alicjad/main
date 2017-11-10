@@ -1,9 +1,10 @@
 package Game;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * It is responsible for displaying the menu and handling the user input.
+ */
 public class UserInputHandle {
-
     /**
      * Waits for user to hit Enter.
      */
@@ -33,7 +34,7 @@ public class UserInputHandle {
 
     /**
      * Asks the user in which object(=option) he is interested in
-     * @return number of object user wants to choose
+     * @return number of object user wants to choose.
      */
     public int askForGameObjectNumber(){
         System.out.println("Type your number: ");
