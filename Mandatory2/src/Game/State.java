@@ -1,7 +1,9 @@
 package Game;
 import Buildings.JobVacancy;
 import Buildings.RentOfficePaymentStatus;
-
+/**
+ * This class contains all variables connected to user accomplishments.
+ */
 public class State {
 
     private int steps;
@@ -21,7 +23,9 @@ public class State {
     private EducationStateStatus goalEducationLevel;
     private FinancialStateStatus goalFinancialStatus;
     private int goalPackageNo;
-
+    /**
+     * This constructor sets start values of given variables.
+     */
     State(){
         setSteps(125);
         setHungerPoints(50);

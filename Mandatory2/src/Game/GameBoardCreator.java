@@ -1,11 +1,16 @@
 package Game;
 import Buildings.*;
-
+/**
+ * This class is responsible for creating board for the game.(=map with buildings)
+ */
 public class GameBoardCreator {
 
     protected GameObject EndDayCommand;
     protected GoalSetter GoalSetter;
-
+    /**
+     * This method created map with all buildings and determine connections between them.
+     * @return EndDayCommand gameObject which is the first currentGameObject in the game.
+     */
     public GameObject getInitialGameObject(){
 
         GameObject University = new University();

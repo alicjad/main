@@ -1,6 +1,9 @@
 package Game;
 import Buildings.RentOfficePaymentStatus;
-
+/**
+ * This class is responsible for checking goals progress and personal status.
+ * Depending on user state - ending the game of resetting some variables.
+ */
 public class EndDayCommand extends GameObject {
 
     public static final String ANSI_RED = "\u001B[31m";
@@ -22,7 +25,11 @@ public class EndDayCommand extends GameObject {
             startNewDay(state);
         }
     }
-
+    /**
+     * This method compares current state variables with user's goals.
+     * Checks if goals are acheived.
+     * @return boolean
+     */
     private Boolean checkGoals(State state){
         int goalNumber = state.getGoalPackageNo();
         switch (goalNumber){
@@ -53,7 +60,9 @@ public class EndDayCommand extends GameObject {
             default: return false;
         }
     }
-
+    /**
+     * This method implements the consequences of not paying rent.
+     */
     private void enforceRent(State state){
 
         if (state.getRentStatus() == RentOfficePaymentStatus.NotPaid){
@@ -76,14 +85,19 @@ public class EndDayCommand extends GameObject {
         }
         state.setDayCounter(state.getDayCounter() + 1);
     }
-
+    /**
+     * This method prints reminding message.
+     */
     private void printReminder(String reminder){
         System.out.println(reminder);
     }
     protected int getNumberOfSteps(){
         return 0;
     }
-
+    /**
+     * This method contains conditions based on which user gets certain amount of steps for the next day.
+     * @return int - number of steps for the next day.
+     */
     protected int getNumberOfNextDaySteps(State state){
 
         if (state.getHungerLevel() == HungerStateStatus.Full){

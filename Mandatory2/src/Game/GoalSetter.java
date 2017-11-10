@@ -1,6 +1,8 @@
 package Game;
 import Buildings.EmploymentOffice;
-
+/**
+ * This class ir responsible for setting game goals.
+ */
 public class GoalSetter extends GameObject{
 
     public static final String ANSI_RED = "\u001B[31m";
@@ -26,7 +28,9 @@ public class GoalSetter extends GameObject{
 
     UserInputHandle userInputHandle = new UserInputHandle();
 
-
+    /**
+     * This method prints possible goal sets.
+     */
     public void printGoalOptions(){
         System.out.println(ANSI_PURPLE+ "CHOOSE YOUR GOALS: " + ANSI_RESET);
         System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -36,7 +40,9 @@ public class GoalSetter extends GameObject{
         System.out.println("4. I want to have the "+ANSI_BLUE+"best job"+ANSI_RESET+" possible and make"+ANSI_BLUE+" lots of money"+ANSI_RESET+" even if it will make me unhappy.");
         System.out.println("----------------------------------------------------------------------------------------------------------------");
     }
-
+    /**
+     * This method set the goals depending on user input.
+     */
     public void goalsMenu(State state){
         printGoalOptions();
         while (true) {
