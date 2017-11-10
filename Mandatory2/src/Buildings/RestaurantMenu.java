@@ -1,9 +1,13 @@
 package Buildings;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * This method contains the list of food you can buy in the Restaurant.
+ */
 public class RestaurantMenu extends GameObject {
-
+    /**
+     * This constructor creates Restaurant's menu by adding food to accessibleObjectList to RestaurantMenu object.
+     */
     public RestaurantMenu (Restaurant chosenRestaurant){
 
         this.addAccessibleObject(new Burger("Bacon", 120, 5, 5, this));

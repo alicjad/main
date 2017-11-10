@@ -2,7 +2,9 @@ package Buildings;
 import Game.GameObject;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class contains a list of Education Courses.
+ */
 public class University extends Building {
 
     public University (){

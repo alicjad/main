@@ -1,5 +1,7 @@
 package Buildings;
-
+/**
+ * This class contains restaurant menu.
+ */
 public class Restaurant extends Building{
 
     public Restaurant (){

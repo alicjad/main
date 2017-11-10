@@ -2,7 +2,9 @@ package Buildings;
 import Game.EducationStateStatus;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * This class determine JobVacancy type.
+ */
 public class JobVacancy extends GameObject {
 
     protected String name;

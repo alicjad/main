@@ -1,7 +1,9 @@
 package Buildings;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * This class contains methods for buying and selling pawn shop items.
+ */
 public class PawnShopItem extends GameObject {
 
     protected String name;
@@ -46,14 +48,20 @@ public class PawnShopItem extends GameObject {
     protected int getNumberOfSteps(){
         return 0;
     }
-
+    /**
+     * This method allows the user to buy the item.
+     * Marks chosen item as sold.
+     */
     private void buyItem (State state){
 
         state.setMoney(state.getMoney() - this.price);
         state.setHappinessPoints(state.getHappinessPoints() + this.happinessPoints);
         this.itemStatus = PawnShopItemStatus.Sold;
     }
-
+    /**
+     * This method allows the user to sell the item.
+     * Marks chosen item as for sale.
+     */
     private void sellItem (State state){
 
         state.setMoney(state.getMoney() + this.price/2);

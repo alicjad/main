@@ -1,7 +1,9 @@
 package Buildings;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * This class is responsible for rent payments.
+ */
 public class RentOfficePayment extends GameObject {
 
     protected RentOffice parent;
@@ -30,10 +32,15 @@ public class RentOfficePayment extends GameObject {
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         payRent(state);
     }
+    /**
+     * This method changes number of steps that gonna be taken while executing.
+     */
     protected int getNumberOfSteps(){
         return 0;
     }
-
+    /**
+     * This method takes money for user and sets rent deadline.
+     */
     private void payRent (State state){
 
         state.setMoney(state.getMoney() - amount);
