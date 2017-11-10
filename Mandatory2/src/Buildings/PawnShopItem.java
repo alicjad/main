@@ -36,17 +36,12 @@ public class PawnShopItem extends GameObject {
 
     public void execute(State state){
 
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
         if (itemStatus == PawnShopItemStatus.ForSale){
             buyItem(state);
         }
         else {
             sellItem(state);
         }
-    }
-
-    protected int getNumberOfSteps(){
-        return 0;
     }
     /**
      * This method allows the user to buy the item.

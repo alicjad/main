@@ -2,7 +2,10 @@ package Buildings;
 import Game.GameObject;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The class Bank represents the bank building.
+ * It contains user's balance (int variable).
+ */
 public class Bank extends Building{
 
     protected int balance;

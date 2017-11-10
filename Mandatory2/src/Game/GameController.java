@@ -47,7 +47,9 @@ public class GameController {
             System.out.println(ANSI_BLUE + "~~ Personal Status ~~");
             System.out.println("Remaining steps: "+state.getSteps());
             System.out.println("Remaining money: "+state.getMoney() + "$");
-            System.out.println("Rent deadline: "+state.getRentDeadline());
+            System.out.println("Your hunger status: "+state.getHungerLevel());
+            System.out.println("Day no: "+state.getDayCounter());
+            System.out.println("Rent deadline, day: "+state.getRentDeadline());
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~" + ANSI_RESET);
 
             System.out.println(ANSI_PURPLE+ currentGameObject.getWelcomeMessage() + ANSI_RESET);

@@ -1,7 +1,9 @@
 package Buildings;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * This class is a superclass for all buildings, it contains main methods for extending classes.
+ */
 public class Building extends GameObject {
     @Override
     public Boolean isEndDayOptionAllowed() {

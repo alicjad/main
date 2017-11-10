@@ -24,7 +24,6 @@ public class RentOffice extends Building {
         availableOptions.add(new RentOfficePayment(this, 550, 7));
         availableOptions.add(new RentOfficePayment(this, 900, 14));
         availableOptions.add(new RentOfficePayment(this, 1800, 30));
-        availableOptions.addAll(super.getAccessibleObjects());
 
         return availableOptions;
     }

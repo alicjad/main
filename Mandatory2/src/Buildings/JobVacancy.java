@@ -3,7 +3,7 @@ import Game.EducationStateStatus;
 import Game.GameObject;
 import Game.State;
 /**
- * This class determine JobVacancy type.
+ * The class JobVacancy is represents a job vacancy.
  */
 public class JobVacancy extends GameObject {
 
@@ -34,13 +34,8 @@ public class JobVacancy extends GameObject {
     }
 
     public void execute(State state){
-
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
         state.setCurrentOccupation(this);
         state.setHappinessPoints(state.getHappinessPoints() + 15);
-    }
-    protected int getNumberOfSteps(){
-        return 0;
     }
 
     public int getHourlyWage(){

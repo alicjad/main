@@ -1,7 +1,9 @@
 package Buildings;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * This class is responsible for depositMoney function.
+ */
 public class BankDepositMoney extends GameObject {
     protected Bank parent;
     protected int amount;
@@ -23,14 +25,10 @@ public class BankDepositMoney extends GameObject {
     }
 
     public void execute(State state){
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
-        depositMoney(this, state);
-    }
-    protected int getNumberOfSteps(){
-        return 0;
+        this.depositMoney(state);
     }
 
-    private void depositMoney (BankDepositMoney chosenDeposit, State state){
+    private void depositMoney (State state){
         state.setMoney(state.getMoney() - amount);
         parent.setBalance(parent.getBalance()+amount);
     }

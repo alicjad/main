@@ -19,33 +19,21 @@ public class RentOfficePayment extends GameObject {
 
     @Override
     public Boolean canExecute(State state){
-
-        if (state.getMoney() < amount){
-            return false;
-        }
-        else {
-            return true;
-        }
+        return  (state.getMoney() >= amount);
     }
     public void execute(State state){
-
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
         payRent(state);
     }
-    /**
-     * This method changes number of steps that gonna be taken while executing.
-     */
-    protected int getNumberOfSteps(){
-        return 0;
-    }
+
     /**
      * This method takes money for user and sets rent deadline.
      */
     private void payRent (State state){
 
         state.setMoney(state.getMoney() - amount);
-        state.setRentDeadline(state.getRentDeadline()+rentDays);
+        state.setRentDeadline(Math.max(state.getDayCounter(), state.getRentDeadline())+rentDays);
     }
+
 
     public String getOptionMessage(){
         return "Pay rent for "+rentDays+" days for "+amount+"$";

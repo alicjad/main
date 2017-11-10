@@ -1,6 +1,8 @@
 package Buildings;
 import Game.State;
-
+/**
+ * The class Home is the only accessible object after using EndDayCommand. It is adding happiness points when user enters home.
+ */
 public class Home extends Building {
 
     public void execute(State state) {

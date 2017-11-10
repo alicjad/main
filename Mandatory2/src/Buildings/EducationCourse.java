@@ -36,12 +36,9 @@ public class EducationCourse extends GameObject {
     }
 
     public void execute(State state){
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
         study(state);
     }
-    protected int getNumberOfSteps(){
-        return 0;
-    }
+
     protected int getPrice(){
         return price;
     }

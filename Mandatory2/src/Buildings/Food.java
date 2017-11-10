@@ -1,7 +1,9 @@
 package Buildings;
 import Game.GameObject;
 import Game.State;
-
+/**
+ * The class Food determine conditions and requirements for all food extending game objects classes. It is a superclass.
+ */
 public class Food extends GameObject {
 
     protected String name;
@@ -19,23 +21,13 @@ public class Food extends GameObject {
 
     @Override
     public Boolean canExecute(State state) {
-        if (state.getMoney() < this.price){
-            return false;
-        }
-        else {
-            return true;
-        }
+        return  (state.getMoney() >= this.price);
     }
 
     public void execute(State state){
-
-        state.setSteps(state.getSteps() - this.getNumberOfSteps());
         state.setMoney(state.getMoney() - this.price);
         state.setHungerPoints(state.getHungerPoints() + hungerPoints);
         state.setHappinessPoints(state.getHappinessPoints() + happinessPoints);
-    }
-    protected int getNumberOfSteps(){
-        return 0;
     }
 
     public String getOptionMessage(){
