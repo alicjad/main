@@ -52,7 +52,7 @@ public class GoalSetter extends GameObject {
     private void goalsMenu(State state) {
         printGoalOptions();
         while (true) {
-            System.out.print(ANSI_GREEN + "Type your number: " + ANSI_RESET);
+            System.out.print("Type your number: ");
             int choice = userInputHandle.getIntFromUser();
             switch (choice) {
                 case 1:

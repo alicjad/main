@@ -17,7 +17,6 @@ public class EducationCourse extends GameObject {
         this.price = price;
         this.status = EducationCourseStatus.NotEnrolled;
         this.addAccessibleObject(parent);
-        this.addAccessibleObject(this);
     }
 
     @Override
@@ -64,5 +63,10 @@ public class EducationCourse extends GameObject {
         } else {
             return "Study " + name + ".";
         }
+    }
+
+    @Override
+    public String getWelcomeMessage() {
+        return "It wasn't easy...";
     }
 }

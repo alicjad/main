@@ -39,7 +39,7 @@ class UserInputHandle {
      * @return number of object user wants to choose.
      */
     public int askForGameObjectNumber() {
-        System.out.println("Type your number: ");
+        System.out.print("Type your number: ");
         return getIntFromUser();
     }
 }

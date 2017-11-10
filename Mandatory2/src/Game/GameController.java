@@ -56,7 +56,7 @@ class GameController {
                     System.out.print(". ");
                     GameObject nextGameObject = currentOptions.get(i);
                     //available options in green
-                    if (nextGameObject.canExecute(state, previousGameObject)) {
+                    if (nextGameObject.canExecute(state, currentGameObject)) {
                         System.out.println(ANSI_GREEN + nextGameObject.getOptionMessage() + ANSI_RESET);
                     } else {
                         System.out.println(nextGameObject.getOptionMessage());
@@ -66,7 +66,7 @@ class GameController {
                 //changes nextGameObject to currentGameObject if possible
                 try {
                     GameObject nextGameObject = currentOptions.get(gameObjectNumber - 1);
-                    if (nextGameObject.canExecute(state, previousGameObject)) {
+                    if (nextGameObject.canExecute(state, currentGameObject)) {
                         previousGameObject = currentGameObject;
                         currentGameObject = nextGameObject;
                         break;
@@ -88,9 +88,11 @@ class GameController {
         System.out.println("Remaining steps:       " + state.getSteps());
         System.out.println("Remaining money:       " + state.getMoney() + "$");
         System.out.println("Your hunger status:    " + state.getHungerLevel());
-        System.out.println("Your happiness status: " + state.getGoalHappinessLevel());
+        System.out.println("Your hanger points:    " + state.getHungerPoints());
+        System.out.println("Your happiness status: " + state.getHappinessLevel());
+        System.out.println("Your happiness points: " + state.getHappinessPoints());
         System.out.println("Day no:                " + state.getDayCounter());
         System.out.println("Rent deadline, day:    " + state.getRentDeadline());
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + ANSI_RESET);
+        System.out.println("====================================" + ANSI_RESET);
     }
 }
