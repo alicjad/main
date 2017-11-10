@@ -37,29 +37,13 @@ public class EndDayCommand extends GameObject {
         int goalNumber = state.getGoalPackageNo();
         switch (goalNumber) {
             case 1:
-                if (state.getHappinessLevel() == state.getGoalHappinessLevel() && state.getEducationLevel() == state.getGoalEducationLevel()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return state.getHappinessLevel() == state.getGoalHappinessLevel() && state.getEducationLevel() == state.getGoalEducationLevel();
             case 2:
-                if (state.getFinancialLevel() == state.getGoalFinancialStatus() && state.getHappinessLevel() == state.getGoalHappinessLevel()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return state.getFinancialLevel() == state.getGoalFinancialStatus() && state.getHappinessLevel() == state.getGoalHappinessLevel();
             case 3:
-                if (state.getEducationLevel() == state.getGoalEducationLevel() && state.getGoalHungerLevel() == state.getGoalHungerLevel()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return state.getEducationLevel() == state.getGoalEducationLevel() && state.getGoalHungerLevel() == state.getGoalHungerLevel();
             case 4:
-                if (state.getFinancialLevel() == state.getGoalFinancialStatus() && state.getCurrentOccupation() == state.getGoalJobVacancy()) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return state.getFinancialLevel() == state.getGoalFinancialStatus() && state.getCurrentOccupation() == state.getGoalJobVacancy();
             default:
                 return false;
         }

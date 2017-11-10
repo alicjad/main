@@ -27,11 +27,7 @@ public class JobVacancy extends GameObject {
         if (this.requiredEducationLevel != state.getEducationLevel() || state.getExperiencePoints() != this.requiredExperiencePoints) {
             return false;
         }
-        if (state.getCurrentOccupation() == this) {
-            return false;
-        } else {
-            return true;
-        }
+        return state.getCurrentOccupation() != this;
     }
 
     public void execute(State state) {

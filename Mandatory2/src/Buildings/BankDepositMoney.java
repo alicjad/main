@@ -18,11 +18,7 @@ public class BankDepositMoney extends GameObject {
 
     @Override
     public Boolean canExecute(State state) {
-        if (state.getMoney() < amount) {
-            return false;
-        } else {
-            return true;
-        }
+        return state.getMoney() >= amount;
     }
 
     public void execute(State state) {

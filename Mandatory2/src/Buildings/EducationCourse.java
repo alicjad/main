@@ -28,11 +28,7 @@ public class EducationCourse extends GameObject {
         if (this.status == EducationCourseStatus.Enrolled && state.getSteps() < 10) {
             return false;
         }
-        if (this.status == EducationCourseStatus.Finished) {
-            return false;
-        } else {
-            return true;
-        }
+        return this.status != EducationCourseStatus.Finished;
     }
 
     public void execute(State state) {

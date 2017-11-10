@@ -14,11 +14,7 @@ public class Building extends GameObject {
 
     @Override
     public Boolean canExecute(State state) {
-        if (state.getSteps() < this.getNumberOfSteps()) {
-            return false;
-        } else {
-            return true;
-        }
+        return state.getSteps() >= this.getNumberOfSteps();
     }
 
     public void execute(State state) {

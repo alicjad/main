@@ -28,11 +28,7 @@ public class PawnShopItem extends GameObject {
         if (this.itemStatus == PawnShopItemStatus.ForSale && state.getMoney() < this.price) {
             return false;
         }
-        if (this.itemStatus == PawnShopItemStatus.Sold && state.getHappinessPoints() < this.happinessPoints / 2) {
-            return false;
-        } else {
-            return true;
-        }
+        return this.itemStatus != PawnShopItemStatus.Sold || state.getHappinessPoints() >= this.happinessPoints / 2;
     }
 
     public void execute(State state) {
