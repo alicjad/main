@@ -1,9 +1,9 @@
 package Game;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class GameObject{
+public abstract class GameObject {
+
     private List<GameObject> accessibleObjectList;
 
     public GameObject (){
@@ -12,8 +12,7 @@ public abstract class GameObject{
 
     public abstract Boolean canExecute(State state);
 
-    public void execute(State state)
-    {
+    public void execute(State state){
 
     }
 
@@ -29,20 +28,19 @@ public abstract class GameObject{
         this.accessibleObjectList.addAll(chosenGameObject);
     }
 
-    public final List<GameObject> getAccessibleObjects()
-    {
+    public final List<GameObject> getAccessibleObjects(){
+
         List<GameObject> accessibleObjectListCopy = new ArrayList<>();
         accessibleObjectListCopy.addAll(this.accessibleObjectList);
+
         return accessibleObjectListCopy;
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "";
     }
 
-    public String getOptionMessage()
-    {
+    public String getOptionMessage(){
         return "";
     }
 }

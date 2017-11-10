@@ -1,18 +1,17 @@
 package Buildings;
-
 import Game.EducationStateStatus;
 import Game.GameObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmploymentOffice extends Building {
 
-    public EmploymentOffice(){
+    public EmploymentOffice (){
         this.addAccessibleObjects(getAvailableJobs());
     }
 
-    public List<GameObject> getAvailableJobs() {
+    public List<GameObject> getAvailableJobs(){
+
         List<GameObject> availableJobs = new ArrayList<GameObject>();
         availableJobs.add(new JobVacancy("Factory Worker", 80,this, EducationStateStatus.notEducated, 0));
         availableJobs.add(new JobVacancy("Shift Manager", 120,this, EducationStateStatus.quiteEducated, 50));
@@ -23,8 +22,7 @@ public class EmploymentOffice extends Building {
         return availableJobs;
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "Welcome to the Employment Office";
     }
     public String getOptionMessage(){

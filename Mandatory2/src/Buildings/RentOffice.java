@@ -1,22 +1,19 @@
 package Buildings;
-
 import Game.GameObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RentOffice extends Building {
 
-    public RentOffice(){
+    public RentOffice (){
         this.addAccessibleObjects(getAvailableOptions());
     }
 
-    protected int getNumberOfSteps()
-    {
+    protected int getNumberOfSteps(){
         return 5;
     }
 
-    private List<GameObject> getAvailableOptions() {
+    private List<GameObject> getAvailableOptions(){
 
         List<GameObject> availableOptions = new ArrayList<GameObject>();
         availableOptions.add(new RentOfficePayment(this, 550, 7));
@@ -27,8 +24,7 @@ public class RentOffice extends Building {
         return availableOptions;
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "Welcome to the Rent Office!";
     }
     public String getOptionMessage(){

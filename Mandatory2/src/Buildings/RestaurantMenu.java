@@ -1,11 +1,11 @@
 package Buildings;
-
 import Game.GameObject;
 import Game.State;
 
 public class RestaurantMenu extends GameObject {
 
-    RestaurantMenu(Restaurant chosenRestaurant){
+    public RestaurantMenu (Restaurant chosenRestaurant){
+
         this.addAccessibleObject(new Burger("Bacon", 120, 5, 5, this));
         this.addAccessibleObject(new Burger("Cheese", 110, 4, 5,this));
         this.addAccessibleObject(new Burger("Chicken", 110, 4, 5, this));
@@ -28,8 +28,7 @@ public class RestaurantMenu extends GameObject {
         return true;
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "MENU: ";
     }
     public String getOptionMessage(){

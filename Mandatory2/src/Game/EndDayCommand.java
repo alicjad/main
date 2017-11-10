@@ -1,8 +1,8 @@
 package Game;
-
 import Buildings.RentOfficePaymentStatus;
 
 public class EndDayCommand extends GameObject {
+
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
 
@@ -12,6 +12,7 @@ public class EndDayCommand extends GameObject {
     }
 
     public void execute(State state){
+
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         if (checkGoals(state)){
             throw new GameEndException();
@@ -21,6 +22,7 @@ public class EndDayCommand extends GameObject {
             startNewDay(state);
         }
     }
+
     private Boolean checkGoals(State state){
         int goalNumber = state.getGoalPackageNo();
         switch (goalNumber){
@@ -53,6 +55,7 @@ public class EndDayCommand extends GameObject {
     }
 
     private void enforceRent(State state){
+
         if (state.getRentStatus() == RentOfficePaymentStatus.NotPaid){
             printReminder(ANSI_RED+"REMEMBER to pay your rent!");
             printReminder("If you don't pay within 7 days you will be HOMELESS!"+ANSI_RESET);
@@ -61,7 +64,9 @@ public class EndDayCommand extends GameObject {
             }
         }
     }
+
     private void startNewDay (State state){
+
         state.setSteps(getNumberOfNextDaySteps(state));
         if (state.getHappinessLevel() == HappinessStateStatus.notHappy){
             state.setSteps(state.getSteps() - 10);
@@ -75,12 +80,12 @@ public class EndDayCommand extends GameObject {
     private void printReminder(String reminder){
         System.out.println(reminder);
     }
-    protected int getNumberOfSteps()
-    {
+    protected int getNumberOfSteps(){
         return 0;
     }
 
     protected int getNumberOfNextDaySteps(State state){
+
         if (state.getHungerLevel() == HungerStateStatus.Full){
             return 155;
         }
@@ -101,8 +106,7 @@ public class EndDayCommand extends GameObject {
         }
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "Ending day...";
     }
     public String getOptionMessage(){

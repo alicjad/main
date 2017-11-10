@@ -1,5 +1,4 @@
 package Buildings;
-
 import Game.GameObject;
 import Game.State;
 
@@ -34,6 +33,7 @@ public class PawnShopItem extends GameObject {
     }
 
     public void execute(State state){
+
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         if (itemStatus == PawnShopItemStatus.ForSale){
             buyItem(state);
@@ -43,25 +43,26 @@ public class PawnShopItem extends GameObject {
         }
     }
 
-    protected int getNumberOfSteps()
-    {
+    protected int getNumberOfSteps(){
         return 0;
     }
 
     private void buyItem (State state){
+
         state.setMoney(state.getMoney() - this.price);
         state.setHappinessPoints(state.getHappinessPoints() + this.happinessPoints);
         this.itemStatus = PawnShopItemStatus.Sold;
     }
 
     private void sellItem (State state){
+
         state.setMoney(state.getMoney() + this.price/2);
         state.setHappinessPoints(state.getHappinessPoints() - this.happinessPoints/2);
         this.itemStatus = PawnShopItemStatus.ForSale;
     }
 
-    public String getOptionMessage()
-    {
+    public String getOptionMessage(){
+
         if (this.itemStatus == PawnShopItemStatus.ForSale){
             return "Buy "+ name + " for "+price+"$ and gain "+happinessPoints+" happiness points!";
         }

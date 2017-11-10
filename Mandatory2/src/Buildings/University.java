@@ -1,16 +1,15 @@
 package Buildings;
-
 import Game.GameObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class University extends Building {
-    public University(){
+
+    public University (){
         this.addAccessibleObjects(this.getAvailableCourses());
     }
 
-    private List<GameObject> getAvailableCourses() {
+    private List<GameObject> getAvailableCourses(){
 
         List<GameObject> availableCourses = new ArrayList<GameObject>();
         availableCourses.add(new EducationCourse("Math", 100,  this));
@@ -22,8 +21,7 @@ public class University extends Building {
         return availableCourses;
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "Welcome to the Wasteland University!";
     }
     public String getOptionMessage(){

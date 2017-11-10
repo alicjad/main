@@ -1,8 +1,8 @@
 package Buildings;
-
 import Game.State;
 
 public class Home extends Building {
+
     public void execute(State state) {
         super.execute(state);
         relax(state);
@@ -12,8 +12,7 @@ public class Home extends Building {
         state.setHappinessPoints(state.getHappinessPoints()+ 10);
     }
 
-    public String getWelcomeMessage()
-    {
+    public String getWelcomeMessage(){
         return "Home sweet home!";
     }
     public String getOptionMessage(){

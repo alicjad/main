@@ -1,10 +1,6 @@
 package Buildings;
-
 import Game.GameObject;
 import Game.State;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Food extends GameObject {
 
@@ -13,7 +9,7 @@ public class Food extends GameObject {
     protected int hungerPoints;
     protected int happinessPoints;
 
-    public Food(String name, int price, int hungerPoints, int happinessPoints, RestaurantMenu parent) {
+    public Food (String name, int price, int hungerPoints, int happinessPoints, RestaurantMenu parent) {
         this.name = name;
         this.price = price;
         this.hungerPoints = hungerPoints;
@@ -32,18 +28,17 @@ public class Food extends GameObject {
     }
 
     public void execute(State state){
+
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         state.setMoney(state.getMoney() - this.price);
         state.setHungerPoints(state.getHungerPoints() + hungerPoints);
         state.setHappinessPoints(state.getHappinessPoints() + happinessPoints);
     }
-    protected int getNumberOfSteps()
-    {
+    protected int getNumberOfSteps(){
         return 0;
     }
 
-    public String getOptionMessage()
-    {
+    public String getOptionMessage(){
         return name+" for "+price+"$"; //--> get "+hungerPoints+" hunger points and "+happinessPoints+" happiness points!";
     }
 }

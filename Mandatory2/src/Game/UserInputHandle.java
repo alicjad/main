@@ -1,5 +1,4 @@
 package Game;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,7 +16,8 @@ public class UserInputHandle {
                 Scanner a = new Scanner(System.in);
                 int answer = a.nextInt();
                 return answer;
-            } catch (InputMismatchException ex) {
+            }
+            catch (InputMismatchException ex) {
                 System.out.println("This is not a number");
                 System.out.println("Try again");
             }

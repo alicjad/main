@@ -1,9 +1,9 @@
 package Game;
-
 import Buildings.JobVacancy;
 import Buildings.RentOfficePaymentStatus;
 
 public class State {
+
     private int steps;
     private int hungerPoints;
     private int happinessPoints;
@@ -11,6 +11,7 @@ public class State {
     private int experiencePoints;
     private int money;
     public JobVacancy currentOccupation;
+
     private int dayCounter;
     private int rentDeadline;
 
@@ -28,12 +29,12 @@ public class State {
         setEducationPoints(0);
         setMoney(500);
         setDayCounter(0);
-
     }
 
     public JobVacancy getCurrentOccupation(){
         return currentOccupation;
     }
+
     public void setCurrentOccupation(JobVacancy currentOccupation){
         this.currentOccupation = currentOccupation;
     }
@@ -48,6 +49,7 @@ public class State {
 
 
     public RentOfficePaymentStatus getRentStatus(){
+
         if (dayCounter <= rentDeadline){
             return RentOfficePaymentStatus.Paid;
         }
@@ -59,8 +61,8 @@ public class State {
         return RentOfficePaymentStatus.NotPaid;
     }
 
-
     public HungerStateStatus getHungerLevel (){
+
         if (hungerPoints < 20){
             return HungerStateStatus.starving;
         }
@@ -77,10 +79,12 @@ public class State {
             return HungerStateStatus.quiteFull;
         }
         else {
-            return HungerStateStatus.Full;}
+            return HungerStateStatus.Full;
+        }
     }
 
     public HappinessStateStatus getHappinessLevel(){
+
         if (happinessPoints < 20){
             return HappinessStateStatus.depressed;
         }
@@ -99,6 +103,7 @@ public class State {
     }
 
     public EducationStateStatus getEducationLevel(){
+
         if (educationPoints <= 20){
             return EducationStateStatus.notEducated;
         }
@@ -117,6 +122,7 @@ public class State {
     }
 
     public FinancialStateStatus getFinancialLevel(){
+
         if (money < 500){
             return FinancialStateStatus.poor;
         }
@@ -169,8 +175,12 @@ public class State {
         this.educationPoints = educationPoints;
     }
 
-    public int getExperiencePoints(){return  experiencePoints;}
-    public void setExperiencePoints(int experiencePoints){this.experiencePoints = experiencePoints;}
+    public int getExperiencePoints(){
+        return  experiencePoints;
+    }
+    public void setExperiencePoints(int experiencePoints){
+        this.experiencePoints = experiencePoints;
+    }
 
     public GameObject getGoalJobVacancy() {
         return goalJobVacancy;
@@ -219,7 +229,6 @@ public class State {
     public int getRentDeadline() {
         return rentDeadline;
     }
-
     public void setRentDeadline(int rentDeadline) {
         this.rentDeadline = rentDeadline;
     }

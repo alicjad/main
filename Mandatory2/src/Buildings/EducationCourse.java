@@ -1,9 +1,9 @@
 package Buildings;
-
 import Game.GameObject;
 import Game.State;
 
 public class EducationCourse extends GameObject {
+
     protected String name;
     protected int price;
     protected University parent;
@@ -39,11 +39,12 @@ public class EducationCourse extends GameObject {
         state.setSteps(state.getSteps() - this.getNumberOfSteps());
         study(state);
     }
-    protected int getNumberOfSteps()
-    {
+    protected int getNumberOfSteps(){
         return 0;
     }
-    protected int getPrice() {return price;}
+    protected int getPrice(){
+        return price;
+    }
 
     private void study(State state){
         if (this.status == EducationCourseStatus.NotEnrolled){
@@ -59,12 +60,13 @@ public class EducationCourse extends GameObject {
                 state.setEducationPoints(state.getEducationPoints()+20);
                 state.setHappinessPoints(state.getHappinessPoints() + 20);
             }
-            else{ studyCounter += 1;}
+            else{
+                studyCounter += 1;
+            }
         }
     }
 
-    public String getOptionMessage()
-    {
+    public String getOptionMessage(){
         if (this.status == EducationCourseStatus.NotEnrolled){
             return "Start "+name+" course for "+price+" $";
         }

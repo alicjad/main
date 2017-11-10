@@ -1,8 +1,8 @@
 package Game;
-
 import Buildings.*;
 
 public class GameBoardCreator {
+
     protected GameObject EndDayCommand;
     protected GoalSetter GoalSetter;
 
@@ -54,12 +54,13 @@ public class GameBoardCreator {
         Home.addAccessibleObject(Restaurant);
 
         EndDayCommand.addAccessibleObject(Home);
-        GoalSetter.addAccessibleObject(Home);
 
+        GoalSetter.addAccessibleObject(Home);
         GoalSetter.setEmploymentOffice(EmploymentOffice);
 
         return getGoalSetter();
     }
+
     public GameObject getEndDayCommand(){
         return this.EndDayCommand;
     }

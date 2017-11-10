@@ -1,5 +1,4 @@
 package Game;
-
 import Buildings.EmploymentOffice;
 
 public class GoalSetter extends GameObject{
@@ -66,8 +65,8 @@ public class GoalSetter extends GameObject{
             }
         }
     }
-    public String getWelcomeMessage()
-    {
+
+    public String getWelcomeMessage(){
         return "GREAT, YOU CHOSE YOUR GAME GOALS!";
     }
 }

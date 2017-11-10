@@ -1,8 +1,8 @@
 package Game;
-
 import java.util.List;
 
 public class GameController {
+
     State state = new State();
     GameObject currentGameObject;
     UserInputHandle userInput = new UserInputHandle();
@@ -14,18 +14,19 @@ public class GameController {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_RESET = "\u001B[0m";
 
-    public void askUserForNextStep()
-    {
+    public void askUserForNextStep(){
+
         currentGameObject = gameBoardCreator.getInitialGameObject();
 
-        while (true) {
+        while (true){
             List<GameObject> currentOptions = currentGameObject.getAccessibleObjects();
             if(currentGameObject.isEndDayOptionAllowed()== true) {
                 currentOptions.add(gameBoardCreator.getEndDayCommand());
             }
             try {
                 currentGameObject.execute(state);
-            } catch (GameEndException ex){
+            }
+            catch (GameEndException ex){
                 System.out.println(ANSI_RED + "---> CONGRATULATIONS <---");
                 System.out.println("ALL GOALS ACHEIVED! YOU WON!"+ANSI_RESET);
                 return;
@@ -38,8 +39,8 @@ public class GameController {
 
             System.out.println(ANSI_PURPLE+ currentGameObject.getWelcomeMessage() + ANSI_RESET);
 
-            while (true) {
-                for (int i = 0; i < currentOptions.size(); ++i) {
+            while (true){
+                for (int i = 0; i < currentOptions.size(); ++i){
                     System.out.print(i + 1);
                     System.out.print(". ");
                     GameObject nextGameObject = currentOptions.get(i);
@@ -60,7 +61,8 @@ public class GameController {
                     else {
                         System.out.println(ANSI_RED+ "You can not choose this option now." + ANSI_RESET);
                     }
-                } catch (IndexOutOfBoundsException ex) {
+                }
+                catch (IndexOutOfBoundsException ex){
                     System.out.println(ANSI_RED+ "There is no option with such number.");
                     System.out.println("Choose another number." + ANSI_RESET);
                 }

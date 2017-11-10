@@ -2,12 +2,11 @@ package Buildings;
 
 public class Restaurant extends Building{
 
-    public Restaurant(){
+    public Restaurant (){
         this.addAccessibleObject(new RestaurantMenu(this));
     }
 
-    public String getWelcomeMessage()
-        {
+    public String getWelcomeMessage(){
             return "Welcome to the Burger Palace restaurant!";
         }
     public String getOptionMessage(){

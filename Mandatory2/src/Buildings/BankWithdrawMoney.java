@@ -1,5 +1,4 @@
 package Buildings;
-
 import Game.GameObject;
 import Game.State;
 
@@ -7,7 +6,7 @@ public class BankWithdrawMoney extends GameObject {
     protected Bank parent;
     protected int amount;
 
-    public BankWithdrawMoney(Bank parent, int amount){
+    public BankWithdrawMoney (Bank parent, int amount){
         this.parent = parent;
         this.amount = amount;
         this.addAccessibleObject(this.parent);
@@ -38,8 +37,7 @@ public class BankWithdrawMoney extends GameObject {
         parent.setBalance(parent.getBalance()- amount);
     }
 
-    public String getOptionMessage()
-    {
+    public String getOptionMessage(){
         return "Withdraw "+ amount + " $";
     }
 }
