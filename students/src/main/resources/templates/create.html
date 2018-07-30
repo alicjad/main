@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Student Administration - Create student</title>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/" id="logo">KEA</a>
+        <a href="/">Students </a>
+        <a href="/courses">Courses</a>
+    </div>
+</nav>
+
+<h1 id="cStudent">Create Student</h1>
+
+<div class="container">
+
+    <form action="/create" method="post">
+        <p class="wtr">First Name:</p>
+        <input type="text" name="firstName"/>
+        <p class="wtr">Last Name:</p>
+        <input type="text" name="lastName"/>
+        <p class="wtr">Date:</p>
+        <input type="date" name="enrollmentDate"/>
+        <p class="wtr">cpr:</p>
+        <input type="text" name="cpr"/>
+        <p class="wtr"></p>
+        <input type="submit" value="Create" class="btn btn-create"/>
+
+    </form>
+
+</div>
+
+</body>
+</html>

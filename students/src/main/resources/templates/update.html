@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Edit student information</title>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/" id="logo">KEA</a>
+        <a href="/">Students </a>
+        <a href="/courses">Courses</a>
+    </div>
+</nav>
+
+<h1>Update</h1>
+
+<div class="containter">
+
+    <form action="/update" method="post">
+
+        <input type="hidden" name="id" th:value="${student.id}"/>
+        <p>First name: <input type="text" name="firstName" th:value="${student.firstName}"/></p>
+        <p>Last name: <input type="text" name="lastName" th:value="${student.lastName}"/></p>
+        <p>Enrollment date: <input type="date" name="enrollmentDate" th:value="${student.enrollmentDate}"/></p>
+        <p>cpr: <input type="text" name="cpr" th:value="${student.cpr}"/></p>
+        <input type="submit" value="Edit" class="btn btn-create"/>
+
+    </form>
+
+</div>
+
+</body>
+</html>

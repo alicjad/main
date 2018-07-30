@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title th:text="'Title: ' + ${course.title}"></title>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/" id="logo">KEA</a>
+        <a href="/">Students </a>
+        <a href="/courses">Courses</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1 th:text="'Title: ' + ${course.title}"></h1>
+
+    <p th:text="'Start date: ' + ${course.startDate}"></p>
+    <p th:text="'ETCS: ' + ${course.etcs}"></p>
+
+    <h2 th:text="Enrolled Students"></h2>
+
+    <a href="" class="btn btn-create">Enroll Students</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Student Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Enrollment Date</th>
+            <th>Cpr</th>
+            <th></th>
+        </tr>
+        </thead>
+    </table>
+
+</div>
+
+</body>
