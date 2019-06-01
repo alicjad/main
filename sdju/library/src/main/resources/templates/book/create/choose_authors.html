@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose authors</title>
+    <link rel="stylesheet" href="table_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1>Authors</h1>
+    <a href="/add_author" class="button">Add new author</a>
+    <form method="post" action="/save_authors">
+        <article>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each = "author: ${authors}">
+                <td th:text="${author.authorId}"></td>
+                <td th:text="${author.authorName}"></td>
+                <td><input type="checkbox" name='"${author.authorName}"' value='th:text="${author.authorId}"'></td>
+            </tr>
+            </tbody>
+        </table>
+        </article>
+        <input type="submit" class="button button-details" value="Continue" />
+    </form>
+</div>
+</body>
+</html>

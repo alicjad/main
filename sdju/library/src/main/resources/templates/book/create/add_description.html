@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New description</title>
+    <link rel="stylesheet" href="form_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <form action="/add_description" method="post">
+        <h1>Enter book data:</h1>
+        <p>Title:</p>
+        <input type="text" name="title" />
+        <p>
+            <label>Select category</label>
+            <select id = "category">
+                <option value = "1">textbook</option>
+                <option value = "2">adventure</option>
+                <option value = "3">crime fiction</option>
+                <option value = "4">romance</option>
+            </select>
+        </p>
+
+        <input type="submit" value="Continue" class="btn btn-create"/>
+        </p>
+    </form>
+</div>
+</body>
+</body>
+</html>

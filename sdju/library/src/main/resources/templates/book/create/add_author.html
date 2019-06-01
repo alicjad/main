@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Author</title>
+    <link rel="stylesheet" href="form_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <form action="/add_author" method="post">
+        <h1>Enter author data:</h1>
+        <p>Name:</p>
+        <input type="text" name="authorName" />
+        <p>
+        <input type="submit" value="Continue" class="btn btn-create"/>
+        </p>
+    </form>
+</div>
+</body>
+</html>

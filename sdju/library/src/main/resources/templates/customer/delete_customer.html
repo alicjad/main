@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete customer</title>
+    <link rel="stylesheet" href="form_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<h1>Are you sure you want to delete?</h1>
+<h2 th:text="'Customer:' + ' '+ ${customer.customerName}"></h2>
+
+<form action="/delete_customer" method="post">
+    <input type="hidden" th:field="${customer.customerId}" />
+    <input type="submit" value="YES" class="delete"/>
+    <input type="submit" value="NO" formmethod="get" formaction="/customers">
+</form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+body{
+    margin:0;
+    font-family: Montserrat, sans-serif;
+}
+
+.construction_img{
+    height: 50%;
+    width: 50%;
+    position: fixed;
+}
+
+div{
+    margin-left: 1%;
+    margin-top:1.5%;
+}
+
+.button{
+    background-color: darkred;
+    color: white;
+    font-size: 20px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+
+img{
+    margin-left: 25%;
+    margin-top: 0%;
+    margin-right: 25%;
+}
+p{  font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 8%;
+}

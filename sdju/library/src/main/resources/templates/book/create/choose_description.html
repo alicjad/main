@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Select description</title>
+    <link rel="stylesheet" href="table_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1>Choose existing description</h1>
+    <a href="/choose_authors" class="button">Add new description</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Authors</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "bookDescription: ${bookDescriptions}">
+            <td th:text="${bookDescription.title}"></td>
+            <td th:text="${bookDescription.category}"></td>
+            <td th:text="${bookDescription.getAuthorsAsOneString()}">
+            <td> <a th:href="'/save_bookDescription?descriptionId=' +${bookDescription.descriptionId}" class="button button-details">Choose</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

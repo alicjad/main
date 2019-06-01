@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="form_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+    <title>New Book</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <form action="/add_book" method="post">
+        <h1>Enter book data:</h1>
+        <p>Library id number:</p>
+        <select name="library_id">
+            <option value="1">1</option>
+        </select>
+        <p>
+        <input type="submit" value="Continue" class="btn btn-create"/>
+        </p>
+    </form>
+</div>
+</body>
+</html>

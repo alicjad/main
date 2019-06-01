@@ -1,0 +1,55 @@
+* {
+    color:white;
+    font-family: Montserrat, serif;
+}
+
+
+body{
+    margin:0;
+    background: url("http://www.nationalpedia.com/wp-content/uploads/2017/11/International-Archives-Day-June-09.png") no-repeat center center fixed;
+    background-size: cover;
+    -webkit-filter: grayscale(100%);
+}
+
+.container{
+    text-align: center;
+    position: relative;
+    top: 15vh;
+    left: 35vw;
+//margin-left: 38%;
+//margin-top: 8%;
+    font-size: 30px;
+    max-width: 30vw;
+}
+input[type=text],input[type=password]{
+    color: black;
+    border: 2px solid #492270;
+    border-radius: 4px;
+    width:100%;
+    font-size: 20px;
+}
+
+.button {
+    width:40%;
+    font-family: Montserrat;
+    background-color: #492270;
+    color: white;
+    font-size: 20px;
+    border:#492270;
+    padding: 20px 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+.button:hover{
+    background-color:white;
+    color:black;
+}
+
+#error_message{
+    position: relative;
+    top: 5%;
+
+}
+
+

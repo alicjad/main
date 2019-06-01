@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Rentals</title>
+    <link rel="stylesheet" href="navbar_style.css"/>
+    <link rel="stylesheet" href="table_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container" id="reservations">
+    <h1> List of rentals</h1>
+    <a class="button" href="/add_rental">Add new rental</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer's ID</th>
+            <th>Book ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Payment status</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="rental: ${rentals}">
+            <td th:text="${rental.rentalId}"></td>
+            <td th:text="${rental.customerId}"></td>
+            <td th:text="${rental.bookId}"></td>
+            <td th:text="${rental.startDate}"></td>
+            <td th:text="${rental.endDate}"></td>
+            <td th:text="${rental.paymentStatus}"></td>
+            <td>
+                <a class="button button-details" href="'/end_rental?rental_id=' + ${rental.rentalId}">End rental</a>
+                <a class="button button-delete" th:href="'/delete_rental?rental_id=' + ${rental.rentalId}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

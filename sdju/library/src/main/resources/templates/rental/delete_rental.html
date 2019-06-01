@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete rental</title>
+    <link rel="stylesheet" href="form_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<div class="container">
+    <h1 th:text="'Rental no:' + ' '+ ${rental.rentalId}"></h1>
+    <h2>This rental will be deleted from the rentals history.</h2>
+    <form method="post" action="/delete_rental">
+        <input type="hidden" th:value="${rental.rentalId}" name="rental_id">
+        <input type="submit" value="Delete" class="delete">
+        <input type="submit" value="Return" formmethod="get" formaction="/rentals">
+    </form>
+</div>
+</body>
+</html>

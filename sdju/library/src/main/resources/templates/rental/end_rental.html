@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>End rental</title>
+    <link rel="stylesheet" href="form_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1 th:text="'End rental no:' + ' '+ ${rental.rentalId}"></h1>
+    <h2 th:text="'Overdue penalty: ' + ${rental.getPenalty()}"></h2>
+    <form method="post" action="/end_rental">
+        <input type="hidden" th:value="${rental.rentalId}" name="rental_id">
+        <input type="submit" value="Delete" class="delete">
+        <input type="submit" value="Return" formmethod="get" formaction="/rentals">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update rental</title>
+    <link rel="stylesheet" href="navbar_style.css"/>
+    <link rel="stylesheet" href="table_style.css"/>
+    <link rel="stylesheet" href="form_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container" id="reservation">
+    <h1>Update rental</h1>
+    <form action="/update_rental" method="post">
+
+        <h2>Status</h2>
+        <article th:switch="${session.rental.paymentStatus}">
+            <select name="paymentStatus" th:case="'no_charge'">
+                <option value="unpaid">unpaid</option>
+                <option value="paid">paid</option>
+            </select>
+            <select name="paymentStatus" th:case="'unpaid'">
+                <option value="paid">paid</option>
+            </select>
+
+        </article>
+
+        <p>
+            <input type="submit" value="Update Rental" class="button" />
+        </p>
+    </form>
+</div>
+</body>
+</html>
