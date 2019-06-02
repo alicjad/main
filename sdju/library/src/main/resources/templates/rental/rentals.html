@@ -40,8 +40,8 @@
             <td th:text="${rental.endDate}"></td>
             <td th:text="${rental.paymentStatus}"></td>
             <td>
-                <a class="button button-details" href="'/end_rental?rental_id=' + ${rental.rentalId}">End rental</a>
-                <a class="button button-delete" th:href="'/delete_rental?rental_id=' + ${rental.rentalId}">Delete</a>
+                <a class="button button-details" href="'/end_rental?rentalId=' + ${rental.rentalId}">End rental</a>
+                <a class="button button-delete" th:href="'/delete_rental?rentalId=' + ${rental.rentalId}">Delete</a>
             </td>
         </tr>
         </tbody>

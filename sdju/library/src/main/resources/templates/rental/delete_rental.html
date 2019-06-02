@@ -11,7 +11,7 @@
     <h1 th:text="'Rental no:' + ' '+ ${rental.rentalId}"></h1>
     <h2>This rental will be deleted from the rentals history.</h2>
     <form method="post" action="/delete_rental">
-        <input type="hidden" th:value="${rental.rentalId}" name="rental_id">
+        <input type="hidden" th:field="${rental.rentalId}">
         <input type="submit" value="Delete" class="delete">
         <input type="submit" value="Return" formmethod="get" formaction="/rentals">
     </form>

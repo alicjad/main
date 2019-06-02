@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sdju.library.applicationLogic.RentalManager;
@@ -41,14 +42,15 @@ public class RentalController {
     }
 
     @GetMapping("/delete_rental")
-    public String deleteRental(@RequestParam("rental_id") int rental_id, Model model) {
-        model.addAttribute("rental_id", rentalManager.getRental(rental_id));
+    public String deleteRental(@RequestParam("rentalId") int rentalId, Model model) {
+        Rental rental = rentalManager.getRental(rentalId);
+        model.addAttribute("rental", rental);
         return "rental/delete_rental";
     }
 
     @PostMapping("/delete_rental")
-    public String confirmDelete(@RequestParam("rental_id") int rental_id) {
-        rentalManager.deleteRental(rental_id);
+    public String deleteRental(@ModelAttribute Rental rental) {
+        rentalManager.deleteRental(rental.getRentalId());
         return "redirect:/rentals";
     }
 
