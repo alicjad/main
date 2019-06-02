@@ -114,13 +114,8 @@ public class RentalManager {
         if (rental != null) {
             double penalty = this.calculatePenalty(rental);
             rental.setPenalty(penalty);
-            if(penalty==0){
-                rental.setEndDate(LocalDate.now());
-                //change book status here?
-            }else {
-                rental.setPaymentStatus(RentalPaymentStatus.unpaid);
-                //change book status here?
-            }
+            rental.setEndDate(LocalDate.now());
+            //change book status here?
             return this.uploadRental(rental);
         }
         return false;

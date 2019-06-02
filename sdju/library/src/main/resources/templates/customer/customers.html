@@ -25,7 +25,6 @@
             <th>Full name</th>
             <th>Email</th>
             <th>Phone number</th>
-            <th>Blocked account</th>
             <th></th>
         </tr>
         </thead>
@@ -36,7 +35,6 @@
             <td th:text="${customer.customerName}"></td>
             <td th:text="${customer.emailAddress}"></td>
             <td th:text="${customer.phoneNumber}"></td>
-            <td th:text="${customer.blockedAccount} ? 'Yes' : 'No'"></td>
             <td><a class="button button-update" th:href="'update_customer?customerId=' + ${customer.customerId}">Update</a>
                 <a class="button button-delete" th:href="'delete_customer?customerId=' + ${customer.customerId}">Delete</a></td>
         </tr>

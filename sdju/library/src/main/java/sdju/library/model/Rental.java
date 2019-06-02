@@ -8,7 +8,6 @@ public class Rental {
     private int customerId;
     private LocalDate startDate;
     private LocalDate endDate;
-    private RentalPaymentStatus paymentStatus;
     private int bookId;
     private double penalty;
 
@@ -19,10 +18,6 @@ public class Rental {
 
     public void setPenalty(double penalty) {
         this.penalty = penalty;
-    }
-
-    public Rental(){
-        this.paymentStatus = RentalPaymentStatus.no_charge;
     }
 
     public int getRentalId() {
@@ -57,14 +52,6 @@ public class Rental {
         this.endDate = endDate;
     }
 
-    public RentalPaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(RentalPaymentStatus paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
     public int getBookId() {
         return bookId;
     }
@@ -80,8 +67,8 @@ public class Rental {
                 ", customerId=" + customerId +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", paymentStatus=" + paymentStatus +
                 ", bookId=" + bookId +
+                ", penalty=" + penalty +
                 '}';
     }
 }

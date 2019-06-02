@@ -6,21 +6,14 @@ public class Customer {
     private String customerName;
     private String emailAddress;
     private String phoneNumber;
-    private boolean blockedAccount;
 
     public Customer(int customerId, String customerName, String emailAddress,
-                    String phoneNumber, boolean blockedAccount) {
+                    String phoneNumber) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
-        this.blockedAccount = blockedAccount;
     }
-
-    public Customer(){
-        this.blockedAccount = false;
-    }
-
     public int getCustomerId() {
         return customerId;
     }
@@ -53,22 +46,13 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public boolean isBlockedAccount() {
-        return blockedAccount;
-    }
-
-    public void setBlockedAccount(boolean blockedAccount) {
-        this.blockedAccount = blockedAccount;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
                 "customerId=" + customerId +
                 ", customerName='" + customerName + '\'' +
                 ", emailAddress='" + emailAddress + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", blockedAccount=" + blockedAccount +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }

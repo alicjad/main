@@ -74,13 +74,12 @@ public class RentalRepository {
     }
 
     /**
-     * This method update: end_date and payment status of the rental
+     * This method update: end_date of the rental
      */
     public void update (Rental rental) throws SQLException {
-        statement = connector.getConnection().prepareStatement("UPDATE rental SET end_date=?, payment_status=? WHERE rental_id=?;");
+        statement = connector.getConnection().prepareStatement("UPDATE rental SET end_date=? WHERE rental_id=?;");
         statement.setDate(1, Date.valueOf(rental.getEndDate()));
-        statement.setInt(2, rental.getPaymentStatus().getValue());
-        statement.setInt(3, rental.getRentalId());
+        statement.setInt(2, rental.getRentalId());
         statement.execute();
         statement = null;
     }
@@ -94,7 +93,6 @@ public class RentalRepository {
             rental.setRentalId(resultSet.getInt("rental_id"));
             rental.setStartDate(resultSet.getDate("start_date").toLocalDate());
             rental.setEndDate(resultSet.getDate("end_date").toLocalDate());
-            rental.setPaymentStatus(RentalPaymentStatus.valueOf(resultSet.getInt("payment_status")));
             rental.setBookId(resultSet.getInt("book_id"));
             rental.setCustomerId(resultSet.getInt("customer_id"));
             rentals.add(rental);
@@ -112,7 +110,6 @@ public class RentalRepository {
             rental.setRentalId(resultSet.getInt("rental_id"));
             rental.setStartDate(resultSet.getDate("start_date").toLocalDate());
             rental.setEndDate(resultSet.getDate("end_date").toLocalDate());
-            rental.setPaymentStatus(RentalPaymentStatus.valueOf(resultSet.getInt("payment_status")));
             rental.setBookId(resultSet.getInt("book_id"));
             rental.setCustomerId(resultSet.getInt("customer_id"));
         }

@@ -30,14 +30,15 @@ public class RentalController {
     }
 
     @GetMapping("/end_rental")
-    public String endRental(Model model, @RequestParam("rentalId") int rentalId){
-        model.addAttribute("rental_id", rentalId);
+    public String endRental(@RequestParam("rentalId") int rentalId, Model model){
+        Rental rental = rentalManager.getRental(rentalId);
+        model.addAttribute("rental", rental);
         return "rental/end_rental";
     }
 
     @PostMapping("/end_rental")
-    public String confirmEndRental(@RequestParam("rentalId") int rentalId){
-        rentalManager.endRental(rentalId);
+    public String confirmEndRental(@ModelAttribute Rental rental){
+        rentalManager.endRental(rental.getRentalId());
         return "redirect:/rentals";
     }
 

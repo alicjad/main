@@ -32,8 +32,7 @@ public class CustomerDbRepository {
         result = statement.executeQuery();
         while (result.next()){
             customers.add(new Customer(result.getInt("customer_id"), result.getString("name"),
-                    result.getString("email"), result.getString("phone_number"),
-                    result.getBoolean("blocked_account")));
+                    result.getString("email"), result.getString("phone_number")));
         }
         statement = null;
         result = null;
@@ -42,11 +41,10 @@ public class CustomerDbRepository {
 
     public void create(Customer customer) throws SQLException {
         System.out.println(customer);
-        statement = connector.getConnection().prepareStatement("INSERT INTO customer(name, email, phone_number, blocked_account) VALUES (?,?,?,?)");
+        statement = connector.getConnection().prepareStatement("INSERT INTO customer(name, email, phone_number) VALUES (?,?,?)");
         statement.setString(1, customer.getCustomerName());
         statement.setString(2, customer.getEmailAddress());
         statement.setString(3, customer.getPhoneNumber());
-        statement.setBoolean(4, customer.isBlockedAccount());
         statement.execute();
         statement = null;
     }
@@ -58,8 +56,7 @@ public class CustomerDbRepository {
         Customer customer = null;
         if (result.next()){
             customer = new Customer(result.getInt("customer_id"), result.getString("name"),
-                    result.getString("email"), result.getString("phone_number"),
-                    result.getBoolean("blocked_account"));
+                    result.getString("email"), result.getString("phone_number"));
         }
         statement = null;
         result = null;
@@ -73,8 +70,7 @@ public class CustomerDbRepository {
         Customer customer = null;
         if (result.next()){
             customer = new Customer(result.getInt("customer_id"), result.getString("name"),
-                    result.getString("email"), result.getString("phone_number"),
-                    result.getBoolean("blocked_account"));
+                    result.getString("email"), result.getString("phone_number"));
         }
         statement = null;
         result = null;
