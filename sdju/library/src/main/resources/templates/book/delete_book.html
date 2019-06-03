@@ -13,6 +13,7 @@
         <li><a href="books">Books</a></li>
         <li><a href="rentals">Rentals</a></li>
         <li><a href="customers">Customers</a></li>
+        <li id="logout"><a href="/logout" th:text="'Logout: ' + ${session.user.username}" th:unless="${session.user == null}">Logout</a>
     </ul>
 </nav>
 <div class="container">
