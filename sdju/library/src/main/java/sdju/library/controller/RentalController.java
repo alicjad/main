@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import sdju.library.applicationLogic.RentalManager;
+import sdju.library.model.Book;
+import sdju.library.model.Customer;
 import sdju.library.model.Rental;
 
+import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -55,5 +59,34 @@ public class RentalController {
         return "redirect:/rentals";
     }
 
+    @GetMapping("/choose_book")
+    public String chooseBook(HttpSession session, Model model){
+        Rental rental = rentalManager.startRental(LocalDate.now());
+        session.setAttribute("rental", rental);
+        List<Book> availableBooks;
+        availableBooks = rentalManager.getAvailableBooks(rental);
+        model.addAttribute("books", availableBooks);
+        return "rental/create/choose_book";
+    }
+
+    @GetMapping("/save_chosenBook")
+    public String saveChosenBook(@RequestParam("bookId") int bookId,
+                             HttpSession session, Model model){
+        Rental rental = (Rental)session.getAttribute("rental");
+        rentalManager.saveBook(rental, bookId);
+        List<Customer> eligibleCustomers;
+        eligibleCustomers = rentalManager.getEligibleCustomers(rental);
+        model.addAttribute("customers", eligibleCustomers);
+        return "rental/create/choose_customer";
+    }
+
+    @GetMapping("/save_customer")
+    public String saveCustomer(@RequestParam("customerId")int customerId,
+                               HttpSession session){
+        Rental rental = (Rental)session.getAttribute("rental");
+        rentalManager.saveCustomer(rental, customerId);
+        rentalManager.saveRental(rental);
+        return "redirect:/rentals";
+    }
 
 }

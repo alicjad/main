@@ -18,8 +18,9 @@ public class Book {
         this.bookStatus = BookStatus.available;
     }
 
+    //this method is used in books.html, gets book status for UI
     public String getStatus(){
-        return bookStatus.toString();
+        return this.bookStatus.toString();
     }
     public void setBookStatus(int enamValue){
         this.bookStatus = BookStatus.valueOf(enamValue);

@@ -31,25 +31,6 @@ public class RentalRepository {
         this.connector = connector;
     }
 
-    public void getAvailableBookIds(LocalDate startDate, LocalDate endDate, List<Integer> allBookIds) throws SQLException {
-
-        statement = connector.getConnection().prepareStatement("SELECT book_id from rental " +
-                "where end_date != '1900-01-01'" +
-                "AND (end_date > ? OR end_date = ?)");
-        statement.setDate(1, Date.valueOf(endDate));
-        statement.setDate(2, Date.valueOf(startDate));
-        statement.setDate(3, Date.valueOf(endDate));
-        statement.setDate(4, Date.valueOf(endDate));
-        resultSet = statement.executeQuery();
-
-        while (resultSet.next()){
-            allBookIds.remove((Integer) resultSet.getInt("book_id"));
-        }
-        statement = null;
-        resultSet = null;
-
-    }
-
     /**
      * This method creates new row in the database with: start_date, end_date, book_id and customer_id
      * @return ID of created rental or -1 if there was an error
@@ -132,7 +113,6 @@ public class RentalRepository {
         statement.setInt(1, bookId);
         statement.execute();
         statement = null;
-
     }
 
     /**

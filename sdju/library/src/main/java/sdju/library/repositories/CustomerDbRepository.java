@@ -2,6 +2,7 @@ package sdju.library.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import sdju.library.model.Book;
 import sdju.library.model.Customer;
 import sdju.library.util.DbConnector;
 
@@ -9,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CustomerDbRepository {
@@ -37,6 +39,26 @@ public class CustomerDbRepository {
         statement = null;
         result = null;
         return customers;
+    }
+
+    public List<Customer> readAll(List<Integer> customersIDs) throws SQLException {
+
+        ArrayList<Customer> customers = new ArrayList<>();
+        for (int customersId: customersIDs) {
+            customers.add(this.read(customersId));
+        }
+        return customers;
+    }
+
+    public List<Integer> readAllIDs() throws SQLException {
+        List<Integer> customersIDs = new ArrayList<>();
+        statement = connector.getConnection().prepareStatement("select * from customer\n" +
+                "where (select count(*) from rental where customer.customer_id=rental.customer_id and !(rental.end_date='1900-01-01'))<5;");
+        result = statement.executeQuery();
+        while (result.next()){
+            customersIDs.add(result.getInt("customer_id"));
+        }
+        return customersIDs;
     }
 
     public void create(Customer customer) throws SQLException {

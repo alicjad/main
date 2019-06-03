@@ -42,9 +42,6 @@ public class RentalManager {
 
     public Rental startRental(LocalDate startDate) {
         Rental rental = new Rental();
-        if (Period.between(LocalDate.now(), startDate).getDays() <= 0) {
-            return null;
-        }
         rental.setStartDate(startDate);
         return rental;
     }
@@ -52,7 +49,6 @@ public class RentalManager {
     public List<Book> getAvailableBooks(Rental rental) {
         try {
             List<Integer> availableBookIds = bookDbRepository.readAllIDs();
-            rentalRepository.getAvailableBookIds(rental.getStartDate(), rental.getEndDate(), availableBookIds);
             return bookDbRepository.readAll(availableBookIds);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -61,13 +57,40 @@ public class RentalManager {
     }
 
     public boolean saveBook(Rental rental, int bookId) {
+        try{
+            Book book = bookDbRepository.read(bookId);
+            book.setBookStatus(2);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         rental.setBookId(bookId);
         return true;
     }
 
-    public boolean saveRental(Rental rental, Customer customer) {
+    public boolean saveCustomer(Rental rental, int customerId){
+        rental.setCustomerId(customerId);
+        return true;
+    }
 
-        if(!this.saveCustomer(rental, customer)) return false;
+    public List<Customer> getEligibleCustomers(Rental rental) {
+        try {
+            List<Integer> eligibleCustomersIds = customerDbRepository.readAllIDs();
+            return customerDbRepository.readAll(eligibleCustomersIds);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean saveRental(Rental rental) {
+
+        rental.setEndDate(LocalDate.parse("1900-01-02"));
+        try{
+            int rentalId = rentalRepository.create(rental);
+            rental.setRentalId(rentalId);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         if(!this.uploadRental(rental)) return false;
         return true;
     }
@@ -153,7 +176,9 @@ public class RentalManager {
     public void deleteRental(int rentalId){
         try {
             Rental rental = this.getRental(rentalId);
+            Book book = bookDbRepository.read(rental.getBookId());
             rentalRepository.nullifyBook(rental.getBookId());
+            book.setBookStatus(1);
             rentalRepository.nullifyCustomer(rental.getCustomerId());
             rentalRepository.delete(rentalId);
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose customer</title>
+    <link rel="stylesheet" href="table_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="books">Books</a></li>
+        <li><a href="rentals">Rentals</a></li>
+        <li><a href="customers">Customers</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1>Choose customer the rental is for:</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="customer: ${customers}">
+            <td th:text="${customer.customerId}"></td>
+            <td th:text="${customer.customerName}"></td>
+            <td th:text="${customer.emailAddress}"></td>
+            <td th:text="${customer.phoneNumber}"></td>
+            <td><a th:href="'/save_customer?customerId=' +${customer.customerId}" class="button button-details">Choose</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -59,7 +59,8 @@ public class BookDbRepository {
 
     public List<Integer> readAllIDs() throws SQLException {
         List<Integer> bookIDs = new ArrayList<>();
-        statement = connector.getConnection().prepareStatement("SELECT book_id from book");
+        statement = connector.getConnection().prepareStatement("select * from book\n" +
+                "where not exists(select 1 from rental where book.book_id=rental.book_id);");
         result = statement.executeQuery();
         while (result.next()){
             bookIDs.add(result.getInt("book_id"));
