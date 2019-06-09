@@ -48,6 +48,14 @@ public class Rental {
         return endDate;
     }
 
+    public String getEndDateAsString(){
+        LocalDate date = this.getEndDate();
+        if (date.toString().equals("1900-01-01")){
+            return "";
+        }
+        else return date.toString();
+    }
+
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }

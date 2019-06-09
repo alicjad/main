@@ -48,7 +48,7 @@ public class RentalManager {
 
     public List<Book> getAvailableBooks(Rental rental) {
         try {
-            List<Integer> availableBookIds = bookDbRepository.readAllIDs();
+            List<Integer> availableBookIds = bookDbRepository.readAllAvailableBookIDs();
             return bookDbRepository.readAll(availableBookIds);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,7 +59,6 @@ public class RentalManager {
     public boolean saveBook(Rental rental, int bookId) {
         try{
             Book book = bookDbRepository.read(bookId);
-            book.setBookStatus(2);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -138,7 +137,6 @@ public class RentalManager {
             double penalty = this.calculatePenalty(rental);
             rental.setPenalty(penalty);
             rental.setEndDate(LocalDate.now());
-            //change book status here?
             return this.uploadRental(rental);
         }
         return false;
@@ -178,7 +176,6 @@ public class RentalManager {
             Rental rental = this.getRental(rentalId);
             Book book = bookDbRepository.read(rental.getBookId());
             rentalRepository.nullifyBook(rental.getBookId());
-            book.setBookStatus(1);
             rentalRepository.nullifyCustomer(rental.getCustomerId());
             rentalRepository.delete(rentalId);
 

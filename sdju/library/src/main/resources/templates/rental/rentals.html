@@ -37,7 +37,7 @@
             <td th:text="${rental.customerId}"></td>
             <td th:text="${rental.bookId}"></td>
             <td th:text="${rental.startDate}"></td>
-            <td th:text="${rental.endDate}"></td>
+            <td th:text="${rental.getEndDateAsString()}"></td>
             <td>
                 <a class="button button-details" th:href="'/end_rental?rentalId=' + ${rental.rentalId}">End rental</a>
                 <a class="button button-delete" th:href="'/delete_rental?rentalId=' + ${rental.rentalId}">Delete</a>

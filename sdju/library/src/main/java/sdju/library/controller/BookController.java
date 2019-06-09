@@ -1,6 +1,8 @@
 package sdju.library.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +17,7 @@ import sdju.library.model.BookDescription;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -67,14 +70,21 @@ public class BookController {
         List<Author> authors;
         authors = bookManager.getExistingAuthors();
         model.addAttribute("authors", authors);
+        //new list added for authors from the user selection
+        //BookDescription description = new BookDescription();
+        //List<Author> chosenAuthors = new ArrayList<>();
+        //description.setAuthors(chosenAuthors);
+        //model.addAttribute("description", description);
+        //model.addAttribute("chosenAuthors", chosenAuthors);
         return "book/create/choose_authors";
     }
 
     @PostMapping("/choose_authors")
-    public String saveAuthorsFromCheckbox(){
-        //how to save from the checkbox ???
+    public String saveAuthorsFromCheckbox(HttpSession session,@RequestParam(value = "chosenAuthors") List<String> chosenAuthors){
+        BookDescription description = (BookDescription)session.getAttribute("description");
+        description.setAuthors(bookManager.getAuthorsFromIDs(chosenAuthors));
         //move to another step
-        return "book/create/add_description";
+        return "redirect:/confirm_new_book";
     }
 
     @GetMapping("/add_author")
@@ -100,7 +110,7 @@ public class BookController {
     public String addNewDescription(HttpSession session,
             @RequestParam(value = "title") String title, @RequestParam(value = "category") int category){
         session.setAttribute("description", bookManager.addTitleAndCategory(title, category));
-        return "redirect:/confirm_new_book";
+        return "redirect:/choose_authors";
     }
 
     @GetMapping("/save_bookDescription")

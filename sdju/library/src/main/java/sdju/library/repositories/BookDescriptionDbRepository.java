@@ -67,6 +67,9 @@ public class BookDescriptionDbRepository {
         if (result.next()) {
             id = result.getInt("description_id");
         }
+        for (Author author : bookDescription.getAuthors()) {
+            descriptionAuthorRepository.create(id, author.getAuthorId());
+        }
         statement = null;
         result = null;
         return id;

@@ -11,11 +11,11 @@ public class Book {
 
     }
 
-    public Book(int bookId, int library_id, BookDescription bookDescription) {
+    public Book(int bookId, int library_id, BookDescription bookDescription, BookStatus bookStatus) {
         this.bookId = bookId;
         this.library_id = library_id;
         this.bookDescription = bookDescription;
-        this.bookStatus = BookStatus.available;
+        this.bookStatus = bookStatus;
     }
 
     //this method is used in books.html, gets book status for UI

@@ -21,6 +21,7 @@ public class BookDescription {
     }
 
     //this method is used by thymeleaf in html
+
     public String getAuthorsAsOneString() {
         if(getAuthors().size() != 0){
             String authors = getAuthors().get(0).getAuthorName();
@@ -32,9 +33,20 @@ public class BookDescription {
             return "";
         }
     }
-
     public List<Author> getAuthors() {
         return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
+
+    public List<Author> getChosenAuthors() {
+        return authors;
+    }
+
+    public void setChosenAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public int getDescriptionId() {

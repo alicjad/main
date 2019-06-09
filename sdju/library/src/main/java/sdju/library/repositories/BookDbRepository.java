@@ -15,8 +15,8 @@ import java.util.List;
 @Repository
 public class BookDbRepository {
 
-    private PreparedStatement statement;
-    private ResultSet result;
+    //private PreparedStatement statement;
+    //private ResultSet result;
     private DbConnector connector;
     private BookDescriptionDbRepository bookDescriptionDbRepository;
 
@@ -32,16 +32,11 @@ public class BookDbRepository {
     public List<Book> readAll() throws SQLException {
 
         ArrayList<Book> books = new ArrayList<>();
-        statement = connector.getConnection().prepareStatement("SELECT * FROM book");
-        result = statement.executeQuery();
+        PreparedStatement statement = connector.getConnection().prepareStatement("SELECT book_id FROM book");
+        ResultSet result = statement.executeQuery();
         while (result.next()){
-            books.add(new Book(
-                    result.getInt("book_id"),
-                    result.getInt("library_id"),
-                    bookDescriptionDbRepository.read(result.getInt("description_id"))));
+            books.add(this.read(result.getInt("book_id")));
         }
-        statement = null;
-        result = null;
         return books;
     }
 
@@ -57,11 +52,11 @@ public class BookDbRepository {
         return books;
     }
 
-    public List<Integer> readAllIDs() throws SQLException {
+    public List<Integer> readAllAvailableBookIDs() throws SQLException {
         List<Integer> bookIDs = new ArrayList<>();
-        statement = connector.getConnection().prepareStatement("select * from book\n" +
-                "where not exists(select 1 from rental where book.book_id=rental.book_id);");
-        result = statement.executeQuery();
+        PreparedStatement statement = connector.getConnection().prepareStatement("select * from book\n" +
+                "where not exists(select 1 from rental where book.book_id=rental.book_id and rental.end_date = '1900-01-01');");
+        ResultSet result = statement.executeQuery();
         while (result.next()){
             bookIDs.add(result.getInt("book_id"));
         }
@@ -72,7 +67,7 @@ public class BookDbRepository {
      * This method creates new row in the books table with: library_id, description_id
      */
     public void create(Book book) throws SQLException {
-        statement = connector.getConnection().prepareStatement("INSERT INTO book(library_id, description_id) VALUES (?,?)");
+        PreparedStatement statement = connector.getConnection().prepareStatement("INSERT INTO book(library_id, description_id) VALUES (?,?)");
         statement.setInt(1, book.getLibrary_id());
         statement.setInt(2, book.getBookDescription().getDescriptionId());
         statement.execute();
@@ -81,18 +76,19 @@ public class BookDbRepository {
 
     public Book read(int bookId) throws SQLException {
 
-        statement = connector.getConnection().prepareStatement("SELECT * FROM book WHERE book_id=?");
+        PreparedStatement statement = connector.getConnection().prepareStatement("SELECT *, IF( (select 1 from rental where rental.book_id = book.book_id and  end_date = '1900-01-01') is NULL, 'available', 'rented') as status FROM book WHERE book_id=?");
         statement.setInt(1, bookId);
-        result = statement.executeQuery();
+        ResultSet result = statement.executeQuery();
         Book book = null;
 
         if (result.next()){
+            String status = result.getString("status");
             book = new Book(result.getInt("book_id"),
                     result.getInt("library_id"),
-                    bookDescriptionDbRepository.read(result.getInt("description_id")));
+                    bookDescriptionDbRepository.read(result.getInt("description_id")),
+                    status.equals("rented")? BookStatus.borrowed: BookStatus.available
+                    );
         }
-        statement = null;
-        result = null;
         return book;
     }
 
@@ -101,19 +97,17 @@ public class BookDbRepository {
      */
     public void update(Book book) throws SQLException {
 
-        statement = connector.getConnection().prepareStatement("UPDATE book SET description_id=? WHERE book_id=?");
+        PreparedStatement statement = connector.getConnection().prepareStatement("UPDATE book SET description_id=? WHERE book_id=?");
         statement.setInt(1, book.getBookDescription().getDescriptionId());
         statement.setInt(2, book.getBookId());
         statement.execute();
-        statement = null;
     }
 
     public void delete(int bookId) throws SQLException {
 
-        statement = connector.getConnection().prepareStatement("DELETE FROM book WHERE book_id=?");
+        PreparedStatement statement = connector.getConnection().prepareStatement("DELETE FROM book WHERE book_id=?");
         statement.setInt(1, bookId);
         statement.execute();
-        statement = null;
     }
 
 }

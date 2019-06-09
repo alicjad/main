@@ -10,7 +10,10 @@ import sdju.library.repositories.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 @Component
 public class BookManager {
@@ -121,6 +124,38 @@ public class BookManager {
             return false;
         }
         return true;
+    }
+
+    public boolean saveChosenAuthors(BookDescription bookDescription, /* todo zastap bookDescription.getAuthors */ List<Author> authorsList){
+        try {
+            if (authorsList.size() != 0) {
+                for (int i = 0; i < authorsList.size(); i++) {
+                    int authorId = authorsList.get(0).getAuthorId();
+                    descriptionAuthorRepository.create(bookDescription.getDescriptionId(), authorId);
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public List<Author> getAuthorsFromIDs(List<String> authorsIDList){
+        List<Author>chosenAuthors = new LinkedList<>();
+        if (authorsIDList.size() != 0){
+            try {
+                for (int i = 0; i < authorsIDList.size(); i++) {
+                    int id = parseInt(authorsIDList.get(i));
+                    Author author = authorDbRepository.read(id);
+                    chosenAuthors.add(author);
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return chosenAuthors;
     }
 
     public void updateBook(Book book){
