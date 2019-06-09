@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Book collection</title>
+    <title>Books</title>
     <link rel="stylesheet" href="table_style.css"/>
     <link rel="stylesheet" href="navbar_style.css"/>
 </head>
@@ -10,16 +10,12 @@
 <nav>
     <ul>
         <li class="logo">Library MS</li>
-        <li><a href="books">Books</a></li>
-        <li><a href="rentals">Rentals</a></li>
-        <li><a href="customers">Customers</a></li>
-        <li><a href="libraries">Libraries</a></li>
-        <li id="logout"><a href="/logout" th:text="'Logout: ' + ${session.user.username}" th:unless="${session.user == null}">Logout</a>
+        <li><a href="booksGuest">Books</a></li>
+        <li><a href="librariesGuest">Libraries</a></li>
     </ul>
 </nav>
 <div class="container">
     <h1> Book list </h1>
-    <a href="/add_book" class="button">Add new book</a>
     <table>
         <thead>
         <tr>
@@ -29,7 +25,6 @@
             <th>Status</th>
             <th>Library ID</th>
             <th>Authors</th>
-            <th></th>
 
         </tr>
         </thead>
@@ -43,9 +38,6 @@
             <td th:text="${book.getStatus()}"></td>
             <td th:text="${book.library_id}"></td>
             <td th:text="${book.bookDescription.getAuthorsAsOneString()}"></td>
-            <td>
-                <a class="button button-delete" th:href="'/delete_book?book_id=' + ${book.bookId}">Delete</a>
-            </td>
         </tr>
         </tbody>
     </table>

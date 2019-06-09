@@ -32,6 +32,13 @@ public class BookController {
         this.bookManager = bookManager;
     }
 
+    @GetMapping("/booksGuest")
+    public String getBookCollectionForGuest(Model model){
+        List<Book> books = bookManager.getAllBooks();
+        model.addAttribute("books", books);
+        return "booksGuest";
+    }
+
     @GetMapping("/books")
     public String getAllBooks(Model model){
         List<Book> books = bookManager.getAllBooks();

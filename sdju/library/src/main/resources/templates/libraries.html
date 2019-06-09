@@ -2,8 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Update customer</title>
-    <link rel="stylesheet" href="form_style.css"/>
+    <title>Libraries</title>
+    <link rel="stylesheet" href="table_style.css"/>
     <link rel="stylesheet" href="navbar_style.css"/>
 </head>
 <body>
@@ -17,14 +17,25 @@
         <li id="logout"><a href="/logout" th:text="'Logout: ' + ${session.user.username}" th:unless="${session.user == null}">Logout</a>
     </ul>
 </nav>
-<form action="/update_customer" method="post">
+<div class="container">
+    <h1> Libraries </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+        </tr>
+        </thead>
 
-    <input type="hidden" th:value="${customer.customerId}" name="customerId"/>
-    <p>Customer Name: <input type="text" th:value="${customer.customerName}" name="customerName"/></p>
-    <p>Email: <input type="text" th:value="${customer.emailAddress}" name="emailAddress"/></p>
-    <p>Phone number: <input type="text" th:value="${customer.phoneNumber}" name="phoneNumber"/></p>
-    <input type="submit" value="Update" class="btn btn-create"/>
+        <tbody>
+        <tr>
+        <tr th:each = "library: ${libraries}">
+            <td th:text="${library.libraryId}"></td>
+            <td th:text="${library.libraryAddress}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-</form>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Libraries</title>
+    <link rel="stylesheet" href="table_style.css"/>
+    <link rel="stylesheet" href="navbar_style.css"/>
+</head>
+<body>
+<nav>
+    <ul>
+        <li class="logo">Library MS</li>
+        <li><a href="booksGuest">Books</a></li>
+        <li><a href="librariesGuest">Libraries</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1> Libraries </h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+        <tr th:each = "library: ${libraries}">
+            <td th:text="${library.libraryId}"></td>
+            <td th:text="${library.libraryAddress}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
