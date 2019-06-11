@@ -29,6 +29,7 @@ public class BookDescriptionDbRepository {
 
     @Autowired
     public BookDescriptionDbRepository(DescriptionAuthorRepository descriptionAuthorRepository){
+        System.out.println("Descriptions: OK");
         this.descriptionAuthorRepository = descriptionAuthorRepository;
     }
 

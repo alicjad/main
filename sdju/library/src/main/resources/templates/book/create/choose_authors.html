@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Choose authors</title>
     <link rel="stylesheet" href="table_style.css"/>
+    <link rel="stylesheet" href="form_style.css"/>
     <link rel="stylesheet" href="navbar_style.css"/>
 </head>
 <body>
@@ -18,16 +19,17 @@
 </nav>
 <div class="container">
     <h1>Authors</h1>
-    <a href="/add_author" class="button">Add new author</a>
+    <h3 style="margin-left: 14%">Select many if needed. Click button below if creator is not on the list.</h3>
+    <a href="/add_author" class="button" style="margin-left: 14%">Add new author</a>
     <form action="/choose_authors" method="post">
 
-        <select name="chosenAuthors" multiple="multiple">
-            <option th:each="author : ${authors}"
+        <select name="chosenAuthors" multiple="multiple" style="height: 400px; text-align: left">
+            <option style="padding-top: 7px" th:each="author : ${authors}"
                     th:value="${author.authorId}"
                     th:text="${author.authorName}">
             </option>
         </select>
-        <input type="submit" class="button button-details" value="Continue" />
+        <input type="submit" class="btn btn-create" value="Continue" />
     </form>
 </div>
 </body>

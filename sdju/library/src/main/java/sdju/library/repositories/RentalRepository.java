@@ -27,12 +27,12 @@ public class RentalRepository {
 
     @Autowired
     public void setConnector(DbConnector connector) {
-        //System.out.println("Rentals: OK");
+        System.out.println("Rentals: OK");
         this.connector = connector;
     }
 
     /**
-     * This method creates new row in the database with: start_date, end_date, book_id and customer_id
+     * This method creates new row in the database with: start_date, book_id and customer_id
      * @return ID of created rental or -1 if there was an error
      */
     public int create (Rental rental) throws SQLException {

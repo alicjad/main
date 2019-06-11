@@ -15,8 +15,6 @@ import java.util.List;
 @Repository
 public class BookDbRepository {
 
-    //private PreparedStatement statement;
-    //private ResultSet result;
     private DbConnector connector;
     private BookDescriptionDbRepository bookDescriptionDbRepository;
 
@@ -26,6 +24,7 @@ public class BookDbRepository {
 
     @Autowired
     public void setConnector(DbConnector connector) {
+        System.out.println("BOOKS: OK");
         this.connector = connector;
     }
 

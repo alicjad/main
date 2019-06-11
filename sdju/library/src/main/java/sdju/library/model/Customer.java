@@ -14,6 +14,9 @@ public class Customer {
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
     }
+
+    public Customer(){}
+
     public int getCustomerId() {
         return customerId;
     }

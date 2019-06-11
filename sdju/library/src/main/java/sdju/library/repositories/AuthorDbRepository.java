@@ -20,7 +20,7 @@ public class AuthorDbRepository {
 
     @Autowired
     public void setConnector(DbConnector connector) {
-        //System.out.println("Authors: OK");
+        System.out.println("Authors: OK");
         this.connector = connector;
     }
 
