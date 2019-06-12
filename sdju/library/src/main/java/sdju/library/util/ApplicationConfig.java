@@ -10,11 +10,6 @@ import java.sql.SQLException;
 @Configuration
 public class ApplicationConfig {
 
-//    @Bean
-//    public DBConnector getConnector() throws SQLException {
-//        return new DBConnector();
-//    }
-
     @Bean
     public UserDbRepository getUserDbRepository() {
         return new UserDbRepository();

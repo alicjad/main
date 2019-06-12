@@ -136,25 +136,16 @@ public class BookController {
         return "redirect:/books";
     }
 
-    @GetMapping("/details_book")
-    public String getDetails(Model model, @RequestParam("book_id") int book_id){
-        Book book = bookManager.getChosenBook(book_id);
-        model.addAttribute("book", book);
-        model.addAttribute("description", bookManager.getBookDescription(book.getBookDescription().getDescriptionId()));
-        //needs to be finished:
-        //figure out how to show the authors
-        return "book/details_book";
-    }
-
+    //currently not in use
     @GetMapping("/update_book")
     public String updateBook(Model model,
                              @RequestParam("book_id") int book_id){
         Book book = bookManager.getChosenBook(book_id);
         model.addAttribute("book", book);
-        //model.addAttribute("statusList", bookManager.getBookStatuses(book));
+        //possible scope of update up to customer's wishes
         return "book/update_book";
     }
-
+    //save changes
     @PostMapping("/update_book")
     public String saveUpdateBook(@RequestParam("book_id") int book_id){
         Book book = bookManager.getChosenBook(book_id);
@@ -162,6 +153,7 @@ public class BookController {
 
         return "redirect:/books";
     }
+
 
     @GetMapping("/delete_book")
     public String deleteBook(@RequestParam("book_id") int book_id, Model model) {

@@ -23,15 +23,6 @@ public class BookManager {
     private DescriptionAuthorRepository descriptionAuthorRepository;
     private AuthorDbRepository authorDbRepository;
     private RentalRepository rentalRepository;
-    private static final List<String> bookStatuses = new ArrayList<>();
-
-    //static initializer block
-    static {
-        bookStatuses.add((BookCategory.textbook).toString());
-        bookStatuses.add((BookCategory.adventure).toString());
-        bookStatuses.add((BookCategory.crime_fiction).toString());
-        bookStatuses.add((BookCategory.romance).toString());
-    }
 
     @Autowired
     public BookManager (BookDbRepository bookDbRepository, BookDescriptionDbRepository bookDescriptionDbRepository,
@@ -46,8 +37,7 @@ public class BookManager {
 
     public List<Book> getAllBooks(){
         try{
-            List<Book> books = bookDbRepository.readAll();
-            return books;
+            return bookDbRepository.readAll();
         }catch (SQLException e){
             e.printStackTrace();
             System.out.println("Error occurred while reading book list");
@@ -57,8 +47,7 @@ public class BookManager {
 
     public Book getChosenBook(int bookId){
         try {
-            Book book = bookDbRepository.read(bookId);
-            return book;
+            return bookDbRepository.read(bookId);
         }catch (SQLException e){
             e.printStackTrace();
             System.out.println("Book not found!");
@@ -78,7 +67,6 @@ public class BookManager {
     public Book addNewBook(int libraryId){
         Book book = new Book();
         book.setLibrary_id(libraryId);
-        //book.setBookStatus(BookStatus.available);
         return book;
     }
 
@@ -120,21 +108,6 @@ public class BookManager {
         try {
             bookDbRepository.create(book);
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
-    public boolean saveChosenAuthors(BookDescription bookDescription, /* todo zastap bookDescription.getAuthors */ List<Author> authorsList){
-        try {
-            if (authorsList.size() != 0) {
-                for (int i = 0; i < authorsList.size(); i++) {
-                    int authorId = authorsList.get(0).getAuthorId();
-                    descriptionAuthorRepository.create(bookDescription.getDescriptionId(), authorId);
-                }
-            }
-        }catch (SQLException e){
             e.printStackTrace();
             return false;
         }
