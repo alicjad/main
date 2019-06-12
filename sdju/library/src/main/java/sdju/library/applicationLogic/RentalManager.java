@@ -173,12 +173,7 @@ public class RentalManager {
 
     public void deleteRental(int rentalId){
         try {
-            Rental rental = this.getRental(rentalId);
-            Book book = bookDbRepository.read(rental.getBookId());
-            rentalRepository.nullifyBook(rental.getBookId());
-            rentalRepository.nullifyCustomer(rental.getCustomerId());
             rentalRepository.delete(rentalId);
-
         }catch (SQLException e){
             System.out.println("Error occurred! Rental not deleted");
             e.printStackTrace();
