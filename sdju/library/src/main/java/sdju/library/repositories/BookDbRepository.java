@@ -75,7 +75,9 @@ public class BookDbRepository {
 
     public Book read(int bookId) throws SQLException {
 
-        PreparedStatement statement = connector.getConnection().prepareStatement("SELECT *, IF( (select 1 from rental where rental.book_id = book.book_id and  end_date = '1900-01-01') is NULL, 'available', 'rented') as status FROM book WHERE book_id=?");
+        PreparedStatement statement = connector.getConnection().prepareStatement("SELECT *, IF( (select 1 from rental " +
+                "where rental.book_id = book.book_id and  end_date = '1900-01-01') is NULL, 'available', 'rented')" +
+                " as status FROM book WHERE book_id=?");
         statement.setInt(1, bookId);
         ResultSet result = statement.executeQuery();
         Book book = null;

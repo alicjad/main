@@ -75,7 +75,7 @@ public class RentalController {
         Rental rental = (Rental)session.getAttribute("rental");
         rentalManager.saveBook(rental, bookId);
         List<Customer> eligibleCustomers;
-        eligibleCustomers = rentalManager.getEligibleCustomers(rental);
+        eligibleCustomers = rentalManager.getEligibleCustomers();
         model.addAttribute("customers", eligibleCustomers);
         return "rental/create/choose_customer";
     }

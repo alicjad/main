@@ -53,7 +53,8 @@ public class CustomerDbRepository {
     public List<Integer> readAllIDs() throws SQLException {
         List<Integer> customersIDs = new ArrayList<>();
         statement = connector.getConnection().prepareStatement("select * from customer\n" +
-                "where (select count(*) from rental where customer.customer_id=rental.customer_id and !(rental.end_date='1900-01-01'))<5;");
+                "where (select count(*) from rental " +
+                "where customer.customer_id=rental.customer_id and !(rental.end_date='1900-01-01'))<5;");
         result = statement.executeQuery();
         while (result.next()){
             customersIDs.add(result.getInt("customer_id"));

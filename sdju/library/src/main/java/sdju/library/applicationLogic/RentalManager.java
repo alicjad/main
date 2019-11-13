@@ -58,7 +58,7 @@ public class RentalManager {
 
     public boolean saveBook(Rental rental, int bookId) {
         try{
-            Book book = bookDbRepository.read(bookId);
+            bookDbRepository.read(bookId);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class RentalManager {
         return true;
     }
 
-    public List<Customer> getEligibleCustomers(Rental rental) {
+    public List<Customer> getEligibleCustomers() {
         try {
             List<Integer> eligibleCustomersIds = customerDbRepository.readAllIDs();
             return customerDbRepository.readAll(eligibleCustomersIds);
