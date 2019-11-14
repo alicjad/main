@@ -30,7 +30,8 @@ public class Controller {
     }
 
     @GetMapping("/cakes")
-    public String cakesPage(){
+    public String cakesPage(Model model) throws SQLException{
+        model.addAttribute("items", itemRepository.readAll());
         return "cakes";
     }
 
