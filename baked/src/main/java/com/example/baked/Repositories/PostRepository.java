@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class PostRepository implements IPostsRepository {
 
@@ -79,8 +80,11 @@ public class PostRepository implements IPostsRepository {
     }
 
     public String format(String before){
-        String after = before.replaceAll("\\[important\\]", "<b>");
+        String after = StringEscapeUtils.escapeHtml4(before);
+        after = after.replaceAll("\\[important\\]", "<b>");
         after = after.replaceAll("\\[/important\\]", "</b>");
+        after = after.replaceAll("\\[subtitle\\]","<h3>");
+        after = after.replaceAll("\\[/subtitle\\]", "</h3>");
         return after;
     }
 }
