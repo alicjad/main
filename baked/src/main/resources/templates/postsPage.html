@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+</head>
+<body>
+<div id="content">
+    <p class="title">posts !</p>
+
+    <div th:each="post: ${posts}" >
+        <div>
+            <p th:text="${post.postTitle}" ></p>
+            <p th:utext="${post.text}" ></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

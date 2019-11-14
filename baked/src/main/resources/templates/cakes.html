@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Cakes</title>
 </head>
 <body>
-Cakes will be shown here...
+<div class="head_photo" style="width: 100%">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS8xw_96pZ5DfNLwKKeOUS7YwFfNQx10DeLpB1smHkRH9hAuR68"
+    style="height: 15%">
+</div>
+<nav>
+    <ul>
+        <li><a href="/aboutPage">ABOUT US</a></li>
+        <li><a href="/contactPage">CONTACT</a></li>
+    </ul>
+</nav>
+<div id="content">
+    <p class="title">Our cakes !</p>
+
+    <div th:each="item: ${items}" th:where="${item.category == 3}" class="frame" style="width:600px;
+     height: fit-content;">
+            <div>
+                <img th:src="${item.image}" width="250" height="200" style="float: right">
+                <p th:text="${item.title}" ></p>
+                <p th:text="${item.ingredients}" ></p>
+                <p th:text="${item.description}" ></p>
+                <p th:text="${item.time}"></p>
+            </div>
+    </div>
+</div>
 </body>
 </html>
