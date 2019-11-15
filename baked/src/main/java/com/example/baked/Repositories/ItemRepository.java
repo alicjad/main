@@ -89,4 +89,26 @@ public class ItemRepository implements IItemRepository{
 
         return items;
     }
+
+    public ArrayList<Item> readAllBreadstuff(ArrayList<Item> items){
+        ArrayList<Item> breadstuff = new ArrayList<>();
+
+        for (int i=0; i< items.size(); i++){
+            if (items.get(i).getCategory() == ItemCategory.breadstuff){
+                breadstuff.add(items.get(i));
+            }
+        }
+        return breadstuff;
+    }
+
+    public ArrayList<Item> readAllCakes(ArrayList<Item> items){
+        ArrayList<Item> cakes = new ArrayList<>();
+
+        for (int i=0; i< items.size(); i++){
+            if (items.get(i).getCategory() == ItemCategory.cake){
+                cakes.add(items.get(i));
+            }
+        }
+        return cakes;
+    }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Breadstuff</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/aboutPage">ABOUT US</a></li>
+        <li><a href="/contactPage">CONTACT</a></li>
+    </ul>
+</nav>
+<div id="content">
+    <p class="title">Baker's goods coming soon ! !</p>
+
+    <div th:each="item: ${items}" class="frame" style="width:600px;
+     height: fit-content;">
+        <div>
+            <img th:src="${item.image}" width="250" height="200" style="float: left">
+            <p th:text="${item.title}" ></p>
+            <p th:text="${item.ingredients}" ></p>
+            <p th:text="${item.description}" ></p>
+            <p th:text="${item.time}"></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

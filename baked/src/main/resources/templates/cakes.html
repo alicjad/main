@@ -18,14 +18,14 @@
 <div id="content">
     <p class="title">Our cakes !</p>
 
-    <div th:each="item: ${items}" th:where="${item.category == 3}" class="frame" style="width:600px;
+    <div th:each="cake: ${cakes}" class="frame" style="width:600px;
      height: fit-content;">
             <div>
-                <img th:src="${item.image}" width="250" height="200" style="float: right">
-                <p th:text="${item.title}" ></p>
-                <p th:text="${item.ingredients}" ></p>
-                <p th:text="${item.description}" ></p>
-                <p th:text="${item.time}"></p>
+                <img th:src="${cake.image}" width="250" height="200" style="float: right">
+                <p th:text="${cake.title}" ></p>
+                <p th:text="${cake.ingredients}" ></p>
+                <p th:text="${cake.description}" ></p>
+                <p th:text="${cake.time}"></p>
             </div>
     </div>
 </div>

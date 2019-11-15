@@ -5,10 +5,9 @@ import java.util.Map;
 
 public enum ItemCategory {
 
-    bread(1),
-    buns(2),
-    cake(3),
-    other(4);
+    breadstuff(1),
+    cake(2),
+    other(3);
 
     public int getValue() {
         return value;

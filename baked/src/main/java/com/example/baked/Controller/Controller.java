@@ -2,6 +2,7 @@ package com.example.baked.Controller;
 
 import com.example.baked.Repositories.ItemRepository;
 import com.example.baked.Repositories.PostRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -29,9 +30,15 @@ public class Controller {
         return "aboutPage";
     }
 
+    @GetMapping("/breadstuff")
+    public String breadstuff(Model model) throws SQLException{
+        model.addAttribute("breadstuff", itemRepository.readAllBreadstuff(itemRepository.readAll()));
+        return "breadstuff";
+    }
+
     @GetMapping("/cakes")
     public String cakesPage(Model model) throws SQLException{
-        model.addAttribute("items", itemRepository.readAll());
+        model.addAttribute("cakes", itemRepository.readAllCakes(itemRepository.readAll()));
         return "cakes";
     }
 
