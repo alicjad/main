@@ -14,14 +14,14 @@
 <div id="content">
     <p class="title">Baker's goods coming soon ! !</p>
 
-    <div th:each="item: ${items}" class="frame" style="width:600px;
+    <div th:each="breadstuff: ${breadstuff}" class="frame" style="width:600px;
      height: fit-content;">
         <div>
-            <img th:src="${item.image}" width="250" height="200" style="float: left">
-            <p th:text="${item.title}" ></p>
-            <p th:text="${item.ingredients}" ></p>
-            <p th:text="${item.description}" ></p>
-            <p th:text="${item.time}"></p>
+            <img th:src="${breadstuff.image}" width="250" height="200" style="float: left">
+            <p th:text="${breadstuff.title}" ></p>
+            <p th:text="${breadstuff.ingredients}" ></p>
+            <p th:text="${breadstuff.description}" ></p>
+            <p th:text="${breadstuff.time}"></p>
         </div>
     </div>
 </div>
