@@ -3,7 +3,7 @@ package sdju.library.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum BookCategory {
+public enum CustomerGrade {
     first(1),
     second(2),
     third(3),
@@ -18,17 +18,17 @@ public enum BookCategory {
     private int value;
     private static Map map = new HashMap<>();
 
-    private BookCategory(int value){
+    private CustomerGrade(int value){
         this.value = value;
     }
 
     static {
-        for (BookCategory bc : BookCategory.values()) {
-            map.put(bc.value, bc);
+        for (CustomerGrade cg : CustomerGrade.values()) {
+            map.put(cg.value, cg);
         }
     }
 
-    public static BookCategory valueOf(int bookCategory){
-        return (BookCategory)map.get(bookCategory);
+    public static CustomerGrade valueOf(int customerGrade){
+        return (CustomerGrade) map.get(customerGrade);
     }
 }

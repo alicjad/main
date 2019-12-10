@@ -23,7 +23,8 @@
         <thead>
         <tr>
             <th>Title</th>
-            <th>Category</th>
+            <th>Grade recommendation</th>
+            <th>Location</th>
             <th>Authors</th>
             <th></th>
         </tr>
@@ -33,6 +34,7 @@
         <tr th:each = "bookDescription: ${bookDescriptions}">
             <td th:text="${bookDescription.title}"></td>
             <td th:text="${bookDescription.category}"></td>
+            <td th:text="${bookDescription.location}"></td>
             <td th:text="${bookDescription.getAuthorsAsOneString()}">
             <td> <a th:href="'/save_bookDescription?descriptionId=' +${bookDescription.descriptionId}" class="button button-details">Choose</a></td>
         </tr>

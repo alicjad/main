@@ -2,8 +2,8 @@ package sdju.library.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import sdju.library.model.Book;
 import sdju.library.model.Customer;
+import sdju.library.model.CustomerGrade;
 import sdju.library.util.DbConnector;
 
 import java.sql.PreparedStatement;
@@ -34,6 +34,7 @@ public class CustomerDbRepository {
         result = statement.executeQuery();
         while (result.next()){
             customers.add(new Customer(result.getInt("customer_id"), result.getString("name"),
+                    CustomerGrade.valueOf(result.getInt("grade")),
                     result.getString("email"), result.getString("phone_number")));
         }
         statement = null;
@@ -64,10 +65,12 @@ public class CustomerDbRepository {
 
     public void create(Customer customer) throws SQLException {
         System.out.println(customer);
-        statement = connector.getConnection().prepareStatement("INSERT INTO customer(name, email, phone_number) VALUES (?,?,?)");
+        statement = connector.getConnection().prepareStatement("INSERT INTO customer(name, grade, " +
+                "email, phone_number) VALUES (?,?,?,?)");
         statement.setString(1, customer.getCustomerName());
-        statement.setString(2, customer.getEmailAddress());
-        statement.setString(3, customer.getPhoneNumber());
+        statement.setInt(2, customer.getGrade().getValue());
+        statement.setString(3, customer.getEmailAddress());
+        statement.setString(4, customer.getPhoneNumber());
         statement.execute();
         statement = null;
     }
@@ -79,6 +82,7 @@ public class CustomerDbRepository {
         Customer customer = null;
         if (result.next()){
             customer = new Customer(result.getInt("customer_id"), result.getString("name"),
+                    CustomerGrade.valueOf(result.getInt("grade")),
                     result.getString("email"), result.getString("phone_number"));
         }
         statement = null;
@@ -93,6 +97,7 @@ public class CustomerDbRepository {
         Customer customer = null;
         if (result.next()){
             customer = new Customer(result.getInt("customer_id"), result.getString("name"),
+                    CustomerGrade.valueOf(result.getInt("grade")),
                     result.getString("email"), result.getString("phone_number"));
         }
         statement = null;
@@ -101,11 +106,13 @@ public class CustomerDbRepository {
     }
 
     public void update(Customer customer) throws SQLException {
-        statement = connector.getConnection().prepareStatement("UPDATE customer SET name=?, email=?, phone_number=? WHERE customer_id=?");
+        statement = connector.getConnection().prepareStatement("UPDATE customer SET name=?, grade=?" +
+                "email=?, phone_number=? WHERE customer_id=?");
         statement.setString(1, customer.getCustomerName());
-        statement.setString(2, customer.getEmailAddress());
-        statement.setString(3, customer.getPhoneNumber());
-        statement.setInt(4, customer.getCustomerId());
+        statement.setInt(2, customer.getGrade().getValue());
+        statement.setString(3, customer.getEmailAddress());
+        statement.setString(4, customer.getPhoneNumber());
+        statement.setInt(5, customer.getCustomerId());
         statement.execute();
         statement = null;
     }

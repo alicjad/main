@@ -25,8 +25,9 @@
         <tr>
             <th>ID</th>
             <th>Full name</th>
-            <th>Email</th>
-            <th>Phone number</th>
+            <th>Grade</th>
+            <th>Parent email address</th>
+            <th>Parent phone number</th>
             <th></th>
         </tr>
         </thead>
@@ -35,6 +36,7 @@
         <tr th:each="customer: ${customers}">
             <td th:text="${customer.customerId}"></td>
             <td th:text="${customer.customerName}"></td>
+            <td th:text="${customer.grade}"></td>
             <td th:text="${customer.emailAddress}"></td>
             <td th:text="${customer.phoneNumber}"></td>
             <td><a class="button button-update" th:href="'update_customer?customerId=' + ${customer.customerId}">Update</a>

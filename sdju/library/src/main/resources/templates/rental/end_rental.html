@@ -19,8 +19,6 @@
 </nav>
 <div class="container">
     <h1 th:text="'End rental no:' + ' '+ ${rental.rentalId}"></h1>
-    <h2 th:text="'Overdue penalty: ' + ${rental.getPenalty()}"></h2>
-    <h2 style="color: red">Do not accept book return without payment.</h2>
     <form method="post" action="/end_rental">
         <input type="hidden" th:field="${rental.rentalId}">
         <input type="submit" value="End Rental" class="delete">

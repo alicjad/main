@@ -95,10 +95,14 @@ public class BookManager {
         return null;
     }
 
-    public BookDescription addTitleAndCategory(String title, int category){
+    public BookDescription addDescriptionInfo(String title, int category,
+                                              String location, String image, String specs){
         BookDescription bookDescription = new BookDescription();
         bookDescription.setTitle(title);
         bookDescription.setCategory(BookCategory.valueOf(category));
+        bookDescription.setLocation(location);
+        bookDescription.setImage(image);
+        bookDescription.setSpecs(specs);
         return bookDescription;
     }
 

@@ -19,11 +19,22 @@
 </nav>
 <form action="/new_customer" method="post">
 
-    <p>Full name:</p>
+    <p>Student full name:</p>
     <input type="text" name="customerName" />
-    <p>Email address:</p>
+    <p>
+        <label>Select student grade</label>
+        <select name = "grade">
+            <option value = "1">first grade</option>
+            <option value = "2">second grade</option>
+            <option value = "3">third grade</option>
+            <option value = "4">fourth grade</option>
+            <option value= "5">fifth grade</option>
+            <option value= "6">middle school</option>
+        </select>
+    </p>
+    <p>Parent email address:</p>
     <input type="text" name="emailAddress" />
-    <p>Phone number:</p>
+    <p>Parent phone number:</p>
     <input type="text" name="phoneNumber" />
     <p>
         <input type="submit" value="Create" class="btn btn-create"/>

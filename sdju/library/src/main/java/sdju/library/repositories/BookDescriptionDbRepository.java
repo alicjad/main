@@ -42,6 +42,8 @@ public class BookDescriptionDbRepository {
         while (result.next()){
             bookDescriptions.add(new BookDescription(result.getInt("description_id"),
                     result.getString("title"), (BookCategory.valueOf( result.getInt("category"))),
+                    result.getString("location"), result.getString("image"),
+                    result.getString("specs"),
                     descriptionAuthorRepository.readAll(result.getInt("description_id"))));
         }
         statement = null;
@@ -56,13 +58,21 @@ public class BookDescriptionDbRepository {
     public int create(BookDescription bookDescription) throws SQLException {
 
         System.out.println(bookDescription);
-        statement = connector.getConnection().prepareStatement("INSERT INTO description(title, category) VALUES (?,?)");
+        statement = connector.getConnection().prepareStatement("INSERT INTO description(title, category, " +
+                "location, image, specs) VALUES (?,?,?,?,?)");
         statement.setString(1, bookDescription.getTitle());
         statement.setInt(2, bookDescription.getCategory().getValue());
+        statement.setString(3, bookDescription.getLocation());
+        statement.setString(4, bookDescription.getImage());
+        statement.setString(5, bookDescription.getSpecs());
         statement.execute();
-        statement = connector.getConnection().prepareStatement("SELECT description_id FROM description WHERE title=? AND category=?;");
+        statement = connector.getConnection().prepareStatement("SELECT description_id FROM description WHERE title=? " +
+                "AND category=? AND location=? AND image=? AND specs=?;");
         statement.setString(1, bookDescription.getTitle());
         statement.setInt(2, bookDescription.getCategory().getValue());
+        statement.setString(3, bookDescription.getLocation());
+        statement.setString(4, bookDescription.getImage());
+        statement.setString(5, bookDescription.getSpecs());
         result = statement.executeQuery();
         int id = -1;
         if (result.next()) {
@@ -86,7 +96,9 @@ public class BookDescriptionDbRepository {
 
         if (result.next()){
             bookDescription = new BookDescription(result.getInt("description_id"),
-                    result.getString("title"), BookCategory.valueOf(result.getInt("category")), authorList);
+                    result.getString("title"), BookCategory.valueOf(result.getInt("category")),
+                    result.getString("location"), result.getString("image"),
+                    result.getString("specs"), authorList);
         }
         statement = null;
         result = null;
@@ -95,10 +107,14 @@ public class BookDescriptionDbRepository {
 
     public void update(BookDescription bookDescription) throws SQLException {
 
-        statement = connector.getConnection().prepareStatement("UPDATE description SET title=?,category=? WHERE description_id = ?");
+        statement = connector.getConnection().prepareStatement("UPDATE description SET title=?,category=?" +
+                "location=?, image=?, specs=? WHERE description_id = ?");
         statement.setString(1, bookDescription.getTitle());
         statement.setInt(2, bookDescription.getCategory().getValue());
-        statement.setInt(3, bookDescription.getDescriptionId());
+        statement.setString(3, bookDescription.getLocation());
+        statement.setString(4, bookDescription.getImage());
+        statement.setString(5, bookDescription.getSpecs());
+        statement.setInt(6, bookDescription.getDescriptionId());
         statement.execute();
         statement = null;
     }

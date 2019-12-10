@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>books page for pupils</title>
+    <link rel="stylesheet" href="/menuStyle.css">
+</head>
+<body>
+
+<div id="content">
+    <p class="title">Our books!</p>
+
+    <div th:each="bookDescription: ${bookDescriptions}" class="frame">
+        <a th:href="'/bookInfo?id=' + ${bookDescription.descriptionId}" style="color:black" >
+            <div>
+                <img th:src="${bookDescription.image}" width="200" height="200">
+                <p th:text="${bookDescription.title}" ></p>
+            </div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

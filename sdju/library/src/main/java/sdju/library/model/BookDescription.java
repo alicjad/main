@@ -7,12 +7,19 @@ public class BookDescription {
     private int descriptionId;
     private String title;
     private BookCategory category;
+    private String location;
+    private String image;
+    private String specs;
     private List<Author> authors;
 
-    public BookDescription(int descriptionId, String title, BookCategory category, List<Author>authors) {
+    public BookDescription(int descriptionId, String title, BookCategory category,
+                           String location, String image, String specs, List<Author>authors) {
         this.descriptionId = descriptionId;
         this.title = title;
         this.category = category;
+        this.location = location;
+        this.image = image;
+        this.specs = specs;
         this.authors = authors;
     }
 
@@ -20,8 +27,8 @@ public class BookDescription {
 
     }
 
-    //this method is used by thymeleaf in html
 
+    //this method is used by thymeleaf in html
     public String getAuthorsAsOneString() {
         if(getAuthors().size() != 0){
             String authors = getAuthors().get(0).getAuthorName();
@@ -33,10 +40,10 @@ public class BookDescription {
             return "";
         }
     }
+
     public List<Author> getAuthors() {
         return authors;
     }
-
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
@@ -44,7 +51,6 @@ public class BookDescription {
     public List<Author> getChosenAuthors() {
         return authors;
     }
-
     public void setChosenAuthors(List<Author> authors) {
         this.authors = authors;
     }
@@ -73,12 +79,39 @@ public class BookDescription {
         this.category = category;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getSpecs() {
+        return specs;
+    }
+
+    public void setSpecs(String specs) {
+        this.specs = specs;
+    }
+
     @Override
     public String toString() {
         return "BookDescription{" +
                 "descriptionId=" + descriptionId +
                 ", title='" + title + '\'' +
                 ", category=" + category +
+                ", location='" + location + '\'' +
+                ", image='" + image + '\'' +
+                ", specs='" + specs + '\'' +
                 ", authors=" + authors +
                 '}';
     }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="${bookDescription.title}"></title>
+    <link rel="stylesheet" href="/menuStyle.css">
+</head>
+<body>
+
+<div id="content">
+    <div class="left">
+        <img th:src="${bookDescription.image}" >
+    </div>
+    <div class="right">
+        <p class="card-title" th:text="${bookDescription.title}"></p>
+        <p class="card-text" th:text="${bookDescription.specs}" ></p>
+        <p class="card-price" th:text="'Location: ' + ${bookDescription.location}" ></p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

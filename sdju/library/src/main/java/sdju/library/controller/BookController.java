@@ -32,11 +32,18 @@ public class BookController {
         this.bookManager = bookManager;
     }
 
-    @GetMapping("/booksGuest")
+    @GetMapping("/booksPage")
     public String getBookCollectionForGuest(Model model){
-        List<Book> books = bookManager.getAllBooks();
-        model.addAttribute("books", books);
-        return "booksGuest";
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions();
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "booksPage";
+    }
+
+    @GetMapping("/bookInfo")
+    public String bookInfoPage(@RequestParam("id") int descriptionId, Model model) {
+        BookDescription bookDescription = bookManager.getBookDescription(descriptionId);
+        model.addAttribute("bookDescription", bookDescription);
+        return "bookInfo";
     }
 
     @GetMapping("/books")
@@ -115,8 +122,12 @@ public class BookController {
 
     @PostMapping("/add_description")
     public String addNewDescription(HttpSession session,
-            @RequestParam(value = "title") String title, @RequestParam(value = "category") int category){
-        session.setAttribute("description", bookManager.addTitleAndCategory(title, category));
+            @RequestParam(value = "title") String title, @RequestParam(value = "category") int category,
+            @RequestParam(value = "location") String location,
+            @RequestParam(value = "image") String image,
+            @RequestParam(value = "specs") String specs){
+        session.setAttribute("description", bookManager.addDescriptionInfo(title, category,
+                location, image, specs));
         return "redirect:/choose_authors";
     }
 

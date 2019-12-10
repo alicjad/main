@@ -20,9 +20,20 @@
 <form action="/update_customer" method="post">
 
     <input type="hidden" th:value="${customer.customerId}" name="customerId"/>
-    <p>Customer Name: <input type="text" th:value="${customer.customerName}" name="customerName"/></p>
-    <p>Email: <input type="text" th:value="${customer.emailAddress}" name="emailAddress"/></p>
-    <p>Phone number: <input type="text" th:value="${customer.phoneNumber}" name="phoneNumber"/></p>
+    <p>Student Name: <input type="text" th:value="${customer.customerName}" name="customerName"/></p>
+    <p>
+        <label>Select student grade</label>
+        <select name = "grade">
+            <option value = "1">first grade</option>
+            <option value = "2">second grade</option>
+            <option value = "3">third grade</option>
+            <option value = "4">fourth grade</option>
+            <option value= "5">fifth grade</option>
+            <option value= "6">middle school</option>
+        </select>
+    </p>
+    <p>Parent's email: <input type="text" th:value="${customer.emailAddress}" name="emailAddress"/></p>
+    <p>Parent's phone number: <input type="text" th:value="${customer.phoneNumber}" name="phoneNumber"/></p>
     <input type="submit" value="Update" class="btn btn-create"/>
 
 </form>
