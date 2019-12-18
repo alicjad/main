@@ -27,7 +27,7 @@ public class HomepageController {
     /**
      * This method responds to a login request from user
      * It checks if entered user data matches any saved users data
-     * If it does page with fleet is being opened
+     * If it does page with books is being opened
      * If entered user's data doesn't match saved data or there was any other error
      * error message (name="error_message") is added to the model object and homepage is being opened
      * @param user User object with username and password entered by a user
@@ -56,40 +56,6 @@ public class HomepageController {
                 break;
         }
         System.out.println("error!");
-        return "login";
-    }
-
-    /**
-     * This method responds to a register request from user
-     * It checks if entered user data is correct (not empty)
-     * If it does page with fleet is being opened
-     * If entered user's data doesn't match saved data or there was any other error
-     * error message attribute (name="error_message") is added to the model object and login is being opened
-     * @param user User object with username and password entered by a user
-     * @param request HttpServletRequest used to save session data
-     * @param model Model object used to save attributes for later Thymeleaf use
-     */
-    @PostMapping("/register")
-    public String register(@ModelAttribute User user, HttpServletRequest request, Model model){
-        byte respond = homepageManager.register(user);
-        switch (respond){
-            case 1:
-                user.setPassword(null);
-                request.getSession().setAttribute("user", user);
-                return "redirect:/fleet";
-            case 0:
-                model.addAttribute("error_message", "An error occurred while getting the data, please retry");
-                break;
-            case -1:
-                model.addAttribute("error_message", "Please enter a password");
-                break;
-            case -2:
-                model.addAttribute("error_message", "Please enter a valid username");
-                break;
-            default:
-                model.addAttribute("error_message", "An unknown error has occurred, please retry");
-                break;
-        }
         return "login";
     }
 

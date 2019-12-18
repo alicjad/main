@@ -32,11 +32,20 @@ public class BookController {
         this.bookManager = bookManager;
     }
 
+    // Pages available for everyone (guest/pupil's side of the system)
+
     @GetMapping("/booksPage")
     public String getBookCollectionForGuest(Model model){
         List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions();
         model.addAttribute("bookDescriptions", bookDescriptions);
         return "booksPage";
+    }
+
+    @GetMapping("/bookInfo")
+    public String bookInfoPage(@RequestParam("id") int descriptionId, Model model) {
+        BookDescription bookDescription = bookManager.getBookDescription(descriptionId);
+        model.addAttribute("bookDescription", bookDescription);
+        return "bookInfo";
     }
 
     @GetMapping("/firstGradeBooksPage")
@@ -53,12 +62,36 @@ public class BookController {
         return "secondGradeBooksPage";
     }
 
-    @GetMapping("/bookInfo")
-    public String bookInfoPage(@RequestParam("id") int descriptionId, Model model) {
-        BookDescription bookDescription = bookManager.getBookDescription(descriptionId);
-        model.addAttribute("bookDescription", bookDescription);
-        return "bookInfo";
+    @GetMapping("/thirdGradeBooksPage")
+    public String getBooksForThirdGrade(Model model){
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions(3);
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "thirdGradeBooksPage";
     }
+
+    @GetMapping("/fourthGradeBooksPage")
+    public String getBooksForFourthGrade(Model model){
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions(4);
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "fourthGradeBooksPage";
+    }
+
+    @GetMapping("/fifthGradeBooksPage")
+    public String getBooksForFifthGrade(Model model){
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions(5);
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "fifthGradeBooksPage";
+    }
+
+    @GetMapping("/middleSchoolBooksPage")
+    public String getBooksForMiddleSchoolStudents(Model model){
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions(6);
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "middleSchoolBooksPage";
+    }
+
+
+    //Part of the system available for librarian
 
     @GetMapping("/books")
     public String getAllBooks(Model model){

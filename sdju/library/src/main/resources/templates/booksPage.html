@@ -9,7 +9,7 @@
 
 <nav>
     <ul>
-        <li><a href="/home">BACK</a></li>
+        <li><a href="/">BACK</a></li>
         <li><a href="/booksPage">All books</a></li>
         <li><a href="/firstGradeBooksPage">1st grade</a></li>
         <li><a href="/secondGradeBooksPage">2nd grade</a></li>
@@ -28,7 +28,7 @@
             <div>
                 <img th:src="${bookDescription.image}" width="200" height="200">
                 <p th:text="${bookDescription.title}" ></p>
-                <p th:text="${bookDescription.category}" ></p>
+                <p th:text="'Level: ' + ${bookDescription.category}" ></p>
             </div>
         </a>
     </div>
