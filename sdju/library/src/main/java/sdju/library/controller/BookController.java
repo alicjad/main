@@ -39,6 +39,20 @@ public class BookController {
         return "booksPage";
     }
 
+    @GetMapping("/firstGradeBooksPage")
+    public String getBooksForFirstGrade(Model model){
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions(1);
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "firstGradeBooksPage";
+    }
+
+    @GetMapping("/secondGradeBooksPage")
+    public String getBooksForSecondGrade(Model model){
+        List<BookDescription> bookDescriptions = bookManager.getExistingBookDescriptions(2);
+        model.addAttribute("bookDescriptions", bookDescriptions);
+        return "secondGradeBooksPage";
+    }
+
     @GetMapping("/bookInfo")
     public String bookInfoPage(@RequestParam("id") int descriptionId, Model model) {
         BookDescription bookDescription = bookManager.getBookDescription(descriptionId);

@@ -12,12 +12,14 @@
     </div>
     <div class="right">
         <p class="card-title" th:text="${bookDescription.title}"></p>
-        <p class="card-text" th:text="${bookDescription.specs}" ></p>
+        <p class="card-text" th:text="${bookDescription.specs}" style="margin-left: 50px" ></p>
         <p class="card-price" th:text="'Location: ' + ${bookDescription.location}" ></p>
 
     </div>
 
 </div>
+
+<a class="button" href="booksPage"> Back </a>
 
 </body>
 </html>

@@ -86,7 +86,16 @@ public class BookManager {
         return true;
     }
 
-    public List<BookDescription> getExistingBookDescriptions (){
+    public List<BookDescription> getExistingBookDescriptions (int categoryNumber){
+        try{
+            return bookDescriptionDbRepository.readAll(categoryNumber);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<BookDescription> getExistingBookDescriptions(){
         try{
             return bookDescriptionDbRepository.readAll();
         }catch (SQLException e){

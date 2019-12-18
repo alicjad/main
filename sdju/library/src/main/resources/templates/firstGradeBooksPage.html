@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>books page for pupils</title>
-    <link rel="stylesheet" href="navbar_style.css"/>
+    <title>Books for first graders</title>
     <link rel="stylesheet" href="/menuStyle.css">
+    <link rel="stylesheet" href="navbar_style.css"/>
 </head>
 <body>
 
@@ -21,14 +21,13 @@
 </nav>
 
 <div id="content">
-    <p class="title">All of Our books!</p>
+    <p class="title">Books for first graders! :)</p>
 
     <div th:each="bookDescription: ${bookDescriptions}" class="frame">
         <a th:href="'/bookInfo?id=' + ${bookDescription.descriptionId}" style="color:black" >
             <div>
                 <img th:src="${bookDescription.image}" width="200" height="200">
                 <p th:text="${bookDescription.title}" ></p>
-                <p th:text="${bookDescription.category}" ></p>
             </div>
         </a>
     </div>

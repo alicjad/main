@@ -1,6 +1,6 @@
 body{
     margin:0;
-    background: url("otters.jpg") no-repeat center center fixed;
+    background: url("books-series.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -8,7 +8,7 @@ body{
     position: absolute;
     font-family: Montserrat, sans-serif;
     text-align: center;
-    color:white;
+    color:black;
     margin-left: 24.5%;
     margin-top: 20%;
 }

@@ -51,6 +51,25 @@ public class BookDescriptionDbRepository {
         return bookDescriptions;
     }
 
+    public List<BookDescription> readAll(int categoryNumber) throws SQLException {
+        List<BookDescription> bookDescriptions = new ArrayList<>();
+
+        statement = connector.getConnection().prepareStatement("SELECT * FROM description WHERE category=?");
+        statement.setInt(1, categoryNumber);
+        result = statement.executeQuery();
+
+        while (result.next()){
+            bookDescriptions.add(new BookDescription(result.getInt("description_id"),
+                    result.getString("title"), (BookCategory.valueOf( result.getInt("category"))),
+                    result.getString("location"), result.getString("image"),
+                    result.getString("specs"),
+                    descriptionAuthorRepository.readAll(result.getInt("description_id"))));
+        }
+        statement = null;
+        result = null;
+        return bookDescriptions;
+    }
+
     /**
      * @param bookDescription BookDescription object with all data
      * @return ID of the created row (description)
