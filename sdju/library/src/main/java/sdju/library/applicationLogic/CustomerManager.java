@@ -3,6 +3,7 @@ package sdju.library.applicationLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sdju.library.model.Customer;
+import sdju.library.model.CustomerGrade;
 import sdju.library.repositories.CustomerDbRepository;
 import sdju.library.repositories.RentalRepository;
 
@@ -37,6 +38,17 @@ public class CustomerManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public Customer createCustomer(String name, int grade,
+                                   String email, String phoneNo){
+        Customer newCustomer = new Customer();
+        newCustomer.setCustomerName(name);
+        newCustomer.setGrade(CustomerGrade.valueOf(grade));
+        newCustomer.setEmailAddress(email);
+        newCustomer.setPhoneNumber(phoneNo);
+        createCustomer(newCustomer);
+        return newCustomer;
     }
 
     public Customer getCustomer(int customerId) {

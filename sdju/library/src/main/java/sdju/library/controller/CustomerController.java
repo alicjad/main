@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import sdju.library.applicationLogic.CustomerManager;
 import sdju.library.model.Customer;
 
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -35,9 +36,20 @@ public class CustomerController {
         return "customer/add_customer";
     }
 
+    //@PostMapping("/new_customer")
+    //public String newCustomer(@ModelAttribute Customer customer){
+      //  customerManager.createCustomer(customer);
+       // return "redirect:/customers";
+    //}
+
     @PostMapping("/new_customer")
-    public String newCustomer(@ModelAttribute Customer customer){
-        customerManager.createCustomer(customer);
+    public String newCustomer(HttpSession session,
+             @RequestParam(value = "customerName") String name,
+             @RequestParam(value = "grade") int grade,
+             @RequestParam(value = "emailAddress") String email,
+             @RequestParam(value = "phoneNumber") String phoneNo){
+        session.setAttribute("customer", customerManager.createCustomer(name, grade,
+                email, phoneNo));
         return "redirect:/customers";
     }
 
