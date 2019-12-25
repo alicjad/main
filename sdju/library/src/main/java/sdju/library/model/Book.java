@@ -22,8 +22,8 @@ public class Book {
     public String getStatus(){
         return this.bookStatus.toString();
     }
-    public void setBookStatus(int enamValue){
-        this.bookStatus = BookStatus.valueOf(enamValue);
+    public void setBookStatus(int enumValue){
+        this.bookStatus = BookStatus.valueOf(enumValue);
     }
 
     public int getBookId() {

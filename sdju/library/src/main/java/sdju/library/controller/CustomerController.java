@@ -36,12 +36,6 @@ public class CustomerController {
         return "customer/add_customer";
     }
 
-    //@PostMapping("/new_customer")
-    //public String newCustomer(@ModelAttribute Customer customer){
-      //  customerManager.createCustomer(customer);
-       // return "redirect:/customers";
-    //}
-
     @PostMapping("/new_customer")
     public String newCustomer(HttpSession session,
              @RequestParam(value = "customerName") String name,
